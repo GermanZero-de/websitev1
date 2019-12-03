@@ -1,0 +1,11 @@
+User-agent: *
+Disallow: /*?*
+Sitemap: http://localhost:3000/sitemap.xml
+
+User-agent: Goolebot
+Disallow: /*?*
+
+User-agent: Yandex
+Disallow: /*?*
+Host: http://localhost:3000/
+Sitemap: http://localhost:3000/sitemap.xml

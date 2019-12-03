@@ -1,0 +1,59 @@
+/* @mixin title .;*/
+
+.title {
+    font-family: theme('fontFamily.main');
+    font-weight: bold;
+
+    &--size-h1 {
+        font-size: 46px;
+        line-height: 60px;
+        letter-spacing: -2px;
+
+        @screen md {
+            font-size: 60px;
+            line-height: 78px;
+        }
+
+        @screen lg {
+            font-size: 66px;
+            line-height: 86px;
+            letter-spacing: -3px;
+        }
+    }
+
+    &--size-h2 {
+        font-size: 30px;
+        line-height: 36px;
+        letter-spacing: -2px;
+
+        @screen md {
+            font-size: 48px;
+            line-height: 62px;
+            letter-spacing: -3px;
+        }
+    }
+
+    &--size-h3 {
+        font-size: 24px;
+        line-height: 31px;
+        letter-spacing: -1px;
+
+        @screen md {
+            font-size: 34px;
+            line-height: 39px;
+            letter-spacing: -2px;
+        }
+    }
+
+    &--size-h4 {
+        font-size: 20px;
+        line-height: 26px;
+        letter-spacing: -1px;
+
+        @screen md {
+            font-size: 24px;
+            line-height: 31px;
+            letter-spacing: -2px;
+        }
+    }
+}

@@ -1,0 +1,139 @@
+.button {
+    font-size: 18px;
+    font-weight: bold;
+    font-family: PT Serif, sans-serif;
+    line-height: 1.5;
+    line-height: calc(1.5em - 1px);
+    padding: .75rem 1.5rem;
+    text-decoration: none;
+    outline: none;
+    max-width: 100%;
+    box-sizing: border-box;
+    cursor: pointer;
+    user-select: none;
+    display: inline-flex;
+    transition: .3s ease all;
+    text-align: center;
+
+    &--alt {
+        font-size: 20px;
+        line-height: 1.2em;
+        font-family: theme('fontFamily.secondary');
+        font-weight: bold;
+        padding: .75rem 1.4rem;
+    }
+
+    &--primary {
+        background: theme('colors.primary');
+        color: #fff;
+    }
+
+    &--primary-o {
+        background: #fff;
+        color: theme('colors.primary');
+    }
+
+    &--round-left {
+        border-top-left-radius: 12px;
+        border-bottom-left-radius: 12px;
+    }
+
+    &--round-right {
+        border-top-right-radius: 12px;
+        border-bottom-right-radius: 12px;
+    }
+
+    &--black {
+        background: theme('colors.black');
+        color: #fff;
+    }
+
+    &--black-o {
+        background: #fff;
+        color: theme('colors.black');
+    }
+
+    &:disabled {
+        cursor: default;
+    }
+
+    &:focus {
+        outline: none;
+    }
+
+    &--link {
+        padding: 0;
+        @apply border-0 text-black leading-snug font-normal;
+        font-size: responsive theme('fontSize.base') theme('fontSize.xl');
+        font-range: 768px 1600px;
+
+        &:hover {
+            @apply opacity-60;
+        }
+    }
+
+    &--only-icon {
+        padding: 0;
+        @apply border-0;
+        border-radius: 50%;
+        overflow: hidden;
+
+        & > span {
+            margin: auto;
+
+            span {
+                display: none !important;
+            }
+        }
+
+        svg {
+            margin: auto !important;
+        }
+    }
+
+    &--round-icon {
+        width: rem(74px);
+        min-width: rem(74px);
+        height: rem(74px);
+        min-height: rem(74px);
+    }
+
+    & > span {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+
+        & > svg {
+            display: inline-block;
+            vertical-align: text-bottom;
+            position: relative;
+            height: 1em;
+            width: 1em;
+            flex-shrink: 0;
+            fill: inherit;
+
+            &:first-child {
+                margin-right: .4em;
+            }
+
+            &:last-child {
+                margin-left: .4em;
+            }
+
+            &:only-child {
+                margin-left: 0;
+                margin-right: 0;
+            }
+
+        }
+
+        & > span {
+            display: inline-block;
+            text-align: center;
+            flex-grow: 1;
+            flex-shrink: 1;
+        }
+    }
+}

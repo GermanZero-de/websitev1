@@ -1,0 +1,80 @@
+{
+  "name": "basic-template",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --open --mode development --config webpack/webpack.dev.conf.js",
+    "build": "webpack --mode production --config webpack/webpack.build.conf.js",
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "precommit": "npm run lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexey-m-ysbm/teampulse.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexey-m-ysbm/teampulse/issues"
+  },
+  "homepage": "https://github.com/alexey-m-ysbm/teampulse#readme",
+  "browserslist": [
+    "last 2 version",
+    "> 2%",
+    "ie 11"
+  ],
+  "dependencies": {
+    "@babel/core": "^7.7.4",
+    "@babel/preset-env": "^7.7.4",
+    "@fortawesome/fontawesome-free": "^5.11.2",
+    "@fortawesome/free-regular-svg-icons": "^5.11.2",
+    "autoprefixer": "^9.7.2",
+    "babel-eslint": "^10.0.3",
+    "babel-loader": "^8.0.6",
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^5.0.5",
+    "core-js": "^3.4.5",
+    "css-loader": "^3.2.0",
+    "css-mqpacker": "^7.0.0",
+    "cssnano": "^4.1.10",
+    "eslint-loader": "^3.0.2",
+    "file-loader": "^5.0.2",
+    "html-webpack-plugin": "^3.2.0",
+    "jquery": "^3.4.1",
+    "lodash.throttle": "^4.1.1",
+    "mini-css-extract-plugin": "^0.8.0",
+    "node-sass": "^4.13.0",
+    "postcss-custom-properties": "^9.0.2",
+    "postcss-each-variables": "^0.3.0",
+    "postcss-extend": "^1.0.5",
+    "postcss-hexrgba": "^1.0.2",
+    "postcss-import": "^12.0.1",
+    "postcss-loader": "^3.0.0",
+    "postcss-mixins": "^6.2.2",
+    "postcss-nested": "^4.1.2",
+    "postcss-pixels-to-rem": "^0.8.0",
+    "postcss-rem": "^1.1.4",
+    "postcss-responsive-type": "^1.0.0",
+    "pug": "^2.0.4",
+    "pug-loader": "^2.4.0",
+    "rfs": "^9.0.2",
+    "sass-loader": "^8.0.0",
+    "style-loader": "^1.0.0",
+    "svg-sprite-loader": "^4.1.6",
+    "svg-transform-loader": "^2.0.8",
+    "svgo-loader": "^2.2.1",
+    "swiper": "^5.2.1",
+    "tailwindcss": "^1.1.4",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "webpack-merge": "^4.2.2"
+  },
+  "devDependencies": {
+    "eslint": "^6.7.1",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "webpack-bundle-analyzer": "^3.6.0",
+    "webpack-dev-server": "^3.9.0"
+  }
+}

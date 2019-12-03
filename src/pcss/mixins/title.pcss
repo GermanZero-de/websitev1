@@ -1,0 +1,47 @@
+@define-mixin title $prefix:  {
+
+  $(prefix)h1,
+  $(prefix)h2,
+  $(prefix)h3,
+  $(prefix)h4,
+  $(prefix)h5,
+  $(prefix)h6 {
+    @apply font-secondary text-black;
+  }
+
+  $(prefix)h1 {
+    @apply leading-snug;
+    font-size: responsive theme('fontSize.2xl') theme('fontSize.4xl');
+    font-range: 768px 1600px;
+  }
+
+  $(prefix)h2 {
+    @apply leading-snug;
+    font-size: responsive theme('fontSize.xl') theme('fontSize.3xl');
+    font-range: 768px 1600px;
+  }
+
+  $(prefix)h3 {
+    @apply text-2xl leading-normal;
+    font-size: responsive theme('fontSize.lg') theme('fontSize.2xl');
+    font-range: 768px 1600px;
+  }
+
+  $(prefix)h4 {
+    @apply leading-normal;
+    font-size: responsive theme('fontSize.base') theme('fontSize.xl');
+    font-range: 768px 1600px;
+  }
+
+  $(prefix)h5 {
+    @apply leading-normal;
+    font-size: responsive theme('fontSize.sm') theme('fontSize.lg');
+    font-range: 768px 1600px;
+  }
+
+  $(prefix)h6 {
+    @apply font-medium leading-normal;
+    font-size: responsive theme('fontSize.sm') theme('fontSize.base');
+    font-range: 768px 1600px;
+  }
+}

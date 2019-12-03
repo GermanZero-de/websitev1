@@ -1,0 +1,17 @@
+.header-screen(style="background-image: radial-gradient(64.3% 64.3% at 32.06% 59.21%, rgba(0, 0, 0, 0.740084) 0%, rgba(0, 0, 0, 0.0001) 100%), linear-gradient(0deg, rgba(255, 255, 255, 0.0001) 45.55%, rgba(0, 0, 0, 0.603065) 84.88%), url('/assets/img/first-screen.png'); ")
+  .header-nav.flex.justify-center.justify-between
+    .flex.items-center
+      .svg-icon.header-nav__icon
+        include ../../assets/img/svg-sprite/menu.svg
+      div.header-nav__text.text-white Menü
+    .header-nav__logo.header-nav__logo--abs
+      .svg-icon
+        include ../../assets/img/svg-sprite/logo.svg
+    div
+      button.button.button--primary.button--alt.button--round-left
+        span
+          span
+            span(class="inline md:hidden") Spenden
+            span(class="hidden md:inline lg:hidden") Deine Spende
+            span(class="hidden lg:inline") Deine Spende hilft!
+  block header-screen-content
