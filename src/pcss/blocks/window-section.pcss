@@ -1,0 +1,33 @@
+@define-mixin window-section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+/* TODO: refactor to a fn */
+/*@each $key, $value in var(--breakpoints) {
+  @screen $(key) {
+  .window-section-$(key) {
+    @mixin window-section .;
+  }
+  }
+}*/
+.window-section {
+  @mixin window-section .;
+}
+
+@screen lg {
+  .lg-window-section {
+    @mixin window-section .;
+  }
+}
+
+@screen xl {
+  .xl-window-section {
+    @mixin window-section .;
+  }
+}
+
+

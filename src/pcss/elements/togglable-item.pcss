@@ -1,0 +1,40 @@
+.togglable-item__toggler {
+    position: relative;
+    width: 3.3125rem;
+    min-width: 3.3125rem;
+    height: 3.3125rem;
+    min-height: 3.3125rem;
+    border: 1px solid transparent;
+    border-radius: 50%;
+    cursor: pointer;
+    background: #ffc11e;
+}
+
+.togglable-item__toggler::before, .togglable-item__toggler::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background: #000000;
+    border-radius: 3px;
+}
+
+.togglable-item__toggler::before {
+    width: 50%;
+    height: 2px;
+}
+
+.togglable-item__toggler::after {
+    width: 2px;
+    height: 50%;
+}
+
+.togglable-item__toggler--toggled {
+    background: rgba(0, 0, 0, .1);
+}
+
+.togglable-item__toggler--toggled::after {
+    opacity: 0;
+}

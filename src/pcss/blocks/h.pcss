@@ -1,0 +1,79 @@
+/* @mixin title .;*/
+
+.title {
+    font-family: theme('fontFamily.main');
+    font-weight: bold;
+
+    &--size-h1 {
+        font-size: 46px;
+        line-height: 60px;
+        letter-spacing: -2px;
+
+        @screen md {
+            font-size: 60px;
+            line-height: 78px;
+        }
+
+        @screen lg {
+            font-size: 66px;
+            line-height: 86px;
+            letter-spacing: -3px;
+        }
+    }
+
+    &--size-h2 {
+        font-size: 30px;
+        line-height: 36px;
+        letter-spacing: -2px;
+
+        @screen md {
+            font-size: 48px;
+            line-height: 62px;
+            letter-spacing: -3px;
+        }
+    }
+
+    &--size-h3 {
+        font-size: 24px;
+        line-height: 31px;
+        letter-spacing: -1px;
+
+        @screen md {
+            font-size: 34px;
+            line-height: 39px;
+            letter-spacing: -2px;
+        }
+    }
+
+    &--size-h4 {
+        font-size: 20px;
+        line-height: 26px;
+        letter-spacing: -1px;
+
+        @screen md {
+            font-size: 24px;
+            line-height: 31px;
+        }
+    }
+
+    &--underline-black {
+        position: relative;
+        letter-spacing: -1px;
+        padding-bottom: 8px;
+
+        &::before {
+            position: absolute;
+            content: "";
+            width: 100%;
+            border: 1px solid theme('colors.black');
+            height: 0;
+            left: 0;
+            top: 100%;
+        }
+    }
+
+    &__bg-secondary {
+        box-shadow: inset 0 0 0 100px theme('colors.secondary');
+        box-decoration-break: clone;
+    }
+}

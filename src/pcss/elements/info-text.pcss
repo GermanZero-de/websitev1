@@ -1,0 +1,33 @@
+.info-text {
+
+    &--margined {
+        margin-top: 76px;
+
+        @screen tablet {
+            margin-top: 215px;
+        }
+
+        @screen laptop {
+            margin-top: 139px;
+        }
+    }
+
+    &__content {
+        font-size: 30px;
+        line-Height: 1.2;
+
+        @screen md {
+            font-size: 48px;
+            line-height: 1.2916;
+        }
+    }
+
+    &__content--bg {
+        line-height: 1.2916;
+
+        span {
+            line-height: 1;
+            box-decoration-break: clone;
+        }
+    }
+}

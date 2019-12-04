@@ -1,0 +1,12 @@
+extends ../widgets/header-screen
+
+block header-screen-content
+    .container
+        .-mx-3.flex.flex-wrap
+            div(class="px-3 w-1/12 hidden xl:block")
+            div(class="px-3 w-full lg:w-9/12 xl:w-5/12")
+                include ../widgets/info-text
+            div(class="px-3 w-1/12 hidden xl:block")
+            div(class="px-3 w-full xl:w-4/12")
+                include ../widgets/newsletter-form
+            div(class="px-3 w-1/12 hidden xl:block")

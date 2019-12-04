@@ -1,0 +1,30 @@
+.videos-screen.bg-secondary
+    div(class="mx-auto text-center mb-4 pb-2 lg:mb-6")
+        .title.title--size-h2.text-black.arrow-block.inline-block.goal-screen__title
+            .arrow-block__icon.text-white
+                include ../../assets/img/svg-sprite/text-arrow.svg
+            span Aktuelle Updates
+    .container
+        .flex.-mx-5
+            div(class="w-full lg:w-6/12 px-5 mb-5 md:mb-6 lg:mb-7")
+                .video-block.text-black
+                    div(class="video-block__tag md:mb-3 lg:mb-4") #dasindwir
+                    div(class="video-block__title md:hidden mb-2") Vor dem Bundestag
+                    .video-block__video(style="background-image: url('/assets/img/article-test-1.png')")
+                        .video-block__play.flex.items-center.justify-center.text-primary
+                            include ../../assets/img/svg-sprite/arrow-slider.svg
+                        .video-block__label.text-body
+                            span.bg-secondary.px-2
+                                | Vor dem Bundestag
+            div(class="w-full lg:w-6/12 px-5 mb-5 md:mb-6 lg:mb-7")
+                .video-block.text-black
+                    div(class="video-block__tag md:mb-3 lg:mb-4") #wirbleibendran
+                    div(class="video-block__title md:hidden mb-2") Verhandlungen im Paul-Löbe haus
+                    .video-block__video(style="background-image: url('/assets/img/article-test-1.png')")
+                        .video-block__play.flex.items-center.justify-center.text-primary
+                            include ../../assets/img/svg-sprite/arrow-slider.svg
+                        .video-block__label.text-body
+                            span.bg-secondary.px-2
+                                | Verhandlungen im Paul-Löbe haus
+        .text-center
+            a.title.title--size-h4.text-primary.title--underline-black(href="#") Alle Videos
