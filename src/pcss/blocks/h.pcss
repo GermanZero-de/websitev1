@@ -53,7 +53,27 @@
         @screen md {
             font-size: 24px;
             line-height: 31px;
-            letter-spacing: -2px;
         }
+    }
+
+    &--underline-black {
+        position: relative;
+        letter-spacing: -1px;
+        padding-bottom: 8px;
+
+        &::before {
+            position: absolute;
+            content: "";
+            width: 100%;
+            border: 1px solid theme('colors.black');
+            height: 0;
+            left: 0;
+            top: 100%;
+        }
+    }
+
+    &__bg-secondary {
+        box-shadow: inset 0 0 0 100px theme('colors.secondary');
+        box-decoration-break: clone;
     }
 }

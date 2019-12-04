@@ -1,0 +1,71 @@
+.video-block {
+
+    &__tag {
+        font-size: 16px;
+        line-height: 21px;
+        @apply font-tertiary;
+    }
+
+    &__title {
+        font-size: 24px;
+        line-height: 31px;
+        letter-spacing: -1px;
+        font-weight: bold;
+        @apply font-main;
+    }
+
+    &__video {
+        position: relative;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        width: 100%;
+        padding-top: 55.689655172%;
+    }
+
+    &__play {
+        cursor: pointer;
+        content: "";
+        border-radius: 50%;
+        width: 62px;
+        height: 62px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 3;
+        border: 8px solid currentColor;
+
+        svg {
+            width: 19px;
+            height: 19px;
+
+            @scren md {
+                width: 30px;
+                height: 30px;
+            }
+        }
+
+        @screen md {
+            width: 98px;
+            height: 98px;
+        }
+    }
+
+    &__label {
+        position: absolute;
+        left: 15px;
+        bottom: 14px;
+        max-width: 60%;
+        box-decoration-break: clone;
+        z-index: 2;
+        font-size: 34px;
+        line-height: 39px;
+        font-weight: bold;
+
+        @screen lg {
+            left: 12px;
+            bottom: 9px;
+        }
+    }
+}
