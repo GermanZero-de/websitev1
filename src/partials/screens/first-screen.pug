@@ -1,12 +1,18 @@
 extends ../widgets/header-screen
 
 block header-screen-content
-    .container
-        .-mx-3.flex.flex-wrap
-            div(class="px-3 w-1/12 hidden xl:block")
-            div(class="px-3 w-full lg:w-9/12 xl:w-5/12")
+    section.container.first-screen
+        div(class="-mx-2 lg:-mx-3 flex flex-wrap")
+            div(class="px-2 lg:px-3 w-1/12 hidden xl:block")
+            div(class="px-2 lg:px-3 w-full lg:w-9/12 xl:w-5/12")
+                div(class="md:hidden")
+                    .svg-icon.text-white.mx-auto.flex.justify-center.mt-5.mb-8(style="max-width:179px")
+                        include ../../assets/img/svg-sprite/logo.svg
                 include ../widgets/info-text
-            div(class="px-3 w-1/12 hidden xl:block")
-            div(class="px-3 w-full xl:w-4/12")
+            div(class="px-2 lg:px-3 w-1/12 hidden xl:block")
+            div(class="px-2 lg:px-3 w-full xl:w-4/12")
+                append variables
+                    - locals.newsletter_class = "newsletter-form--margined"
+                    - locals.newsletter_link_class = "mt-6 mb-4 lg:mt-3 lg:pb-2 lg:mb-9"
                 include ../widgets/newsletter-form
-            div(class="px-3 w-1/12 hidden xl:block")
+            div(class="px-2 lg:px-3 w-1/12 hidden xl:block")

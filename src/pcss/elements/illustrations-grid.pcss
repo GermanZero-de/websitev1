@@ -1,5 +1,6 @@
 .illustrations-grid {
-    display: grid;
+    display: flex;
+    overflow: hidden;
 
     grid-row-gap: 100px;
     grid-column-gap: 20px;
@@ -9,6 +10,7 @@
     margin-bottom: 33px;
 
     @screen md {
+        display: grid;
         margin-bottom: 9px;
     }
 
@@ -19,29 +21,32 @@
         grid-template-columns: 1fr 1fr 1fr;
     }
 
-    &__first {
-        padding: .5em;
-    }
+    &__element {
 
-    &__second {
-        padding: .5em;
-
-        @screen md {
-            grid-row-start: 1;
-            grid-row-end: -1;
-            grid-column-start: 2;
-            grid-column-end: -1;
+        &--first {
+            padding: .5em;
         }
 
-        @screen lg {
-            grid-row-start: auto;
-            grid-row-end: auto;
-            grid-column-start: auto;
-            grid-column-end: auto;
-        }
-    }
+        &--second {
+            padding: .5em;
 
-    &__third {
-        padding: .5em;
+            @screen md {
+                grid-row-start: 1;
+                grid-row-end: -1;
+                grid-column-start: 2;
+                grid-column-end: -1;
+            }
+
+            @screen lg {
+                grid-row-start: auto;
+                grid-row-end: auto;
+                grid-column-start: auto;
+                grid-column-end: auto;
+            }
+        }
+
+        &--third {
+            padding: .5em;
+        }
     }
 }

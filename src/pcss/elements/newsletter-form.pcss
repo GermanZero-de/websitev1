@@ -1,26 +1,50 @@
 .newsletter-form {
-    margin-top: 33px;
-    margin-bottom: -37px;
 
-    @screen lg {
-        margin-top: 105px;
-    }
+    &--margined {
+        margin-top: 33px;
+        margin-bottom: -37px;
 
-    @screen xl {
-        margin-top: 261px;
+        @screen lg {
+            margin-top: 105px;
+        }
+
+        @screen xl {
+            margin-top: 261px;
+        }
     }
 
     &__title {
         font-weight: bold;
-        font-size: 36px;
-        line-height: 47px;
-        margin-bottom: 6px;
         @apply text-primary font-main;
+
+        font-size: 34px;
+        line-height: 44px;
+        letter-spacing: -3px;
+
+        @screen md {
+            letter-spacing: -2px;
+        }
+
+        @screen lg {
+            letter-spacing: 0;
+            font-size: 36px;
+            line-height: 47px;
+        }
     }
 
     &__text {
-        line-height: 19px;
-        margin-bottom: 25px;
         @apply font-secondary;
+        font-size: 14px;
+        line-height: 16px;
+
+        @screen md {
+            font-size: 16px;
+            line-height: 19px;
+        }
+
+        @screen lg {
+            line-height: 19px;
+            margin-bottom: 25px;
+        }
     }
 }

@@ -1,17 +1,18 @@
-.newsletter-form
-    .card.card--form.bg-white
+.newsletter-form(class=(newsletter_class || '')).flex-1.flex.flex-col
+    .card.card--form.bg-white.flex-1.flex.flex-col
         .card__info #newsletter
-        .newsletter-form__title Bleib informiert!
-        .newsletter-form__text Updates & Hinweise auf Aktionen
-        form
+        div(class="newsletter-form__title md:mb-1") Bleib informiert!
+        .newsletter-form__text.mb-4 Updates & Hinweise auf Aktionen
+        form.flex-1.flex.flex-col
             div.mb-2
                 input(type="email" placeholder="E-Mail Adresse")
             div.mb-2
                 input(type="text" placeholder="PLZ")
-            div.mt-3.pb-2.mb-9
+            div.flex-1
+            div(class=(newsletter_link_class || ""))
                 a.newsletter-form__text.underline(href="#") Infos & Hinweise zum Datenschutz
             div
-                button.button.button--primary
+                button.button.button--primary.w-full
                     span Jetzt anmelden!
 
 

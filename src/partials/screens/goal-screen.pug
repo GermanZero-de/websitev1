@@ -1,16 +1,16 @@
-.container
+section.container
     .goal-screen
         .mx-auto.text-center
             .title.title--size-h2.text-black.arrow-block.inline-block.goal-screen__title
                 .arrow-block__icon.text-secondary
                     include ../../assets/img/svg-sprite/text-arrow.svg
                 span Unser Ziel
-        .-mx-3.flex.flex-wrap.goal-screen__texts
-            div(class="px-3 w-full md:w-full lg:w-4/12")
+        div(class="-mx-2 lg:-mx-3 flex flex-wrap goal-screen__texts")
+            div(class="px-2 lg:px-3 w-full md:w-full lg:w-4/12")
                 .goal-screen__text.goal-screen__text--main.text-body Wir machen Deutschland innerhalb von zehn Jahren klimaneutral - #schnell, #wirksam und #fair.
-            div(class="px-3 w-full md:w-6/12 lg:w-4/12")
+            div(class="px-2 lg:px-3 w-full md:w-6/12 lg:w-4/12")
                 .goal-screen__text.text-body Für dieses Ziel erarbeitet wir jetzt den Masterplan und die Gesetze, die wir 2022 mit Hilfe tausender Freiwilliger und einer bundesweiten Kampagne durch den Bundestag bringen werden.
-            div(class="px-3 w-full md:w-6/12 lg:w-4/12")
+            div(class="px-2 lg:px-3 w-full md:w-6/12 lg:w-4/12")
                 .goal-screen__text.text-body Gemeinsam werden wir in Deutschland das umsetzen, was die Bundesregierung 2015 auf dem UN-Klimagipfel in Paris bindend zugesagt hat: Deutschland bis 2030 klimaneutral zu machen.
         div.text-center.mb-10
             a.title.title--size-h4.text-primary.title--underline-black(href="#") Jetzt den Klimaplan ansehen
@@ -20,19 +20,19 @@
                     include ../../assets/img/svg-sprite/text-arrow.svg
                 span Unser Vorgehen
         .illustrations-grid
-            .illustrations-grid__first
+            .illustrations-grid__element.illustrations-grid__element--first
                 div(class="responsive-image responsive-image--1/1")
                     img(src="../../assets/img/step.01.png")
                 .title.title--size-h3
                     span.bg-secondary.title__bg-secondary
                         | 1. Entwicklung eines Klimaplans
-            .illustrations-grid__second.flex.items-center.justify-center.flex-col
+            .illustrations-grid__element.illustrations-grid__element--second.flex.items-center.justify-center.flex-col
                 div(class="responsive-image responsive-image--1/1 order-1 w-full")
                     img(src="../../assets/img/step.02.png")
                 div(class=" lg:order-0 title title--size-h3")
                     span.bg-secondary.title__bg-secondary
                         | 2. Übersetzung in ein Gesetzespaket
-            .illustrations-grid__third
+            .illustrations-grid__element.illustrations-grid__element--third
                 div(class="responsive-image responsive-image--1/1")
                     img(src="../../assets/img/step.03.png")
                 .title.title--size-h3
