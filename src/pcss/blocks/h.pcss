@@ -56,6 +56,21 @@
         }
     }
 
+    &--size-h5 {
+        font-size: 16px;
+        line-height: 19px;
+
+        @screen md {
+            font-size: 18px;
+            line-height: 21px;
+        }
+
+        @screen lg {
+            font-size: 22px;
+            line-height: 26px;
+        }
+    }
+
     &--underline-black {
         position: relative;
         letter-spacing: -1px;
@@ -73,7 +88,7 @@
     }
 
     &__bg-secondary {
-        box-shadow: inset 0 0 0 100px theme('colors.secondary');
+        box-shadow: 5px 0px 0 theme('colors.secondary'), -5px 0 0 theme('colors.secondary');
         box-decoration-break: clone;
     }
 }

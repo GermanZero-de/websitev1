@@ -5,11 +5,20 @@
 
     &__bg {
         position: relative;
-        padding-top: 50%;
         width: 100%;
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
+
+        height: 512px;
+
+        @screen md {
+            height: 584px;
+        }
+
+        @screen lg {
+            height: 720px;
+        }
     }
 
     &__card {
