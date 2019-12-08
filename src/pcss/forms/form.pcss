@@ -1,0 +1,53 @@
+.form {
+
+
+    &__control {
+        position: relative;
+    }
+
+    &__input {
+        background: #FFFFFF;
+        border: 1px solid #191919;
+        box-sizing: border-box;
+        font-size: 16px;
+        line-height: 19px;
+        outline: none;
+        display: block;
+        width: 100%;
+        min-height: 42px;
+        flex-grow: 1;
+        padding: 0 18px;
+        @apply text-black transition;
+
+        &:focus {
+            border-color: theme('colors.primary');
+        }
+
+        &:not([value=""]),
+        &:focus {
+            padding-top: 9px;
+
+            & ~ .form__control-placeholder {
+                top: 2px;
+                transform: translate3d(0, 0, 0);
+                font-size: 12px;
+                line-height: 14px;
+                opacity: 0.52;
+            }
+        }
+    }
+
+    &__control-placeholder {
+        font-size: 16px;
+        line-height: 19px;
+        position: absolute;
+        left: 18px;
+        top: 50%;
+        will-change: transform, top, opacity, font-size, line-height;
+        transform: translate(0, -50%);
+        transition: all .3s ease;
+        cursor: text;
+
+        @apply text-black;
+    }
+}

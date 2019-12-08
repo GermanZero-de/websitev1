@@ -1,26 +1,15 @@
-input {
-    background: #FFFFFF;
-    border: 1px solid #191919;
-    box-sizing: border-box;
-    font-size: 16px;
-    line-height: 19px;
-    outline: none;
-    display: block;
-    width: 100%;
-    height: 42px;
-    padding: 0 18px;
-    @apply text-black;
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: theme('colors.body') !important;
 }
 
-::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-     color: theme('colors.body') !important;
-}
 ::-moz-placeholder { /* Firefox 19+ */
-     color: theme('colors.body') !important;
+    color: theme('colors.body') !important;
 }
+
 :-ms-input-placeholder { /* IE 10+ */
-     color: theme('colors.body') !important;
+    color: theme('colors.body') !important;
 }
+
 :-moz-placeholder { /* Firefox 18- */
-     color: theme('colors.body') !important;
+    color: theme('colors.body') !important;
 }

@@ -3,16 +3,17 @@ extends ../widgets/header-screen
 block header-screen-content
     section.container.first-screen
         div(class="-mx-2 lg:-mx-3 flex flex-wrap")
-            div(class="px-2 lg:px-3 w-1/12 hidden xl:block")
-            div(class="px-2 lg:px-3 w-full lg:w-9/12 xl:w-5/12")
+            div(class="px-2 md:px-3 w-1/12 hidden lg:block")
+            div(class="px-3 w-full md:w-10/12 md:w-9/12 lg:w-5/12 mb-6 md:mb-9 md:mb-0")
                 div(class="md:hidden")
-                    .svg-icon.text-white.mx-auto.flex.justify-center.mt-5.mb-8(style="max-width:179px")
+                    .svg-icon.text-white.mx-auto.flex.justify-center.mt-4.mb-6(style="max-width:179px")
                         include ../../assets/img/svg-sprite/logo.svg
                 include ../widgets/info-text
-            div(class="px-2 lg:px-3 w-1/12 hidden xl:block")
-            div(class="px-2 lg:px-3 w-full xl:w-4/12")
+            div(class="px-2 md:px-3 w-1/12 hidden lg:block")
+            div(class="px-2 md:px-3 w-full lg:w-4/12")
                 append variables
                     - locals.newsletter_class = "newsletter-form--margined"
-                    - locals.newsletter_link_class = "mt-6 mb-4 lg:mt-3 lg:pb-2 lg:mb-9"
+                    - locals.newsletter_link_class = "mt-6 mb-4 sm:mt-2 sm:mb-0 lg:mt-3 lg:pb-2 lg:mb-9"
+                    - locals.newsletter_full_width = true
                 include ../widgets/newsletter-form
-            div(class="px-2 lg:px-3 w-1/12 hidden xl:block")
+            div(class="px-2 md:px-3 w-1/12 hidden lg:block")

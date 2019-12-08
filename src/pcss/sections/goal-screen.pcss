@@ -1,15 +1,23 @@
 .goal-screen {
     margin: 57px auto 79px;
 
-    &__title {
-        margin-bottom: 20px;
+    @screen sm {
+        margin: 121px auto 101px;
+    }
+
+    @screen lg {
+        margin: 127px auto 90px;
+    }
+
+    &--margined {
+        margin-top: 400px;
 
         @screen md {
-            margin-bottom: 23px;
+            margin-top: 80px;
         }
 
         @screen lg {
-            margin-bottom: 51px;
+            margin-top: 130px;
         }
     }
 
@@ -55,13 +63,5 @@
                 line-height: 32px;
             }
         }
-    }
-
-    @screen md {
-        margin: 121px auto 101px;
-    }
-
-    @screen lg {
-        margin: 127px auto 90px;
     }
 }
