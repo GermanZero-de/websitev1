@@ -1,0 +1,22 @@
+.machmit-form
+
+    div(class="bg" style="background-image: url('/assets/img/machmit-bg.jpg')")
+        div(class="container pt-6 pb-5 md:pt-9 md:pb-8 flex justify-center")
+            div(class="w-10/12 md:w-8/12 flex justify-right")
+                div(class="w-10/12")
+                    div(class="title title--size-h3 pb-1 mb-3 md:mb-5") Mitglied werden bei GermanZero e.V.
+
+                    form.flex-1.flex.flex-col
+                        div.flex-1.flex.flex-row.justify-between
+                            div(class="mb-2 w-6/12")
+                                div(class="form-control")
+                                    label.relative.block
+                                        input(class="form__input" type="vorname" value="" required onkeyup="this.setAttribute('value', this.value);" )
+                                        span.form__control-placeholder Vorname *
+
+                            div(class="mb-2 w-6/12")
+                                div(class="form-control")
+                                    label.relative.block
+                                        input(class="form__input" type="name" value="" required onkeyup="this.setAttribute('value', this.value);" )
+                                        span.form__control-placeholder Name *
+
