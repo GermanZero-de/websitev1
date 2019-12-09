@@ -3,7 +3,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 
 const PATHS = {
   src: path.join(__dirname, '../src'),
@@ -74,10 +74,10 @@ module.exports = {
           MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
-            options: { sourceMap: true },
+            options: {sourceMap: true},
           }, {
             loader: 'postcss-loader',
-            options: { sourceMap: true, config: { path: './postcss.config.js' } },
+            options: {sourceMap: true, config: {path: './postcss.config.js'}},
           },
         ],
       }, {
@@ -87,7 +87,7 @@ module.exports = {
           MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
-            options: { sourceMap: true },
+            options: {sourceMap: true},
           }, {
             loader: 'postcss-loader',
             options: {
@@ -104,7 +104,7 @@ module.exports = {
         test: /\.svg$/,
         include: path.resolve(__dirname, '../src/assets/img/svg-sprite'),
         use: [
-          { loader: 'svg-sprite-loader', options: {} },
+          {loader: 'svg-sprite-loader', options: {}},
           'svg-transform-loader',
           'svgo-loader',
         ],
@@ -123,16 +123,23 @@ module.exports = {
       filename: `${PATHS.assets}css/[name].[contenthash].css`,
     }),
     new CopyWebpackPlugin([
-      { from: `${PATHS.src}/${PATHS.assets}`, to: `${PATHS.assets}` },
-      { from: `${PATHS.src}/static`, to: '' },
+      {from: `${PATHS.src}/${PATHS.assets}`, to: `${PATHS.assets}`},
+      {from: `${PATHS.src}/static`, to: ''},
     ]),
 
     new SpriteLoaderPlugin(),
 
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, '../src/index.pug'),
+      template: path.resolve(__dirname, '../src/pages/index.pug'),
       filename: './index.html',
-      inject: true,
+    }),
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, '../src/pages/klimaplan.pug'),
+      filename: './klimaplan.html',
+    }),
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, '../src/pages/presse.pug'),
+      filename: './presse.html',
     }),
   ],
 };
