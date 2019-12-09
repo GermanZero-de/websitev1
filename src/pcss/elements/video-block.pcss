@@ -21,6 +21,15 @@
         background-repeat: no-repeat;
         width: 100%;
         padding-top: 55.689655172%;
+
+        cursor: pointer;
+
+        &:hover {
+
+            .video-block__play {
+                color: #fff;
+            }
+        }
     }
 
     &__play {
@@ -35,20 +44,22 @@
         transform: translate(-50%, -50%);
         z-index: 3;
         border: 8px solid currentColor;
-
-        svg {
-            width: 19px;
-            height: 19px;
-
-            @scren md {
-                width: 30px;
-                height: 30px;
-            }
-        }
+        color: theme('colors.primary');
+        @apply transition;
 
         @screen md {
             width: 98px;
             height: 98px;
+        }
+
+        svg {
+            width: 24px;
+            height: 24px;
+
+            @screen md {
+                width: 32px;
+                height: 32px;
+            }
         }
     }
 

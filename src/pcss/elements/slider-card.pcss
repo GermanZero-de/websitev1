@@ -1,7 +1,7 @@
 .slider-card {
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.297613);
 
     padding: 12px 10px;
+    position: relative;
 
     @screen md {
         padding: 24px 30px 29px;
@@ -11,6 +11,28 @@
 
         padding: 24px 34px 29px;
 
+    }
+
+    &:hover {
+
+        &::before {
+            left: -8px;
+            right: -8px;
+            top: -10px;
+            bottom: -10px;
+        }
+    }
+
+    &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background: currentColor;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.297613);
+        transition: none;
     }
 
     &__info {
@@ -26,6 +48,7 @@
 
     &__text {
         margin-bottom: 97px;
+        flex-grow: 1;
 
         @screen md {
             margin-bottom: 137px;

@@ -1,0 +1,16 @@
+.link {
+
+    &[href]:not([href=""]) {
+        cursor: pointer;
+
+        @apply transition;
+
+        &:hover {
+            color: theme('colors.primary') !important;
+        }
+    }
+}
+
+.link--invert[href]:not([href=""]):hover {
+    color: theme('colors.body') !important;
+}

@@ -1,14 +1,13 @@
 .info-text {
 
     &--margined {
-        margin-top: 76px;
 
         @screen tablet {
-            margin-top: 215px;
+            margin-top: 200px;
         }
 
         @screen laptop {
-            margin-top: 139px;
+            margin-top: 130px;
         }
     }
 
@@ -32,7 +31,10 @@
     }
 
     &__text {
-        box-shadow: 5px 0 0 theme('colors.secondary'), -5px 0 0 theme('colors.secondary');
-        line-height: 1.5;
+        padding: 0 5px;
+
+        @screen lg {
+            line-height: 1.5;
+        }
     }
 }

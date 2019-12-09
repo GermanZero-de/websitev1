@@ -1,10 +1,17 @@
-section.call-screen
-    .call-screen__bg(style="background-image: url('/assets/img/harrison-moore-zBG29d6Z98I-unsplash.png')")
+section.call-screen(class=`${call_screen_classes || ''}`)
+    div(
+        style=`background-image: url('${call_screen_image_big}')`
+        class=("call-screen__bg hidden md:block")
+    )
+    div(
+        style=`background-image: url('${call_screen_image_small}')`
+        class=("call-screen__bg md:hidden")
+    )
     .call-screen__card
         .container
             div(class="-mx-2 lg:-mx-3.flex")
                 div(class="px-2 lg:px-3 hidden lg:block w-1/12")
-                div(class="px-2 lg:px-3 w-full md:w-6/12 lg:w-4/12")
+                div(class="px-2 lg:px-3 w-full sm:w-6/12 lg:w-4/12")
                     .call-form.card.card--form.bg-primary.text-white
                         .card__info #umsteuern
                         .call-form__header Mach mit!

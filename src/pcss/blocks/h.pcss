@@ -88,7 +88,33 @@
     }
 
     &__bg-secondary {
-        box-shadow: 5px 0px 0 theme('colors.secondary'), -5px 0 0 theme('colors.secondary');
         box-decoration-break: clone;
+    }
+}
+
+.content {
+    font-family: theme('fontFamily.body');
+
+    &--size-1 {
+        font-size: 22px;
+        line-height: 26px;
+
+        @screen md {
+            font-size: 26px;
+            line-height: 32px;
+        }
+    }
+
+    &--size-2 {
+        line-height: 1.2;
+        font-size: 14px;
+
+        @screen lg {
+            font-size: 16px;
+        }
+
+        @screen lg {
+            font-size: 18px;
+        }
     }
 }

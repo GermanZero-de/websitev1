@@ -1,14 +1,18 @@
 .newsletter-form {
 
     &--margined {
-        margin-top: 33px;
-        margin-bottom: -37px;
+        margin-bottom: -360px;
 
-        @screen lg {
+        @screen sm {
+            margin-bottom: -47px;
+        }
+
+        @screen md {
+            margin-bottom: -37px;
             margin-top: 105px;
         }
 
-        @screen xl {
+        @screen lg {
             margin-top: 261px;
         }
     }
@@ -23,6 +27,8 @@
 
         @screen md {
             letter-spacing: -2px;
+            font-size: 36px;
+            line-height: 40px;
         }
 
         @screen lg {
@@ -45,6 +51,16 @@
         @screen lg {
             line-height: 19px;
             margin-bottom: 25px;
+        }
+    }
+
+    &__col {
+        flex-grow: 1;
+        flex-shrink: 2;
+
+        &--big {
+            flex-grow: 2;
+            flex-shrink: 0;
         }
     }
 }

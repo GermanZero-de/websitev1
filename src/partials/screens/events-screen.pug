@@ -1,41 +1,40 @@
-section.events-screen(class="pt-5 md:pt-9 lg:pt-10" style="background-image: url('/assets/img/events-bg.png')")
+section.events-screen(class=`${events_screen_classes || 'pt-7 md:pt-9 lg:pt-10'}` style=`background-image: url(${events_screen_bg ? events_screen_bg : ''})`)
     .container
-        div(class="mx-auto text-center md:pt-2 lg:pt-0 mb-4 md:mb-6 lg:pb-1")
+        div(class=`mx-auto text-center ${events_screen_spacing ? 'mt-6 lg:mt-0' : ''} mb-5 sm:mb-6`)
             .title.title--size-h2.text-black.arrow-block.inline-block
                 .arrow-block__icon.text-secondary
                     include ../../assets/img/svg-sprite/text-arrow.svg
                 span Nächste Events
         div(class="flex -mx-2 lg:-mx-3 pb-1 overflow-hidden")
-            div(class="px-2 lg:px-3 min-w-full lg:min-w-0 w-full md:w-6/12 lg:w-4/12 lg:mb-6")
-                .slider-card.card.bg-white
-                    div(class="card__info text-black mb-3 lg:mb-4") #wirwerdenmehr
-                    div(class="slider-card__info mb-2 md:mb-3 text-body") 3. Januar 2019, 19:00 Uhr
-                    div(class="title title--size-h3 text-body mb-1 md:mb-2 lg:mb-3") Onboarding Event in Köln
-                    div(class="slider-card__text text-body") Aenean lacinia bibendum nulla sed consectetur. Nullam quis risus eget urna mollis ornare vel eu leo.
-                    div(class="flex justify-between items-center")
-                        a(href="#" class="uppercase underline slider-card__link") DETAILS
+            div(class="events-screen__item flex flex-col mt-3 px-2 lg:px-3 mb-7 sm:mb-6 min-w-full sm:min-w-0 w-full sm:w-6/12 lg:w-4/12 lg:mb-6")
+                .slider-card.flex.flex-col.flex-1.card.text-white
+                    div(class="z-10 card__info text-black mb-3 lg:mb-4") #wirwerdenmehr
+                    div(class="z-10 slider-card__info mb-2 md:mb-3 text-body") 3. Januar 2019, 19:00 Uhr
+                    a(href="#" class="z-10 slider-card__title link transition title title--size-h3 text-body mb-1 md:mb-2 lg:mb-3") Onboarding Event in Köln
+                    div(class="z-10 slider-card__text text-body") Aenean lacinia bibendum nulla sed consectetur. Nullam quis risus eget urna mollis ornare vel eu leo.
+                    div(class="z-10 flex justify-between items-center")
+                        a(href="#" class="uppercase underline slider-card__link text-body link") DETAILS
                         button.button.button--primary.slider-card__submit-btn.text-center
                             span RSVP
-            div(class="px-2 lg:px-3 min-w-full lg:min-w-0 w-full md:w-6/12 lg:w-4/12 lg:mb-6")
-                .slider-card.card.bg-white
-                    div(class="card__info text-black mb-3 lg:mb-4") #rundeberlin
-                    div(class="slider-card__info mb-2 md:mb-3 text-body") 15. Januar 2019, 19:00 Uhr
-                    div(class="title title--size-h3 text-body mb-1 md:mb-2 lg:mb-3") Monatliches Berliner Treffen
-                    div(class="slider-card__text text-body") Aenean lacinia bibendum nulla sed consectetur. Nullam quis risus eget urna mollis ornare vel eu leo.
-                    div(class="flex justify-between items-center")
-                        a(href="#" class="uppercase underline slider-card__link") DETAILS
+            div(class="events-screen__item flex flex-col mt-3 px-2 lg:px-3 mb-7 sm:mb-6 min-w-full sm:min-w-0 w-full sm:w-6/12 lg:w-4/12 lg:mb-6")
+                .slider-card.flex.flex-col.flex-1.card.text-white
+                    div(class="z-10 card__info text-black mb-3 lg:mb-4") #rundeberlin
+                    div(class="z-10 slider-card__info mb-2 md:mb-3 text-body") 15. Januar 2019, 19:00 Uhr
+                    a(href="#" class="z-10 slider-card__title link title title--size-h3 text-body mb-1 md:mb-2 lg:mb-3") Monatliches Berliner Treffen
+                    div(class="z-10 slider-card__text text-body") Aenean lacinia bibendum nulla sed consectetur. Nullam quis risus eget urna mollis ornare vel eu leo.
+                    div(class="z-10 flex justify-between items-center")
+                        a(href="#" class="uppercase underline slider-card__link text-body link") DETAILS
                         button.button.button--primary.slider-card__submit-btn.text-center
                             span RSVP
-            div(class="px-2 lg:px-3 min-w-full lg:min-w-0 w-full md:w-6/12 lg:w-4/12 lg:mb-6")
-                .slider-card.card.bg-white
-                    div(class="card__info text-black mb-3 lg:mb-4") #unterstützersein
-                    div(class="slider-card__info mb-2 md:mb-3 text-body") 21. Januar 2019, 15:00 Uhr
-                    div(class="title title--size-h3 text-body mb-1 md:mb-2 lg:mb-3") Hallo Bundestag, wir machen mit!
-                    div(class="slider-card__text text-body") Aenean lacinia bibendum nulla sed consectetur. Nullam quis risus eget urna mollis ornare vel eu leo.
-                    div(class="flex justify-between items-center")
-                        a(href="#" class="uppercase underline slider-card__link") DETAILS
+            div(class="events-screen__item flex flex-col mt-3 px-2 lg:px-3 mb-7 sm:mb-6 min-w-full sm:min-w-0 w-full sm:w-6/12 lg:w-4/12 lg:mb-6")
+                .slider-card.flex.flex-col.flex-1.card.text-white
+                    div(class="z-10 card__info text-black mb-3 lg:mb-4") #unterstützersein
+                    div(class="z-10 slider-card__info mb-2 md:mb-3 text-body") 21. Januar 2019, 15:00 Uhr
+                    a(href="#" class="z-10 slider-card__title link title title--size-h3 text-body mb-1 md:mb-2 lg:mb-3") Hallo Bundestag, wir machen mit!
+                    div(class="z-10 slider-card__text text-body") Aenean lacinia bibendum nulla sed consectetur. Nullam quis risus eget urna mollis ornare vel eu leo.
+                    div(class="z-10 flex justify-between items-center")
+                        a(href="#" class="uppercase underline slider-card__link text-body link") DETAILS
                         button.button.button--primary.slider-card__submit-btn.text-center
                             span RSVP
         div(class="text-center pb-1 mb-4 md:-mb-2 lg:mb-0")
-            a.title.title--size-h4.text-primary.title--underline-black(href="#") Alle Events im Überblick
-        div(class="")
+            a.link.link--invert.title.title--size-h4.text-primary.inline-block.title--underline-black(href="#") Alle Events im Überblick

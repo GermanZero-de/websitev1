@@ -1,4 +1,4 @@
-section.videos-screen.bg-secondary
+section.videos-screen(class=(videos_screen_upper ? "videos-screen--with-upper-block" : ''))
     div(class="mx-auto text-center mb-4 pb-2 lg:mb-6")
         .title.title--size-h2.text-black.arrow-block.inline-block.goal-screen__title
             .arrow-block__icon.text-white
@@ -6,25 +6,25 @@ section.videos-screen.bg-secondary
             span Aktuelle Updates
     .container
         div(class="flex flex-wrap -mx-2 lg:-mx-3")
-            div(class="w-full lg:w-6/12 px-2 lg:px-3 xl:pr-3 mb-5 md:mb-6 lg:mb-7")
+            div(class="w-full lg:w-6/12 px-3 md:px-7 lg:px-3 xl:pr-3 mb-5 md:mb-6 lg:mb-7")
                 .video-block.text-black
                     div(class="video-block__tag md:mb-3 lg:mb-4") #dasindwir
                     div(class="video-block__title md:hidden mb-2") Vor dem Bundestag
                     .video-block__video(style="background-image: url('/assets/img/article-test-1.png')")
-                        .video-block__play.flex.items-center.justify-center.text-primary
+                        .video-block__play.flex.items-center.justify-center
                             include ../../assets/img/svg-sprite/arrow-slider.svg
                         div(class="video-block__label text-body hidden md:block")
                             span.bg-secondary.px-2
                                 | Vor dem Bundestag
-            div(class="w-full lg:w-6/12 px-2 lg:px-3 xl:pr-3 mb-5 md:mb-6 lg:mb-7")
+            div(class="w-full lg:w-6/12 px-3 md:px-7 lg:px-3 xl:pr-3 mb-5 md:mb-6 lg:mb-7")
                 .video-block.text-black
                     div(class="video-block__tag md:mb-3 lg:mb-4") #wirbleibendran
                     div(class="video-block__title md:hidden mb-2") Verhandlungen im Paul-Löbe haus
                     .video-block__video(style="background-image: url('/assets/img/article-test-1.png')")
-                        .video-block__play.flex.items-center.justify-center.text-primary
+                        .video-block__play.flex.items-center.justify-center
                             include ../../assets/img/svg-sprite/arrow-slider.svg
                         div(class="video-block__label text-body hidden md:block")
                             span.bg-secondary.px-2
                                 | Verhandlungen im Paul-Löbe haus
-        .text-center
-            a.title.title--size-h4.text-primary.title--underline-black(href="#") Alle Videos
+        div(class="text-center pb-9 sm:pb-10 lg:pb-9")
+            a.link.link--invert.inline-block.title.title--size-h4.text-primary.title--underline-black(href="#") Alle Videos

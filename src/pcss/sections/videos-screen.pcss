@@ -1,11 +1,23 @@
 .videos-screen {
-    padding: 130px 0 92px;
+    padding: 92px 0 0;
 
     @screen md {
-        padding: 162px 0 73px;
+        padding: 73px 0 0;
     }
 
     @screen lg {
-        padding: 147px 0 95px;
+        padding: 95px 0 0;
+    }
+
+    &--with-upper-block {
+        padding-top: 200px;
+
+        @screen md {
+            padding-top: 162px;
+        }
+
+        @screen lg {
+            padding-top: 147px;
+        }
     }
 }

@@ -1,0 +1,26 @@
+extends ../partials/layouts/main.pug
+
+block content
+    include ../partials/screens/menu-screen
+    append variables
+        - locals.header_bg = 'background-image: url(/assets/img/plan.jpg);'
+        - locals.quoteTitle = '“GermanZero entwickelt jetzt den Umsetzungsplan, den die Bundesregierung uns seit fünf Jahren schuldig ist.“'
+        - locals.quoteText = 'Sven Regener, Autor & Musiker'
+    include ../partials/screens/quote-screen
+    div(class="container pt-6 pb-5 md:pt-9 md:pb-8")
+        div(class="flex -mx-2 -lg:mx-3 justify-center")
+            div(class="px-2 lg:px-3 w-10/12 md:w-8/12 content content--size-1 text-body")
+                | Aktuell erarbeiten wir mit einer wachsenden Gruppe von Expertinnen und Wissenschaftlern an einem
+                | konkreten Umsetzungsplan, wie wir das Ziel der Klimaneutralität bis 2030 erreichen können.  Die Maßnahmen
+                | und Umsetzungspakete gliedern sich in sechs Bereiche.
+    include ../partials/screens/articles-slider
+    include ../partials/screens/faq-screen
+    - locals.call_screen_bg_pos_r = false
+    - locals.call_screen_image_big = '/assets/img/call-plan.jpg'
+    - locals.call_screen_image_small = '/assets/img/call-plan.jpg'
+    - locals.call_screen_classes = ''
+    include ../partials/screens/call-screen
+    - locals.events_screen_classes = 'pt-10'
+    - locals.events_screen_spacing = true
+    include ../partials/screens/events-screen
+    include ../partials/screens/footer
