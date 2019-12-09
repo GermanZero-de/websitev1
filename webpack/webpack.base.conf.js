@@ -141,5 +141,9 @@ module.exports = {
       template: path.resolve(__dirname, '../src/pages/presse.pug'),
       filename: './presse.html',
     }),
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, '../src/pages/machmit.pug'),
+      filename: './machmit.html',
+    }),
   ],
 };
