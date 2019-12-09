@@ -1,0 +1,28 @@
+extends ../partials/layouts/main.pug
+
+block content
+    include ../partials/screens/menu-screen
+    append variables
+        - locals.header_bg = 'background-image: url(/assets/img/article-bg.jpg);'
+        - locals.quoteTitle = '“GermanZero ist toll und wird jeden Tag toller. Stark, wer alles mit dabei ist.“'
+        - locals.quoteText = 'Heinrich Strößenreuther, Chef-Aktivist'
+    include ../partials/screens/quote-screen
+    div(class="container pt-6 pb-5 md:pt-9 md:pb-8")
+        div(class="flex -mx-2 -lg:mx-3 justify-center")
+            div(class="px-2 lg:px-3 w-10/12 md:w-8/12")
+                .content.content--size-3.text-black.mb-4
+                    Die wesentlichen Schritte zum Ziel.
+                .title.title--size-h1.text-black.mb-2 Was steckt hinter GermanZero?
+                div(class="content content--size-1 text-black mb-6 sm:mb-7 lg:mb-10 xl:mb-12")
+                    | Hinter GermanZero stehen Macherinnen und Macher, die zwei entscheidende Kompetenzen vereinen: 1. Sie kämpfen mit all ihrer Energie für eine Klimapolitik, die unsere Erde rettet. 2. Sie sind sowohl erfahrene politische Campaigner, die bereits erfolgreich aus Kampagnen heraus Gesetze gemacht haben, als auch gestandene Profis, die wissen, wie man ein schlagkräftiges Team aufbaut.
+                    | GermanZero wurde von Heinrich Strößenreuther gestartet, laut taz „Deutschlands erfolgreichster Verkehrslobbyist”. Er initiierte den „Volksentscheid Fahrrad“ in Berlin und hat damit für Deutschlands erstes Mobilitätsgesetz gesorgt. Dieser Erfolg gab den Anstoß für mittlerweile 20 regionale Rad-Entscheide und hat damit die Verkehrswende in Deutschland von unten ausgelöst. 
+                    | Heinrich ist erfahrener Projekt- und Change-Manager, Interims-Manager, Geschäftsführer, mehrfacher Gründer und war im Senior Management der Deutschen Bahn, im Bundestag und bei Greenpeace tätig.
+                    | Heinrich und sein Team wissen, wie politische Kampagnen funktionieren. In den letzten Monaten gelang es ihnen, die ersten Spenden für den dauerhaften Betrieb von GermanZero einzuwerben. Zudem hat er eine wachsende Gruppe von prominenten Unterstützern gewonnen – darunter Joko Winterscheidt, Charly Hübner, Carolin Kebekus, Sven Regener, Jan Delay, Jan Josef Liefers und Anneke Kim Sarnau. 
+                    | Zugleich entsteht derzeit ein Team von Management- und Kommunikationsprofis sowie eine stark wachsende Gruppe von Unterstützern aus allen Teilen der Bevölkerung, die gemeinsam eine schlagkräftige Organisation aufbauen.
+                    | GermanZero setzt dabei auf intensive Partnerschaften mit relevanten Akteuren – wichtige Kooperationspartner sind FOES e.V., CO2-Abgabe e.V., Mehr Demokratie e.V. und Klima-Allianz e.V.. Hinzu kommen Schlüsselpersonen bei Fridays for Future und Scientists for Future, mit denen GermanZero in engem Austausch steht.
+    div(class="bg" style="background-image: url('/assets/img/yellow-arrows-bg.png')")
+        .container
+            div(class="-mx-2 lg:-mx-3 flex")
+                div(class="px-2 lg:px-3 w-full lg:w-10/12")
+    include ../partials/screens/events-screen
+    include ../partials/screens/footer
