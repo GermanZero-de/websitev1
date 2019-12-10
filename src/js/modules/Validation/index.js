@@ -31,42 +31,46 @@ export const formsHandler = (emitter) => (formEl) => {
       }
     });
   }
-  submitEl.addEventListener('click', () => {
-    formEl
-      .querySelectorAll('.js-form-control')
-      .forEach((controlEl) => {
-        let controlIsValid = true;
-        try {
-          const validationAttribute = controlEl.getAttribute(VALIDATION_ATTRIBUTE);
-          const validations = JSON.parse(validationAttribute);
-          let errorMessage = '';
-          validations.forEach((validation) => {
-            if (!validationRules[validation].test(controlEl.value)) {
-              controlIsValid = false;
-              formIsValid = false;
-              errorMessage = window.validationMessages[validation] || UNKNOWN_VALIDATION_TEXT;
+  if (submitEl) {
+    submitEl.addEventListener('click', () => {
+      formEl
+        .querySelectorAll('.js-form-control')
+        .forEach((controlEl) => {
+          let controlIsValid = true;
+          try {
+            const validationAttribute = controlEl.getAttribute(VALIDATION_ATTRIBUTE);
+            let errorMessage = '';
+            if (validationAttribute) {
+              const validations = JSON.parse(validationAttribute);
+              validations.forEach((validation) => {
+                if (!validationRules[validation].test(controlEl.value)) {
+                  controlIsValid = false;
+                  formIsValid = false;
+                  errorMessage = window.validationMessages[validation] || UNKNOWN_VALIDATION_TEXT;
+                }
+              });
             }
-          });
-          const errorEl = controlEl.parentElement.querySelector(`.${FORM_ERROR_SELECTOR}`);
-          errorEl.classList.toggle('isActive', !controlIsValid);
-          errorEl.textContent = errorMessage;
+            const errorEl = controlEl.parentElement.querySelector(`.${FORM_ERROR_SELECTOR}`);
+            errorEl.classList.toggle('isActive', !controlIsValid);
+            errorEl.textContent = errorMessage;
 
-          controlEl.classList.toggle('invalid', !controlIsValid);
-        } catch (e) {
-          console.error(e);
-        }
-      });
+            controlEl.classList.toggle('invalid', !controlIsValid);
+          } catch (e) {
+            console.error(e);
+          }
+        });
 
-    formEl.classList.toggle('isValid', formIsValid);
+      formEl.classList.toggle('isValid', formIsValid);
 
-    if (formIsValid) {
-      formEl.classList.add('isPending');
-      const formData = new FormData(formEl);
-      const formEntries = formData.entries();
-      const json = Object.assign(...Array.from(formEntries, ([x, y]) => ({[x]: y})));
+      if (formIsValid) {
+        formEl.classList.add('isPending');
+        const formData = new FormData(formEl);
+        const formEntries = formData.entries();
+        const json = Object.assign(...Array.from(formEntries, ([x, y]) => ({[x]: y})));
 
-      const cEvent = CustomEventPoly(DATA_SENT_EVENT, {data: json});
-      formEl.dispatchEvent(cEvent);
-    }
-  });
+        const cEvent = CustomEventPoly(DATA_SENT_EVENT, {data: json});
+        formEl.dispatchEvent(cEvent);
+      }
+    });
+  }
 };

@@ -8,8 +8,8 @@
         include ../../assets/img/svg-sprite/menu.svg
       div.header-nav__text Menü
     if locals.isIndexPage
-      span(class="header-nav__logo header-nav__logo--abs hidden md:block")
-        .svg-icon.text-white
+      span(class="header-nav__logo header-nav__logo--abs hidden md:block text-white hover:text-primary")
+        .svg-icon
           include ../../assets/img/svg-sprite/logo.svg
     else
       a(class="header-nav__logo header-nav__logo--abs hidden md:block transition hover:text-primary" href='/')

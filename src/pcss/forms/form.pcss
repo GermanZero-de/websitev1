@@ -113,6 +113,52 @@
         }
     }
 
+    &__checkbox {
+        position: relative;
+        overflow: hidden;
+        min-height: 42px;
+        display: inline-flex;
+        align-items: center;
+        cursor: pointer;
+
+        input {
+            position: absolute;
+            width: 0;
+            height: 0;
+        }
+
+    }
+
+    &__checkbox-placeholder {
+        padding-left: 50px;
+        position: relative;
+
+        &::before {
+            content: "";
+            position: absolute;
+            left: .67em;
+            top: 0;
+            width: 1.33em;
+            height: 1.33em;
+            border: 2px solid currentColor;
+            border-radius: 3px;
+        }
+
+        &::after {
+            content: "\2713";
+            position: absolute;
+            left: 1em;
+            top: 0;
+            width: 11px;
+            height: 9px;
+            display: none;
+        }
+
+        input:checked ~ &::after {
+            display: block;
+        }
+    }
+
     &__control-placeholder {
         font-size: 16px;
         line-height: 19px;
