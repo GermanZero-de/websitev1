@@ -4,57 +4,41 @@ export default class MenuModal {
     this.activeSubList = -1;
 
     this.containerElement = document.querySelector('.js-menu-screen');
+    this.listElement = document.querySelector('.js-menu-screen__list');
     this.openBtnElements = document.querySelectorAll('.js-menu-btn');
     this.closeBtnElements = document.querySelectorAll('.js-menu-btn-close');
     this.openSubBtnElements = document.querySelectorAll('.js-menu-btn-open-sub ');
-
-    this.openHandler = this.openHandler.bind(this);
-    this.closeHandler = this.closeHandler.bind(this);
+    this.toggleModalHandler = this.toggleModalHandler.bind(this);
     this.subHandler = this.subHandler.bind(this);
-
     this.addListeners();
-
-    this.render();
   }
 
   addListeners() {
-    this.openBtnElements.forEach((el) => el.addEventListener('click', this.openHandler, false));
-    this.closeBtnElements.forEach((el) => el.addEventListener('click', this.closeHandler, false));
+    this.openBtnElements.forEach((el) => el.addEventListener('click', this.toggleModalHandler, true));
+    this.closeBtnElements.forEach((el) => el.addEventListener('click', this.toggleModalHandler, false));
     this.openSubBtnElements.forEach((el) => el.addEventListener('click', this.subHandler, false));
   }
 
   removeListeners() {
-    this.openBtnElements.forEach((el) => el.removeEventListener('click', this.openHandler, false));
-    this.closeBtnElements.forEach((el) => el.removeEventListener('click', this.closeHandler, false));
+    this.openBtnElements.forEach((el) => el.removeEventListener('click', this.toggleModalHandler, false));
+    this.closeBtnElements.forEach((el) => el.removeEventListener('click', this.toggleModalHandler, false));
     this.openSubBtnElements.forEach((el) => el.removeEventListener('click', this.subHandler, false));
   }
 
-  openHandler() {
-    this.isOpen = true;
-    this.render();
-  }
-
-  closeHandler() {
-    this.isOpen = false;
-    this.render();
+  toggleModalHandler() {
+    this.isOpen = !this.isOpen;
+    document.body.style.overflow = this.isOpen ? 'hidden' : 'auto';
+    this.containerElement.classList.toggle('active', this.isOpen);
   }
 
   subHandler(e) {
-    const el = e.target;
-    const allLists = Array.prototype.slice.call(el.parentNode.children);
-    const activeSubList = allLists.indexOf(el);
-    this.activeSubList = this.activeSubList === activeSubList ? -1 : activeSubList;
-    this.render();
-  }
-
-  render() {
-    document.body.style.overflow = this.isOpen ? 'hidden' : 'auto';
-    this.containerElement.classList.toggle('active', this.isOpen);
-    const rootLists = this.containerElement.querySelectorAll('.js-menu-list-item');
-    rootLists.forEach((el) => el.classList.remove('active'));
-    // eslint-disable-next-line no-bitwise
-    if (rootLists[this.activeSubList]) {
-      rootLists[this.activeSubList].classList.add('active');
+    if (e.target.classList.contains('active')) {
+      e.target.classList.remove('active');
+      this.listElement.classList.remove('active');
+    } else {
+      this.openSubBtnElements.forEach((el) => el.classList.remove('active'));
+      e.target.classList.add('active');
+      this.listElement.classList.add('active');
     }
   }
 }
