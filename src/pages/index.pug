@@ -1,6 +1,8 @@
 extends ../partials/layouts/main.pug
 
 block content
+    append variables
+        - locals.isIndexPage = true
     include ../partials/screens/menu-screen
     include ../partials/mixins/empty.pug
     append variables

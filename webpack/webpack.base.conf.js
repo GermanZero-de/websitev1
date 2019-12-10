@@ -70,6 +70,9 @@ module.exports = {
       {
         test: /\.pug$/,
         loader: 'pug-loader',
+        options: {
+          basedir: path.resolve(__dirname, '../src'),
+        }
       },
       {
         enforce: 'pre',
