@@ -1,0 +1,9 @@
+div(class="container pt-6 md:pt-9")
+    div(class="flex -mx-2 -lg:mx-3 justify-center")
+        div(class="px-2 lg:px-3 w-10/12 md:w-8/12")
+            if preArticleTitle
+                .content.content--size-3.text-black.mb-4= preArticleTitle
+            if preArticleText
+                .title.title--size-h2.text-black.mb-2= preArticleText
+            if preArticleContent
+                div(class="content content--size-2 text-black mb-6 sm:mb-7 lg:mb-10 xl:mb-12 text-block")= preArticleContent
