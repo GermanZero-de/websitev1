@@ -1,16 +1,22 @@
 .header-screen(
+  id="header-screen"
   style=locals.header_bg
   )
   .header-nav.flex.justify-center.justify-between
-    div(id="menu-btn" class="flex items-center cursor-pointer text-white hover:text-primary transition")
+    div(class="js-menu-btn flex items-center cursor-pointer text-white hover:text-primary transition")
       .svg-icon.header-nav__icon(style="stroke: currentColor")
         include ../../assets/img/svg-sprite/menu.svg
       div.header-nav__text Menü
-    div(class="header-nav__logo header-nav__logo--abs hidden md:block")
-      .svg-icon.text-white
-        include ../../assets/img/svg-sprite/logo.svg
+    if locals.isIndexPage
+      span(class="header-nav__logo header-nav__logo--abs hidden md:block")
+        .svg-icon.text-white
+          include ../../assets/img/svg-sprite/logo.svg
+    else
+      a(class="header-nav__logo header-nav__logo--abs hidden md:block" href='/')
+        .svg-icon.text-white
+          include ../../assets/img/svg-sprite/logo.svg
     div
-      button.button.button--primary.button--alt.button--round-left
+      a.button.button--primary.button--alt.button--round-left(href="/spenden")
         span
           span
             span(class="inline md:hidden") Spenden

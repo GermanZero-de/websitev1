@@ -1,3 +1,4 @@
+import './polyfills';
 import Swiper from './modules/Swiper';
 import MenuModal from './modules/MenuModal';
 import '../assets/img/svg-sprite/icon-user.svg';
@@ -7,4 +8,5 @@ window.load = () => {
   new Swiper('.swiper-container');
 };
 
+// eslint-disable-next-line no-new
 new MenuModal();
