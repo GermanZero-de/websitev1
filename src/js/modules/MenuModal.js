@@ -47,24 +47,6 @@ export default class MenuModal {
     this.render();
   }
 
-  toggleMenuModalList(e, menuList, menuItems) {
-    if (e.target.children[0]) {
-      if (e.target.children[0].classList.contains('active')) {
-        e.target.classList.remove('active');
-        e.target.children[0].classList.remove('active');
-        menuList.classList.remove('active');
-      } else {
-        for (const item of menuItems) {
-          item.classList.remove('active');
-          item.children[0].classList.remove('active');
-        }
-        e.target.classList.add('active');
-        e.target.children[0].classList.add('active');
-        menuList.classList.add('active');
-      }
-    }
-  }
-
   render() {
     document.body.style.overflow = this.isOpen ? 'hidden' : 'auto';
     this.containerElement.classList.toggle('active', this.isOpen);

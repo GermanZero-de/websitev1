@@ -8,4 +8,5 @@ window.load = () => {
   new Swiper('.swiper-container');
 };
 
+// eslint-disable-next-line no-new
 new MenuModal();
