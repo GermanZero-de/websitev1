@@ -1,0 +1,30 @@
+.notifications {
+    position: fixed;
+    color: #fff;
+    right: 0;
+    top: 1rem;
+    transform: translate3d(100%, 0, 0);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.297613);
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+    font-size: 20px;
+    line-height: 1.2;
+    background: theme('colors.black');
+    transition: transform .3s .3s ease;
+    z-index: 1111;
+    max-width: 300px;
+    width: 100%;
+    padding: 1.2rem;
+
+    &--success {
+        background: theme('colors.secondary');
+    }
+
+    &--error {
+        background: theme('colors.primary');
+    }
+
+    &.isShown {
+        transform: translate3d(0, 0, 0);
+    }
+}

@@ -1,5 +1,9 @@
 .newsletter-form(class=(newsletter_class || '')).flex-1.flex.flex-col
-    .card.card--form.bg-white.flex-1.flex.flex-col
+    form.card.card--form.bg-white.flex-1.flex.flex-col.form.js-form(
+        name='newsletter'
+        action="https://api.germanzero.de/newsletter"
+        data-success-message="Vielen Dank, dass du dich für unseren Newsletter Angemeldet hast. Du erhältst in Kürze eine E-Mail von uns."
+    )
         if newsletter_full_width
             div(class="card__info block sm:hidden lg:block") #newsletter
             .flex
@@ -8,20 +12,22 @@
                     div(class="card__info") #newsletter
                     div(class="newsletter-form__text mb-4") Updates & Hinweise auf Aktionen
             div(class="newsletter-form__text mb-4 block sm:hidden lg:block") Updates & Hinweise auf Aktionen
-            form(class="form flex-1 flex flex-col sm:flex-row lg:flex-col mb-2 lg:mb-0 -mx-2 sm:-mx-1 lg:-mx-2 items-stretch")
+            div(class="flex-1 flex flex-col sm:flex-row lg:flex-col mb-2 lg:mb-0 -mx-2 sm:-mx-1 lg:-mx-2 items-stretch")
                 div(class="form__control px-2 sm:px-1 lg:px-2 flex flex-col mb-2 sm:mb-0 lg:mb-2 newsletter-form__col newsletter-form__col--big")
                     label.relative.block
-                        input(class="form__input" type="email" value="" required onkeyup="this.setAttribute('value', this.value);" )
+                        input(class="form__input js-form-control" name="email" type="email" value="" data-validation-rule='["email","required"]' onkeyup="this.setAttribute('value', this.value);" )
                         span.form__control-placeholder E-Mail Adresse
+                        span.form__error-message
                 div(class="form__control px-2 sm:px-1 lg:px-2 flex flex-col mb-2 sm:mb-0 lg:mb-2 newsletter-form__col")
                     label.relative.block
-                        input(class="form__input" type="text" value="" required onkeyup="this.setAttribute('value', this.value);" )
+                        input(class="form__input js-form-control" name="plz" type="text" value="" data-validation-rule='["PLZ","required"]' onkeyup="this.setAttribute('value', this.value);" )
                         span.form__control-placeholder PLZ
+                        span.form__error-message
                 div(class="px-2 sm:px-1 lg:px-2 flex-1 sm:hidden lg:block")
                     div(class=(newsletter_link_class || ""))
                         a.link.newsletter-form__text.underline(href="/klimaplan/datenschutz") Infos & Hinweise zum Datenschutz
                 div(class="px-2 sm:px-1 lg:px-2")
-                    button.button.button--primary.w-full(style="min-width:220px")
+                    button.button.button--primary.w-full.js-form-submit(style="min-width:220px" type="button")
                         span Jetzt anmelden!
             div.text-center(class=("hidden sm:block lg:hidden " + (newsletter_link_class || "")))
                 a.link.newsletter-form__text.underline(href="/klimaplan/datenschutz") Infos & Hinweise zum Datenschutz
@@ -29,22 +35,24 @@
             div(class="card__info block") #newsletter
             div(class="newsletter-form__title lg:w-full md:mb-1") Bleib informiert!
             div(class="newsletter-form__text mb-4") Updates & Hinweise auf Aktionen
-            form.flex-1.flex.flex-col
+            div.flex-1.flex.flex-col
                 div.mb-2
                     .form-control
                         label.relative.block
-                            input(class="form__input" type="email" value="" required onkeyup="this.setAttribute('value', this.value);" )
+                            input(class="form__input js-form-control" name="email" type="email" value="" data-validation-rule='["email","required"]'  onkeyup="this.setAttribute('value', this.value);" )
                             span.form__control-placeholder E-Mail Adresse
+                            span.form__error-message
                 div.mb-2
                     .form-control
                         label.relative.block
-                            input(class="form__input" type="text" value="" required onkeyup="this.setAttribute('value', this.value);" )
+                            input(class="form__input js-form-control" name="plz" type="text" value="" data-validation-rule='["PLZ","required"]' onkeyup="this.setAttribute('value', this.value);" )
                             span.form__control-placeholder PLZ
+                            span.form__error-message
                 div.flex-1
                 div(class=(newsletter_link_class || ""))
                     a.link.newsletter-form__text.underline(href="/klimaplan/datenschutz") Infos & Hinweise zum Datenschutz
                 div
-                    button.button.button--primary.w-full
+                    button.button.button--primary.w-full.js-form-submit(type="button")
                         span Jetzt anmelden!
 
 

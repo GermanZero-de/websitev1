@@ -1,5 +1,79 @@
 .form {
+    position: relative;
 
+    @keyframes sk-rotateplane {
+        0% {
+            transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+            -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg)
+        }
+        50% {
+            transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+            -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg)
+        }
+        100% {
+            transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+            -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+        }
+    }
+
+    &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        background: rgba(255, 255, 255, .7);
+        z-index: 20;
+        width: 100%;
+        height: 100%;
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 1s .3s, visibility 1s .3s ease;
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 40px;
+        height: 40px;
+        background-color: theme('colors.secondary');
+        z-index: 21;
+
+        margin-left: -20px;
+        margin-top: -20px;
+        -webkit-animation: sk-rotateplane 1.2s infinite ease-in-out;
+        animation: sk-rotateplane 1.2s infinite ease-in-out;
+        visibility: hidden;
+        transition: opacity .3s .3s, visibility .3s .3s ease;
+        opacity: 0;
+    }
+
+    &.isPending {
+        cursor: not-allowed;
+
+        &::before,
+        &::after {
+            opacity: 1;
+            visibility: visible;
+            transition: opacity .3s ease, visibility .3s ease;
+        }
+    }
+
+    &__error-message {
+        display: none;
+        color: #fff;
+        background: theme('colors.primary');
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        font-size: 12px;
+        padding: 0 .2em;
+
+        &.isActive {
+            display: block;
+        }
+    }
 
     &__control {
         position: relative;
@@ -19,11 +93,13 @@
         padding: 0 18px;
         @apply text-black transition;
 
-        &:focus {
+        &:focus,
+        &.invalid {
             border-color: theme('colors.primary');
         }
 
         &:not([value=""]),
+        &:not([value]),
         &:focus {
             padding-top: 9px;
 
