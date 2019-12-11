@@ -14,15 +14,15 @@ export default class MenuModal {
   }
 
   addListeners() {
-    this.openBtnElements.forEach((el) => el.addEventListener('click', this.toggleModalHandler, true));
-    this.closeBtnElements.forEach((el) => el.addEventListener('click', this.toggleModalHandler, false));
-    this.openSubBtnElements.forEach((el) => el.addEventListener('click', this.subHandler, false));
+    [...this.openBtnElements].forEach((el) => el.addEventListener('click', this.toggleModalHandler, true));
+    [...this.closeBtnElements].forEach((el) => el.addEventListener('click', this.toggleModalHandler, false));
+    [...this.openSubBtnElements].forEach((el) => el.addEventListener('click', this.subHandler, false));
   }
 
   removeListeners() {
-    this.openBtnElements.forEach((el) => el.removeEventListener('click', this.toggleModalHandler, false));
-    this.closeBtnElements.forEach((el) => el.removeEventListener('click', this.toggleModalHandler, false));
-    this.openSubBtnElements.forEach((el) => el.removeEventListener('click', this.subHandler, false));
+    [...this.openBtnElements].forEach((el) => el.removeEventListener('click', this.toggleModalHandler, false));
+    [...this.closeBtnElements].forEach((el) => el.removeEventListener('click', this.toggleModalHandler, false));
+    [...this.openSubBtnElements].forEach((el) => el.removeEventListener('click', this.subHandler, false));
   }
 
   toggleModalHandler() {
@@ -36,7 +36,7 @@ export default class MenuModal {
       e.target.classList.remove('active');
       this.listElement.classList.remove('active');
     } else {
-      this.openSubBtnElements.forEach((el) => el.classList.remove('active'));
+      [...this.openSubBtnElements].forEach((el) => el.classList.remove('active'));
       e.target.classList.add('active');
       this.listElement.classList.add('active');
     }

@@ -1,22 +1,111 @@
-.machmit-form
+form.form.js-form.flex.flex-wrap.-mx-2
+    div(class="px-2 w-full sm:w-6/12 mb-4")
+        div(class="form-control")
+            label.relative.block
+                select(class="form__select w-full js-select-custom js-form-control" name="gender")
+                    option(value="") Anrede
+                    option(value="frau") Frau
+                    option(value="herr") Herr
+                span.form__error-message
 
-    div(class="bg" style="background-image: url('/assets/img/machmit-bg.jpg')")
-        div(class="container pt-6 pb-5 md:pt-9 md:pb-8 flex justify-center")
-            div(class="w-10/12 md:w-8/12 flex justify-right")
-                div(class="w-10/12")
-                    div(class="title title--size-h3 pb-1 mb-3 md:mb-5") Mitglied werden bei GermanZero e.V.
+    div(class="px-2 w-full sm:w-6/12 mb-4")
+        div(class="form-control")
+            label.relative.block
+                select(class="form__select w-full js-select-custom js-form-control" name="title")
+                    option(value="") Titel
+                    option(value="Dr.") Dr.
+                    option(value="Dr. Dr.") Dr. Dr.
+                    option(value="Prof.") Prof.
+                    option(value="Prof. Dr.") Prof. Dr.
+                    option(value="Prof. Dr. Dr.") Prof. Dr. Dr.
+                span.form__error-message
 
-                    form.flex-1.flex.flex-col
-                        div.flex-1.flex.flex-row.justify-between
-                            div(class="mb-2 w-6/12")
-                                div(class="form-control")
-                                    label.relative.block
-                                        input(class="form__input" type="vorname" value="" required onkeyup="this.setAttribute('value', this.value);" )
-                                        span.form__control-placeholder Vorname *
-
-                            div(class="mb-2 w-6/12")
-                                div(class="form-control")
-                                    label.relative.block
-                                        input(class="form__input" type="name" value="" required onkeyup="this.setAttribute('value', this.value);" )
-                                        span.form__control-placeholder Name *
-
+    div(class="px-2 w-full sm:w-6/12 mb-4")
+        div(class="form-control")
+            label.relative.block
+                input(class="form__input js-form-control" name="firstName" type="text" data-validation-rule='["required"]' value="" onkeyup="this.setAttribute('value', this.value);" )
+                span.form__control-placeholder Vorname *
+                span.form__error-message
+    div(class="px-2 w-full sm:w-6/12 mb-4")
+        div(class="form-control")
+            label.relative.block
+                input(class="form__input js-form-control" name="lastName" type="text" data-validation-rule='["required"]' value="" onkeyup="this.setAttribute('value', this.value);" )
+                span.form__control-placeholder Name *
+                span.form__error-message
+    div(class="px-2 w-full md:w-6/12 mb-4")
+        div(class="form-control")
+            label.relative.block
+                input(class="form__input js-form-control" name="streetAddress" type="text" data-validation-rule='["required"]' value="" onkeyup="this.setAttribute('value', this.value);" )
+                span.form__control-placeholder Straße *
+                span.form__error-message
+    div(class="px-2 w-full sm:w-6/12 md:w-3/12 mb-4")
+        div(class="form-control")
+            label.relative.block
+                input(class="form__input js-form-control" name="" type="text" data-validation-rule='["required"]' value="" onkeyup="this.setAttribute('value', this.value);" )
+                span.form__control-placeholder Hausnumer *
+                span.form__error-message
+    div(class="px-2 w-full sm:w-6/12 md:w-3/12 mb-4")
+        div(class="form-control")
+            label.relative.block
+                input(class="form__input js-form-control" name="postalCode" type="text" data-validation-rule='["PLZ", "required"]' value="" onkeyup="this.setAttribute('value', this.value);" )
+                span.form__control-placeholder PLZ *
+                span.form__error-message
+    div(class="px-2 w-full sm:w-6/12 mb-4 sm:mb-6")
+        div(class="form-control")
+            label.relative.block
+                select(class="form__select js-form-control js-select-custom" name="country" data-validation-rule='["required"]')
+                    option(value="") Land *
+                    option(value="germany") Germany
+                    option(value="austria") Austria
+                    option(value="france") France
+                    option(value="denmark") Denmark
+                span.form__error-message
+    div(class="px-2 w-full sm:w-6/12 mb-4 sm:mb-6")
+        div(class="form-control")
+            label.relative.block
+                select(class="form__select js-form-control js-select-custom" name="city" data-validation-rule='["required"]')
+                    option(value="") Stadt *
+                    option(value="berlin") Berlin
+                span.form__error-message
+    div(class="px-2 w-full mb-4")
+        div(class="form-control")
+            label.relative.block
+                input(class="form__input js-form-control" name="email" type="email" data-validation-rule='["email", "required"]' value="" onkeyup="this.setAttribute('value', this.value);" )
+                span.form__control-placeholder E-Mail Adresse *
+                span.form__error-message
+    div(class="px-2 w-full mb-4 sm:mb-6")
+        div(class="form-control")
+            label.relative.block
+                input(class="form__input js-form-control" name="phone" type="tel" value="" onkeyup="this.setAttribute('value', this.value);" )
+                span.form__control-placeholder Mobilfunknummer
+                span.form__error-message
+    div(class="px-2 w-full mb-4 sm:mb-5")
+        div(class="form-control")
+            label.relative.block
+                input(class="form__input js-form-control" name="freeTime" type="text" value="" onkeyup="this.setAttribute('value', this.value);" )
+                span.form__control-placeholder Wie viel Zeit hast Du für uns pro Woche?
+                span.form__error-message
+    div(class="px-2 w-full mb-4 sm:mb-5")
+        div(class="form-control")
+            label.relative.block
+                input(class="form__input js-form-control" name="supportType" type="text" value="" onkeyup="this.setAttribute('value', this.value);" )
+                span.form__control-placeholder Wie kannst Du uns am besten unterstützen?
+                span.form__error-message
+    div(class="px-2 w-full mb-4")
+        div(class="form-control")
+            label.relative.form__checkbox
+                input(class="js-form-control" name="newsletter" type="checkbox")
+                span.form__checkbox-placeholder Ja, ich möchte den GermanZero-Newsletter bekommen.
+                span.form__error-message
+    div(class="px-2 w-full mb-4 sm:mb-6")
+        div(class="form-control")
+            label.relative.form__checkbox
+                input(class="js-form-control" name="privacy" type="checkbox")
+                span.form__checkbox-placeholder
+                    span Ja, ich habe die
+                        a(href="#").mx-1.underline.link Datenschutzbestimmungen
+                    span gelesen.
+                span.form__error-message
+    div(class="px-2 w-full mb-4")
+        button.button.button--primary.js-form-submit(type="button")
+            span Jetzt Mitglied werden!
