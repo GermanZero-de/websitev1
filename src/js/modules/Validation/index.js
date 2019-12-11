@@ -12,8 +12,8 @@ export const UNKNOWN_VALIDATION_TEXT = 'Field is invalid';
 export const VALIDATION_ATTRIBUTE = 'data-validation-rule';
 
 export const formsHandler = (emitter) => (formEl) => {
-  const submitEl = formEl.querySelector('.js-form-submit');
   let formIsValid = true;
+  const submitEl = formEl.querySelector('.js-form-submit');
   if (emitter) {
     emitter.subscribe(SEND_START, (formName) => {
       if (formEl.getAttribute('name') === formName) {
@@ -33,6 +33,7 @@ export const formsHandler = (emitter) => (formEl) => {
   }
   if (submitEl) {
     submitEl.addEventListener('click', () => {
+      formIsValid = true;
       formEl
         .querySelectorAll('.js-form-control')
         .forEach((controlEl) => {
@@ -51,10 +52,11 @@ export const formsHandler = (emitter) => (formEl) => {
               });
             }
             const errorEl = controlEl.parentElement.querySelector(`.${FORM_ERROR_SELECTOR}`);
-            errorEl.classList.toggle('isActive', !controlIsValid);
-            errorEl.textContent = errorMessage;
-
-            controlEl.classList.toggle('invalid', !controlIsValid);
+            if (errorEl) {
+              errorEl.classList.toggle('isActive', !controlIsValid);
+              errorEl.textContent = errorMessage;
+              controlEl.classList.toggle('invalid', !controlIsValid);
+            }
           } catch (e) {
             console.error(e);
           }

@@ -11,7 +11,8 @@ export const API_PATH_ATTR = 'action';
 export const DEFAULT_CONTENT_TYPE = 'application/json';
 export const SUCCESS_MESSAGE_ATTRIBUTE = 'data-success-message';
 
-export function checkStatus(response) {
+function checkStatus(response) {
+  console.log(response);
   if (response.status >= 200 && response.status < 300) {
     return response;
   }
@@ -30,12 +31,14 @@ export const ApiHandler = (emitter) => (formEl) => formEl.addEventListener(DATA_
   if (emitter) {
     emitter.emit(SEND_START, formEl.getAttribute('name'));
   }
+  console.log(data);
   fetch(formEl.getAttribute(API_PATH_ATTR), {
     method: 'POST',
     headers: {
       'Content-Type': DEFAULT_CONTENT_TYPE,
     },
-    body: data,
+    mode: 'no-cors',
+    body: JSON.stringify(data),
   })
     .then(checkStatus)
     .then(parseJSON)
@@ -47,6 +50,8 @@ export const ApiHandler = (emitter) => (formEl) => formEl.addEventListener(DATA_
     })
     .catch((error) => {
       console.error('request failed', error);
+      console.log()
+      debugger;
       if (emitter) {
         emitter.emit(SEND_ERROR, formName);
         emitter.emit(NOTIFICATION_ERROR, error);
