@@ -1,5 +1,9 @@
-import {DATA_SENT_EVENT, SEND_ERROR, SEND_START, SEND_SUCCESS} from '../constants';
+import {
+  DATA_SENT_EVENT, SEND_ERROR, SEND_START, SEND_SUCCESS,
+} from '../constants';
 import CustomEventPoly from '../../CustomEventPoly';
+import scrollIt from '../ScrollIt/ScrollIt';
+import getCoords from '../../GetCoords';
 
 export const validationRules = {
   required: /^.+$/,
@@ -28,6 +32,7 @@ export const formsHandler = (emitter) => (formEl) => {
     emitter.subscribe(SEND_SUCCESS, (formName) => {
       if (formEl.getAttribute('name') === formName) {
         formEl.classList.remove('isPending');
+        formEl.reset();
       }
     });
   }
@@ -68,10 +73,19 @@ export const formsHandler = (emitter) => (formEl) => {
         formEl.classList.add('isPending');
         const formData = new FormData(formEl);
         const formEntries = formData.entries();
-        const json = Object.assign(...Array.from(formEntries, ([x, y]) => ({[x]: y})));
+        const json = Object.assign(...Array.from(formEntries, ([x, y]) => ({ [x]: y })));
 
-        const cEvent = CustomEventPoly(DATA_SENT_EVENT, {data: json});
+        const cEvent = CustomEventPoly(DATA_SENT_EVENT, { data: json });
         formEl.dispatchEvent(cEvent);
+      } else {
+        const errorsElements = [...document.querySelectorAll(`.${FORM_ERROR_SELECTOR}`)];
+        if (errorsElements.length) {
+          const minOffset = errorsElements.reduce((acc, cur) => {
+            const curTop = getCoords(cur.parentElement).top;
+            return (curTop < acc ? curTop : acc);
+          }, 99999999);
+          if (minOffset !== 99999999) scrollIt(minOffset, 700, 'easeInOutCubic');
+        }
       }
     });
   }

@@ -1,6 +1,5 @@
 .notifications {
     position: fixed;
-    color: #fff;
     right: 0;
     top: 1rem;
     transform: translate3d(100%, 0, 0);
@@ -9,12 +8,17 @@
     border-bottom-left-radius: 12px;
     font-size: 20px;
     line-height: 1.2;
+    color: theme('colors.black');
     background: theme('colors.black');
     transition: transform .3s .3s ease;
     z-index: 1111;
     max-width: 300px;
     width: 100%;
     padding: 1.2rem;
+
+    @screen lg {
+        max-width: 400px;
+    }
 
     &--success {
         background: theme('colors.secondary');

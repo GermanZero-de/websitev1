@@ -117,6 +117,25 @@
         }
     }
 
+    &__radio {
+        position: relative;
+        overflow: hidden;
+        display: inline-flex;
+        align-items: center;
+        cursor: pointer;
+
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+
+        input {
+            position: absolute;
+            width: 0;
+            height: 0;
+            appearance: none;
+        }
+    }
+
     &__checkbox {
         position: relative;
         overflow: hidden;
@@ -200,6 +219,41 @@
         }
     }
 
+    &__radio-placeholder {
+        padding-left: 50px;
+        position: relative;
+        cursor: pointer;
+
+        &::before {
+            content: "";
+            position: absolute;
+            left: .67em;
+            top: 0;
+            width: 1.25em;
+            height: 1.25em;
+            border: 2px solid currentColor;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            left: calc(.62em + 5px);
+            top: 5px;
+            width: calc(1.25em - 10px);
+            height: calc(1.25em - 10px);
+            background: theme('colors.body');
+            border-radius: 50%;
+            overflow: hidden;
+            display: none;
+        }
+
+        input:checked ~ &::after {
+            display: block;
+        }
+    }
+
     &__control-placeholder {
         font-size: 16px;
         line-height: 19px;
@@ -255,10 +309,39 @@
     &__input {
         padding-left: 16px !important;
         padding-right: 16px !important;
+        background: transparent;
     }
 
     .choices__list--dropdown .choices__item--selectable {
         padding-left: 16px !important;
         padding-right: 16px !important;
     }
+}
+
+.choices__list--multiple .choices__item {
+    background-color: theme('colors.white');
+    border: 1px solid theme('colors.black');
+    color: theme('colors.black');
+
+    &.is-highlighted {
+        background-color: rgba(0, 0, 0, .1);
+        border: 1px solid theme('colors.secondary');
+    }
+}
+
+.choices[data-type*=select-multiple] .choices__button,
+.choices[data-type*=text] .choices__button {
+    border-left: none;
+    background-color: theme('colors.black');
+    margin: 0 5px 0 10px;
+}
+
+.choices[data-type*=select-multiple] .choices__input {
+    padding-left: 0 !important;
+    font-size: 16px;
+    line-height: 19px;
+}
+
+.choices[data-type*=select-multiple] .choices__inner {
+    padding-bottom: 0 !important;
 }

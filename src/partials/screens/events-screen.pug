@@ -5,36 +5,44 @@ section.events-screen(class=`${events_screen_classes || 'pt-7 md:pt-9 lg:pt-10'}
                 .arrow-block__icon.text-secondary
                     include ../../assets/img/svg-sprite/text-arrow.svg
                 span Nächste Events
-        div(class="flex -mx-2 lg:-mx-3 pb-1 overflow-hidden")
-            div(class="events-screen__item flex flex-col mt-3 px-2 lg:px-3 mb-7 sm:mb-6 min-w-full sm:min-w-0 w-full sm:w-6/12 lg:w-4/12 lg:mb-6")
-                .slider-card.flex.flex-col.flex-1.card.text-white
-                    div(class="z-10 card__info text-black mb-3 lg:mb-4") #wirwerdenmehr
-                    div(class="z-10 slider-card__info mb-2 md:mb-3 text-body") 3. Januar 2019, 19:00 Uhr
-                    a(href="/klimaplan/events/1" class="z-10 slider-card__title link transition title title--size-h3 text-body mb-1 md:mb-2 lg:mb-3") Onboarding Event in Köln
-                    div(class="z-10 slider-card__text text-body") Aenean lacinia bibendum nulla sed consectetur. Nullam quis risus eget urna mollis ornare vel eu leo.
-                    div(class="z-10 flex justify-between items-center")
-                        a(href="/klimaplan/events/1" class="uppercase underline slider-card__link text-body link") DETAILS
-                        button.button.button--primary.slider-card__submit-btn.text-center
-                            span RSVP
-            div(class="events-screen__item flex flex-col mt-3 px-2 lg:px-3 mb-7 sm:mb-6 min-w-full sm:min-w-0 w-full sm:w-6/12 lg:w-4/12 lg:mb-6")
-                .slider-card.flex.flex-col.flex-1.card.text-white
-                    div(class="z-10 card__info text-black mb-3 lg:mb-4") #rundeberlin
-                    div(class="z-10 slider-card__info mb-2 md:mb-3 text-body") 15. Januar 2019, 19:00 Uhr
-                    a(href="/klimaplan/events/2" class="z-10 slider-card__title link title title--size-h3 text-body mb-1 md:mb-2 lg:mb-3") Monatliches Berliner Treffen
-                    div(class="z-10 slider-card__text text-body") Aenean lacinia bibendum nulla sed consectetur. Nullam quis risus eget urna mollis ornare vel eu leo.
-                    div(class="z-10 flex justify-between items-center")
-                        a(href="/klimaplan/events/2" class="uppercase underline slider-card__link text-body link") DETAILS
-                        button.button.button--primary.slider-card__submit-btn.text-center
-                            span RSVP
-            div(class="events-screen__item flex flex-col mt-3 px-2 lg:px-3 mb-7 sm:mb-6 min-w-full sm:min-w-0 w-full sm:w-6/12 lg:w-4/12 lg:mb-6")
-                .slider-card.flex.flex-col.flex-1.card.text-white
-                    div(class="z-10 card__info text-black mb-3 lg:mb-4") #unterstützersein
-                    div(class="z-10 slider-card__info mb-2 md:mb-3 text-body") 21. Januar 2019, 15:00 Uhr
-                    a(href="/klimaplan/events/3" class="z-10 slider-card__title link title title--size-h3 text-body mb-1 md:mb-2 lg:mb-3") Hallo Bundestag, wir machen mit!
-                    div(class="z-10 slider-card__text text-body") Aenean lacinia bibendum nulla sed consectetur. Nullam quis risus eget urna mollis ornare vel eu leo.
-                    div(class="z-10 flex justify-between items-center")
-                        a(href="/klimaplan/events/3" class="uppercase underline slider-card__link text-body link") DETAILS
-                        button.button.button--primary.slider-card__submit-btn.text-center
-                            span RSVP
-        div(class="text-center pb-1 mb-4 md:-mb-2 lg:mb-0")
-            a.link.link--invert.title.title--size-h4.text-primary.inline-block.title--underline-black(href="/klimaplan/events") Alle Events im Überblick
+        .swiper-container.pb-3
+            .swiper-wrapper
+                .swiper-slide
+                    .slider-card.flex.flex-col.flex-1.card.text-white
+                        div(class="z-10 card__info text-black mb-3 lg:mb-4") #klimanotstand
+                            div(class="z-10 slider-card__info mb-2 md:mb-3 text-body") 29.01.2020 , 10:00 Uhr
+                            a(href="https://www.dbu.de/klimanotstand" class="z-10 slider-card__title link transition title title--size-h3 text-body mb-1 md:mb-2 lg:mb-3") Meine Kommune im Klimanotstand – Was nun?
+                            div(class="z-10 slider-card__text text-body") Das Klima-Bündnis möchte zu einem einheitlichen Verständnis vom „Klimanotstand in Kommunen“ beitragen. Die Veranstaltung vermittelt Fachwissen und stellt erste Praxis-Erfahrungen vor.
+                            div(class="z-10 flex justify-between items-center")
+                                //- a(href="https://www.dbu.de/klimanotstand" class="uppercase underline slider-card__link text-body link") DETAILS
+                                //- button.button.button--primary.slider-card__submit-btn.text-center
+                                    span RSVP
+                .swiper-slide
+                    .slider-card.flex.flex-col.flex-1.card.text-white
+                        div(class="z-10 card__info text-black mb-3 lg:mb-4") #klimaringvorlesung
+                            div(class="z-10 slider-card__info mb-2 md:mb-3 text-body") 08.01.2020 , 16:00 Uhr
+                            a(href="https://www.fu-berlin.de/sites/nachhaltigkeit/stabsstelle/kommunikation/aktuelles/191010_Lectures-for-Future.html" class="z-10 slider-card__title link title title--size-h3 text-body mb-1 md:mb-2 lg:mb-3") Klimawandel, Rassismus und Globale Verantwortung
+                            div(class="z-10 slider-card__text text-body") Schwarze Perspektiven auf die Kolonialität der Klimakrise.
+                            div(class="z-10 flex justify-between items-center")
+                                //- a(href="https://www.fu-berlin.de/sites/nachhaltigkeit/stabsstelle/kommunikation/aktuelles/191010_Lectures-for-Future.html" class="uppercase underline slider-card__link text-body link") DETAILS
+                                //- button.button.button--primary.slider-card__submit-btn.text-center
+                                    span RSVP
+                .swiper-slide
+                    .slider-card.flex.flex-col.flex-1.card.text-white
+                        div(class="z-10 card__info text-black mb-3 lg:mb-4") #klimaringvorlesung
+                            div(class="z-10 slider-card__info mb-2 md:mb-3 text-body") 15.01.2020 , 16:00 Uhr
+                            a(href="https://www.fu-berlin.de/sites/nachhaltigkeit/stabsstelle/kommunikation/aktuelles/191010_Lectures-for-Future.html" class="z-10 slider-card__title link title title--size-h3 text-body mb-1 md:mb-2 lg:mb-3") Heiße Luft und kalte Schulter
+                            div(class="z-10 slider-card__text text-body") Philosophische Perspektiven auf Klimagerechtigkeit.
+                            div(class="z-10 flex justify-between items-center")
+                                //- a(href="https://www.fu-berlin.de/sites/nachhaltigkeit/stabsstelle/kommunikation/aktuelles/191010_Lectures-for-Future.html" class="uppercase underline slider-card__link text-body link") DETAILS
+                                //- button.button.button--primary.slider-card__submit-btn.text-center
+                                    span RSVP
+
+
+            .swiper-prev
+                include ../../assets/img/svg-sprite/arrow-slider.svg
+            .swiper-next
+                include ../../assets/img/svg-sprite/arrow-slider.svg
+
+        //- div(class="text-center pb-1 mb-4 md:-mb-2 lg:mb-0")
+                    a.link.link--invert.title.title--size-h4.text-primary.inline-block.title--underline-black(href="/klimaplan/events") Alle Events im Überblick
