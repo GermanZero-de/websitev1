@@ -6,7 +6,8 @@ export default class Notifications {
   constructor({emitter}) {
     this.el = document.querySelector('.js-notifications');
     this.visible = false;
-    this.type = 'success'; // | 'error'
+    this.type = 'success';
+    this.types = ['success', 'error'];
     this.tm = undefined;
     this.emitter = emitter;
     this.subscriptions = [];
@@ -58,6 +59,7 @@ export default class Notifications {
   }
 
   render() {
+    this.types.forEach((type) => this.el.classList.toggle(`${MAIN_CSS_CLASS}--${type}`, false));
     this.el.classList.toggle(`${MAIN_CSS_CLASS}--${this.type}`, true);
     this.el.classList.toggle('isShown', this.visible);
     this.el.textContent = this.content;

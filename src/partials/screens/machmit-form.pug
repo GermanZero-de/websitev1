@@ -1,4 +1,11 @@
-form.form.js-form.flex.flex-wrap.-mx-2
+- locals.countries = ['Bitte wählen','Deutschland','Österreich','Schweiz','Afghanistan','Afghanistan','Ägypten','Albanien','Algerien','Amerikanische Jungferninseln','Angola','Anguilla','Antigua und Barbua','Äquatorialguinea','Argentinien','Armenien','Aserbaidschan','Äthiopien','Australien','Bahamas','Bahrain','Bangladesh','Barbados','Belgien','Belize','Benin','Bermuda','Bhutan','Bolivien','Bosnien-Herzegowina','Botswana','Brasilien','Britische Jungferninseln','Brunei Darussalam','Bulgarien','Burkina Faso','Burundi','Chile','China - Volksrepublik','Cookinseln','Costa Rica','Dänemark','Dominikanische Republik','Dschibuti','Ecuador','Elfenbeinküste','Estland','Fidschi','Finnland','Frankreich','Französisch Guayana','Französisch Polynesien','Gabun','Gambia','Georgien','Ghana','Grenada','Griechenland','Grossbritannien','Guadeloupe – Französische Antillen','Guatemala','Guinea','Guinea Bissau','Guyana','Haiti','Honduras','Indien','Indonesien','Irak','Iran','Irland','Island','Israel','Italien','Jamaika','Japan','Jemen','Jordanien','Kaimaninseln','Kambodscha','Kamerun','Kanada','Kap Verde','Kasachstan','Katar','Kenia','Kirgisistan','Kiribati','Kolumbien','Komoren','Kongo, Republik','Kroatien','Kuba','Kuwait','Laos','Lesotho','Lettland','Libanon','Liberia','Libyen','Litauen','Luxemburg','Madagaskar','Malawi','Malaysia','Malediven','Mali','Malta','Marokko','Marshallinseln','Martinique - Franzöesische Antillen','Mauretanien','Mauritius','Mazedonien','Mexiko','Mikronesien, Föderierten Staaten von','Moldawien','Monaco','Mongolei','Montenegro','Mosambik','Myanmar (Birma)','Namibia','Nauru','Nepal','Neuseeland','Nicaragua','Niederlande','Niger','Nigeria','Nordkorea','Nördliche Marianen','Norwegen','Oman','Osttimor (Timor-Leste)','Pakistan','Palau','Panama','Papua Neuguinea','Paraguay','Peru','Philippinen','Polen','Portugal','Puerto Rico','Reunion','Ruanda','Rumänien','Russland','Salomonen','Sambia','Sao Tome und Principe','Saudi-Arabien','Schweden','Senegal','Serbien','Seychellen','Sierra Leone','Simbabwe','Singapur','Slowakei','Slowenien','Somalia','Spanien','Sri Lanka','St. Pierre und Miquelon','St. Vincent und die Grenadinen','Südafrika','Sudan','Südkorea','Suriname','Swasiland','Syrien','Tadschikistan','Taiwan, Republik China','Tansania','Thailand','Togo','Tonga','Trinidad & Tobago','Tschad','Tschechische Republik','Tunesien','Türkei','Turkmenistan','Turks- und Caicosinseln','Tuvalu','Uganda','Ukraine','Ungarn','Uruguay','Usbekistan','Vanuatu','Venezuela','Vereinigte Arabische Emirate','Vereinigte Staaten von Amerika','Vietnam','Weißrussland','Zentralafrikanische Republik','Zypern']
+- locals.cities = [];
+
+form.form.js-form.flex.flex-wrap.-mx-2.js-custom-machmit-form(
+    name='newsletter'
+    action="https://api.germanzero.de/subscriptions"
+    data-success-message="Vielen Dank, dass du dich für unseren Newsletter Angemeldet hast. Du erhältst in Kürze eine E-Mail von uns."
+)
     div(class="px-2 w-full sm:w-6/12 mb-4")
         div(class="form-control")
             label.relative.block
@@ -55,10 +62,8 @@ form.form.js-form.flex.flex-wrap.-mx-2
             label.relative.block
                 select(class="form__select js-form-control js-select-custom" name="country" data-validation-rule='["required"]')
                     option(value="") Land *
-                    option(value="germany") Germany
-                    option(value="austria") Austria
-                    option(value="france") France
-                    option(value="denmark") Denmark
+                    each val in locals.countries
+                        option(value=val)= val
                 span.form__error-message
     div(class="px-2 w-full sm:w-6/12 mb-4 sm:mb-6")
         div(class="form-control")
@@ -73,31 +78,101 @@ form.form.js-form.flex.flex-wrap.-mx-2
                 input(class="form__input js-form-control" name="email" type="email" data-validation-rule='["email", "required"]' value="" onkeyup="this.setAttribute('value', this.value);" )
                 span.form__control-placeholder E-Mail Adresse *
                 span.form__error-message
-    div(class="px-2 w-full mb-4 sm:mb-6")
+    div(class="px-2 w-full mb-4")
         div(class="form-control")
             label.relative.block
                 input(class="form__input js-form-control" name="phone" type="tel" value="" onkeyup="this.setAttribute('value', this.value);" )
                 span.form__control-placeholder Mobilfunknummer
                 span.form__error-message
-    div(class="px-2 w-full mb-4 sm:mb-5")
+    div(class="px-2 w-full mb-4")
+        div(class="form-control")
+            label.relative.block
+                select(class="form__select js-form-control js-select-custom js-show-sphere" name="assists" data-validation-rule='["required"]' multiple)
+                    option(value="") Wie ich GermanZero unterstützen kann (obligatorisch, ein oder mehrere)
+                    option(value="tatkräftig") tatkräftig
+                    option(value="finanzstark") finanzstark
+                    option(value="reichweitenstark") reichweitenstark
+                span.form__error-message
+    div(class="px-2 w-full mb-4 js-sphere-radios hidden")
+        .title.title--size-h4.mb-1 Sage uns bitte, in welchem Bereich du uns unterstützen kannst und wieviel Zeit du dafür aufwänden kannst.
+        div(class="form-control")
+            label.relative.block.mb-1
+                input(class="form__radio js-form-control js-show-custom-field" type="radio" name="sphere" value="it" checked)
+                span.form__radio-placeholder IT
+            label.relative.block.mb-1
+                input(class="form__radio js-form-control js-show-custom-field" type="radio" name="sphere" value="team")
+                span.form__radio-placeholder Aufbau des GermanZero-Teams in meiner Stadt/Ort
+            label.relative.block.mb-1
+                input(class="form__radio js-form-control js-show-custom-field" type="radio" name="sphere" value="accounting")
+                span.form__radio-placeholder Buchhaltung / Accounting
+            label.relative.block.mb-1
+                input(class="form__radio js-form-control js-show-custom-field" type="radio" name="sphere" value="advertising")
+                span.form__radio-placeholder Texte / Werbung / Medien
+            label.relative.block.mb-1
+                input(class="form__radio js-form-control js-show-custom-field" type="radio" name="sphere" value="custom")
+                span.form__radio-placeholder sonstiges
+            span.form__error-message
+        div(class="form-control mt-2 hidden js-custom-sphere")
+            label.relative.block
+                input(class="form__input js-form-control" name="custom_sphere" type="text" value="" onkeyup="this.setAttribute('value', this.value);" )
+                span.form__control-placeholder sonstiges
+                span.form__error-message
+    //-div(class="px-2 w-full mb-4")
+            .title.title--size-h4.mb-1 Wieviel Zeit kannst du für GermanZero aufbringen
+            div(class="form-control")
+                label.relative.block.mb-1
+                    input(class="form__radio js-form-control" type="radio" name="time" value="5" checked)
+                    span.form__radio-placeholder bis zu 5 Stunden / Woche
+                label.relative.block.mb-1
+                    input(class="form__radio js-form-control" type="radio" name="time" value="10" checked)
+                    span.form__radio-placeholder bis zu 10 Stunden / Woche
+                label.relative.block.mb-1
+                    input(class="form__radio js-form-control" type="radio" name="time" value="20" checked)
+                    span.form__radio-placeholder bis zu 20 Stunden / Woche
+                label.relative.block.mb-1
+                    input(class="form__radio js-form-control" type="radio" name="time" value="30" checked)
+                    span.form__radio-placeholder bis zu 30 Stunden / Woche
+                label.relative.block.mb-1
+                    input(class="form__radio js-form-control" type="radio" name="time" value="40" checked)
+                    span.form__radio-placeholder bis zu 40 Stunden / Woche
+                span.form__error-message
+    div(class="px-2 w-full mb-4")
+        div(class="form-control")
+            label.relative.block
+                input(class="form__input js-form-control" name="linkedin" type="text" value="" onkeyup="this.setAttribute('value', this.value);" )
+                span.form__control-placeholder Linkedin link
+                span.form__error-message
+    div(class="px-2 w-full mb-4")
+        div(class="form-control")
+            label.relative.block
+                input(class="form__input js-form-control" name="xing" type="text" value="" onkeyup="this.setAttribute('value', this.value);" )
+                span.form__control-placeholder xing link
+                span.form__error-message
+    div(class="px-2 w-full mb-4")
+        div(class="form-control")
+            label.relative.block
+                input(class="form__input js-form-control" name="instagram" type="text" value="" onkeyup="this.setAttribute('value', this.value);" )
+                span.form__control-placeholder instagram link
+                span.form__error-message
+    div(class="px-2 w-full mb-4")
         div(class="form-control")
             label.relative.block
                 input(class="form__input js-form-control" name="freeTime" type="text" value="" onkeyup="this.setAttribute('value', this.value);" )
                 span.form__control-placeholder Wie viel Zeit hast Du für uns pro Woche?
                 span.form__error-message
-    div(class="px-2 w-full mb-4 sm:mb-5")
-        div(class="form-control")
-            label.relative.block
-                input(class="form__input js-form-control" name="supportType" type="text" value="" onkeyup="this.setAttribute('value', this.value);" )
-                span.form__control-placeholder Wie kannst Du uns am besten unterstützen?
-                span.form__error-message
-    div(class="px-2 w-full mb-4")
+    //- div(class="px-2 w-full mb-4")
+            div(class="form-control")
+                label.relative.block
+                    input(class="form__input js-form-control" name="supportType" type="text" value="" onkeyup="this.setAttribute('value', this.value);" )
+                    span.form__control-placeholder Wie kannst Du uns am besten unterstützen?
+                    span.form__error-message
+    div(class="px-2 w-full mb-2")
         div(class="form-control")
             label.relative.form__checkbox
                 input(class="js-form-control" name="newsletter" type="checkbox")
                 span.form__checkbox-placeholder Ja, ich möchte den GermanZero-Newsletter bekommen.
                 span.form__error-message
-    div(class="px-2 w-full mb-4 sm:mb-6")
+    div(class="px-2 w-full mb-2")
         div(class="form-control")
             label.relative.form__checkbox
                 input(class="js-form-control" name="privacy" type="checkbox")

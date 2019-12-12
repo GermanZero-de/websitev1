@@ -1,0 +1,17 @@
+.toggle-list {
+
+    &__visibility-text {
+
+        &--less {
+            display: none !important;
+        }
+    }
+
+    &__visibility-state:checked ~ & {
+        display: flex !important;
+
+        .files-card__visibility-text--more {
+            display: none !important;
+        }
+    }
+}
