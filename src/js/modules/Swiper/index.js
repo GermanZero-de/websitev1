@@ -4,23 +4,25 @@ const DEFAULT_OPTIONS = {
   loop: false,
   centeredSlides: false,
   autoPlay: 10000,
-  navigation: false,
   pagination: false,
-
+  spaceBetween: 30,
   allowTouchMove: false,
   autoHeight: true,
   slidesPerView: 1,
-
+  navigation: {
+    nextEl: '.swiper-next',
+    prevEl: '.swiper-prev',
+  },
   breakpoints: {
-    640: {
+    768: {
       centeredSlides: false,
       allowTouchMove: true,
-      slidesPerView: 3,
+      slidesPerView: 2,
     },
     1024: {
       centeredSlides: false,
       allowTouchMove: true,
-      slidesPerView: 5,
+      slidesPerView: 3,
     },
   },
 };

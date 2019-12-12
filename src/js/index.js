@@ -1,16 +1,16 @@
 import './polyfills';
-// import Swiper from './modules/Swiper';
+import Swiper from './modules/Swiper';
 import MenuModal from './modules/MenuModal';
 import scrollIt from './modules/ScrollIt/ScrollIt';
-import {formsHandler} from './modules/Validation';
-import {ApiHandler} from './modules/Api';
+import { formsHandler } from './modules/Validation';
+import { ApiHandler } from './modules/Api';
 import Notifications from './modules/Notifications';
 import EventEmitter from './modules/EventEmitter';
 
 document.addEventListener('DOMContentLoaded', () => {
   const emitter = new EventEmitter();
   // eslint-disable-next-line no-unused-vars
-  const notifications = new Notifications({emitter});
+  const notifications = new Notifications({ emitter });
   const forms = document.querySelectorAll('.js-form');
   [...forms].forEach(formsHandler(emitter));
   [...forms].forEach(ApiHandler(emitter));
@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
       ])
       .then(([Module]) => {
         // eslint-disable-next-line no-new,new-cap
-        [...selects].forEach((select) => new Module.default(select, {removeItemButton: true}));
+        [...selects].forEach((select) => new Module.default(select, { removeItemButton: true }));
       })
       .catch((err) => {
         console.error(err);
@@ -41,7 +41,6 @@ document.addEventListener('DOMContentLoaded', () => {
    * Mach-mit form logic
    */
   if (document.querySelector('.js-custom-machmit-form')) {
-
     const showCustomRadios = document.querySelectorAll('.js-show-custom-field');
     [...showCustomRadios].forEach((radio) => radio.addEventListener('change', (e) => {
       document.querySelector('.js-custom-sphere').classList.toggle('hidden', e.target.value !== 'custom');
@@ -83,6 +82,14 @@ document.addEventListener('DOMContentLoaded', () => {
         buttonElement.querySelector('.js-toggle-list-more-text').classList.toggle('hidden', show);
         buttonElement.querySelector('.js-toggle-list-less-text').classList.toggle('hidden', !show);
       });
+    });
+  }
+
+  if (document.querySelector('.swiper-container')) {
+    const mySwiper = new Swiper('.swiper-container', {
+      slidesPerView: 1,
+      speed: 400,
+      spaceBetween: 100,
     });
   }
 });
