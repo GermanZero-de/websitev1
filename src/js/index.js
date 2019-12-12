@@ -1,12 +1,12 @@
 import './polyfills';
-// import Swiper from './modules/Swiper';
+import Swiper from './modules/Swiper';
 import MenuModal from './modules/MenuModal';
 import scrollIt from './modules/ScrollIt/ScrollIt';
 import { formsHandler } from './modules/Validation';
 import { ApiHandler } from './modules/Api';
 import Notifications from './modules/Notifications';
 import EventEmitter from './modules/EventEmitter';
-// import Choices from "choices.js";
+//import Choices from "choices.js";
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
     scrollIt(0, 700, 'easeInOutCubic');
   }));
 
-  const selects = document.querySelectorAll('.js-select-custom');
+/*  const selects = document.querySelectorAll('.js-select-custom');
 
   if (selects.length) {
     Promise
@@ -38,7 +38,13 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error(err);
       });
     // const choices = new Choices(selects);
-  }
+  }*/
+});
+
+let mySwiper = new Swiper('.swiper-container', {
+  slidesPerView: 1,
+  speed: 400,
+  spaceBetween: 100
 });
 
 window.onload = () => {
