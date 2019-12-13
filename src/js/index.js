@@ -92,6 +92,17 @@ document.addEventListener('DOMContentLoaded', () => {
       spaceBetween: 100,
     });
   }
+
+  let navbar = document.getElementById("nav-fixed")
+  window.onscroll = function() {
+    if (window.pageYOffset > 100) {
+      navbar.style.top = "0";
+    } else {
+      navbar.style.top = "-50px";
+    }
+  }
+
+
 });
 
 window.onload = () => {

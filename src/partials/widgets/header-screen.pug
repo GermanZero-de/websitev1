@@ -22,4 +22,32 @@
             span(class="inline md:hidden") Spenden
             span(class="hidden md:inline lg:hidden") Ihre Spende
             span(class="hidden lg:inline") Ihre Spende hilft
+
+  #nav-fixed.header-nav-fixed.flex.justify-between.w-full.z-20(style="top: -50px")
+    div(class="js-menu-btn flex items-center cursor-pointer hover:text-primary transition")
+      .svg-icon.header-nav__icon(style="stroke: currentColor")
+        include ../../assets/img/svg-sprite/menu.svg
+      div(class="header-nav__text hidden md:block lg:block") Menü
+    if locals.isIndexPage
+      span(class="items-center hidden md:flex text-white")
+        .svg-icon
+          include ../../assets/img/svg-sprite/logo-black.svg
+      span(class="items-center flex md:hidden lg:hidden  text-white")
+        .svg-icon
+          include ../../assets/img/svg-sprite/logo-black-small.svg
+    else
+      a(class="items-center hidden md:flex text-white" href='/')
+        .svg-icon
+          include ../../assets/img/svg-sprite/logo-black.svg
+      a(class="items-center flex md:hidden lg:hidden text-white" href='/')
+        .svg-icon
+          include ../../assets/img/svg-sprite/logo-black-small.svg
+    div
+      a.button.button--primary.button--alt(href="/spenden")
+        span
+          span
+            span(class="inline md:hidden") Spenden
+            span(class="hidden md:inline lg:hidden") Ihre Spende
+            span(class="hidden lg:inline") Ihre Spende hilft
   block header-screen-content
+
