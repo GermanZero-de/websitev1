@@ -78,7 +78,7 @@ export const formsHandler = (emitter) => (formEl) => {
         const cEvent = CustomEventPoly(DATA_SENT_EVENT, { data: json });
         formEl.dispatchEvent(cEvent);
       } else {
-        const errorsElements = [...document.querySelectorAll(`.${FORM_ERROR_SELECTOR}`)];
+        const errorsElements = [...formEl.querySelectorAll(`.${FORM_ERROR_SELECTOR}`)];
         if (errorsElements.length) {
           const minOffset = errorsElements.reduce((acc, cur) => {
             const curTop = getCoords(cur.parentElement).top;

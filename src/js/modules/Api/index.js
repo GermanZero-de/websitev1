@@ -7,11 +7,12 @@ import {
   SEND_SUCCESS,
 } from '../constants';
 
+export const API_PATH = 'https://germanzero.de';
 export const API_PATH_ATTR = 'action';
 export const DEFAULT_CONTENT_TYPE = 'application/json; charset=utf-8';
 export const SUCCESS_MESSAGE_ATTRIBUTE = 'data-success-message';
 
-function checkStatus(response) {
+export function checkStatus(response) {
   if (response.status >= 200 && response.status < 300) {
     return response;
   }
@@ -20,7 +21,7 @@ function checkStatus(response) {
   throw error;
 }
 
-function parseJSON(response) {
+export function parseJSON(response) {
   return response.json();
 }
 

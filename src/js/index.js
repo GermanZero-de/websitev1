@@ -2,15 +2,17 @@ import './polyfills';
 import Swiper from './modules/Swiper';
 import MenuModal from './modules/MenuModal';
 import scrollIt from './modules/ScrollIt/ScrollIt';
-import { formsHandler } from './modules/Validation';
-import { ApiHandler } from './modules/Api';
+import {formsHandler} from './modules/Validation';
+import {API_PATH, ApiHandler, checkStatus, DEFAULT_CONTENT_TYPE, parseJSON} from './modules/Api';
 import Notifications from './modules/Notifications';
 import EventEmitter from './modules/EventEmitter';
+import GetQueryParams from './GetQueryParams';
+import {NOTIFICATION_ERROR} from "./modules/constants";
 
 document.addEventListener('DOMContentLoaded', () => {
   const emitter = new EventEmitter();
   // eslint-disable-next-line no-unused-vars
-  const notifications = new Notifications({ emitter });
+  const notifications = new Notifications({emitter});
   const forms = document.querySelectorAll('.js-form');
   [...forms].forEach(formsHandler(emitter));
   [...forms].forEach(ApiHandler(emitter));
@@ -30,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
       ])
       .then(([Module]) => {
         // eslint-disable-next-line no-new,new-cap
-        [...selects].forEach((select) => new Module.default(select, { removeItemButton: true }));
+        [...selects].forEach((select) => new Module.default(select, {removeItemButton: true}));
       })
       .catch((err) => {
         console.error(err);
@@ -87,10 +89,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (document.querySelector('.swiper-container')) {
     const mySwiper = new Swiper('.swiper-container', {
-      slidesPerView: 1,
-      speed: 400,
-      spaceBetween: 100,
+      // slidesPerView: 1,
+      // speed: 400,
+      // spaceBetween: 100,Bleiben Sie informiert!
     });
+  }
+
+  /**
+   *  email confirmation
+   *  */
+  const params = GetQueryParams(window.location.href);
+  if (params.contactId && params.token) {
+    fetch(`${API_PATH}/contacts/${params.contactId}/confirmations/${params.token}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': DEFAULT_CONTENT_TYPE,
+      },
+      body: JSON.stringify({
+        contactId: params.contactId,
+        token: params.token,
+      }),
+    })
+      .then(checkStatus)
+      .then(parseJSON)
+      .then(() => {
+        window.location = '/membership/confirm';
+      })
+      .catch((e) => {
+        emitter.emit(NOTIFICATION_ERROR, e);
+        console.error(e);
+        window.location = '/membership/reject';
+      });
   }
 });
 
