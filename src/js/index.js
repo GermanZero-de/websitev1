@@ -121,6 +121,17 @@ document.addEventListener('DOMContentLoaded', () => {
         window.location = '/membership/reject';
       });
   }
+
+  let navbar = document.getElementById("nav-fixed")
+  window.onscroll = function() {
+    if (window.pageYOffset > 100) {
+      navbar.style.top = "0";
+    } else {
+      navbar.style.top = "-50px";
+    }
+  }
+
+
 });
 
 window.onload = () => {
