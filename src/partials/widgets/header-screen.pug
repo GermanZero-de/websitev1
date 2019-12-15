@@ -1,6 +1,7 @@
 .header-screen(
   id="header-screen"
   style=locals.header_bg
+  class=`${true ? '.header-screen--auto-h' : ''}`
   )
   .header-nav.flex.justify-center.justify-between
     div(class="js-menu-btn flex items-center cursor-pointer text-white hover:text-primary transition")

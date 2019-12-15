@@ -21,7 +21,10 @@ export default class Notifications {
     }));
 
     this.subscriptions.push(this.emitter.subscribe(NOTIFICATION_ERROR, (data) => {
-      this.show({type: 'error', content: data && data.message ? data.message : 'Ups. Something went wrong!'});
+      this.show({
+        type: 'error',
+        content: data && data.message ? (window.validationMessages[data.message] || data.message) : 'Ups. Something went wrong!',
+      });
     }));
 
     this.el.addEventListener('click', () => {
