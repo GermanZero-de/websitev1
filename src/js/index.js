@@ -2,17 +2,21 @@ import './polyfills';
 import Swiper from './modules/Swiper';
 import MenuModal from './modules/MenuModal';
 import scrollIt from './modules/ScrollIt/ScrollIt';
-import {formsHandler} from './modules/Validation';
-import {API_PATH, ApiHandler, checkStatus, DEFAULT_CONTENT_TYPE, parseJSON} from './modules/Api';
+import { formsHandler } from './modules/Validation';
+import {
+  API_PATH, ApiHandler, checkStatus, DEFAULT_CONTENT_TYPE, parseJSON,
+} from './modules/Api';
 import Notifications from './modules/Notifications';
 import EventEmitter from './modules/EventEmitter';
 import GetQueryParams from './GetQueryParams';
-import {NOTIFICATION_ERROR} from "./modules/constants";
+import { NOTIFICATION_ERROR } from './modules/constants';
+import Choices from 'choices.js';
+import 'choices.js/public/assets/styles/choices.min.css';
 
 document.addEventListener('DOMContentLoaded', () => {
   const emitter = new EventEmitter();
   // eslint-disable-next-line no-unused-vars
-  const notifications = new Notifications({emitter});
+  const notifications = new Notifications({ emitter });
   const forms = document.querySelectorAll('.js-form');
   [...forms].forEach(formsHandler(emitter));
   [...forms].forEach(ApiHandler(emitter));
@@ -25,18 +29,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const selects = document.querySelectorAll('.js-select-custom');
 
   if (selects.length) {
-    Promise
-      .all([
-        import('choices.js'),
-        import('choices.js/public/assets/styles/choices.min.css'),
-      ])
-      .then(([Module]) => {
-        // eslint-disable-next-line no-new,new-cap
-        [...selects].forEach((select) => new Module.default(select, {removeItemButton: true}));
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+    // eslint-disable-next-line no-new,new-cap,dot-notation
+    [...selects].forEach((select) => new Choices(select, { removeItemButton: true }));
   }
 
   /**
@@ -122,16 +116,14 @@ document.addEventListener('DOMContentLoaded', () => {
       });
   }
 
-  let navbar = document.getElementById("nav-fixed")
+  const navbar = document.getElementById('nav-fixed');
   window.onscroll = function () {
     if (window.pageYOffset > 100) {
-      navbar.style.top = "0";
+      navbar.style.top = '0';
     } else {
-      navbar.style.top = "-50px";
+      navbar.style.top = '-50px';
     }
-  }
-
-
+  };
 });
 
 window.onload = () => {

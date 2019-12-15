@@ -56,11 +56,10 @@ module.exports = {
   optimization: {
     splitChunks: {
       cacheGroups: {
-        vendor: {
+        commons: {
+          test: /[\\/]node_modules[\\/]/,
           name: 'vendors',
-          test: /node_modules|bower_components/,
           chunks: 'all',
-          enforce: true,
         },
       },
     },
@@ -72,7 +71,7 @@ module.exports = {
         loader: 'pug-loader',
         options: {
           basedir: path.resolve(__dirname, '../src'),
-        }
+        },
       },
       {
         enforce: 'pre',
