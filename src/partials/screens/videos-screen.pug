@@ -9,14 +9,14 @@ section.videos-screen(class=(videos_screen_upper ? "videos-screen--with-upper-bl
         .text-content.text-content--size-1.mb-2
             span
                 | Kontakt - Für Presseanfragen wenden Sie sich bitte an Klaudia Kelleh
-                a(href="presse@germanzero.de" class="ml-1 link") (presse@germanzero.de)
+                a(href="mailto:presse@germanzero.de" class="ml-1 link") (presse@germanzero.de)
     .container.js-toggle-list
         div(class="flex flex-wrap -mx-2 lg:-mx-3")
             div(class="w-full lg:w-6/12 px-3 md:px-7 lg:px-3 xl:pr-3 mb-5 md:mb-6 lg:mb-7")
                 .video-block.text-black
                     div(class="video-block__tag md:mb-3 lg:mb-4") #dasindwir
                     div(class="video-block__title md:hidden mb-2") Vor dem Bundestag
-                    .video-block__video(style="background-image: url('/assets/img/article-test-1.png')")
+                    .video-block__video(style="background-image: url('/assets/img/article-test-1.png')" data-youtube-id="4-eAmEvjtyA").js-video-modal-btn
                         .video-block__play.flex.items-center.justify-center
                             include ../../assets/img/svg-sprite/arrow-slider.svg
                         div(class="video-block__label text-body hidden md:block")
@@ -26,7 +26,7 @@ section.videos-screen(class=(videos_screen_upper ? "videos-screen--with-upper-bl
                 .video-block.text-black
                     div(class="video-block__tag md:mb-3 lg:mb-4") #wirbleibendran
                     div(class="video-block__title md:hidden mb-2") Verhandlungen im Paul-Löbe haus
-                    .video-block__video(style="background-image: url('/assets/img/article-test-2.png')")
+                    .video-block__video(style="background-image: url('/assets/img/article-test-2.png')" data-youtube-id="DwqXU5tp99U").js-video-modal-btn
                         .video-block__play.flex.items-center.justify-center
                             include ../../assets/img/svg-sprite/arrow-slider.svg
                         div(class="video-block__label text-body hidden md:block")
@@ -36,7 +36,7 @@ section.videos-screen(class=(videos_screen_upper ? "videos-screen--with-upper-bl
                 .video-block.text-black
                     div(class="video-block__tag md:mb-3 lg:mb-4") #wirbleibendran
                     div(class="video-block__title md:hidden mb-2") Verhandlungen im Paul-Löbe haus
-                    .video-block__video(style="background-image: url('/assets/img/article-test-2.png')")
+                    .video-block__video(style="background-image: url('/assets/img/article-test-2.png')" data-youtube-id="4-eAmEvjtyA").js-video-modal-btn
                         .video-block__play.flex.items-center.justify-center
                             include ../../assets/img/svg-sprite/arrow-slider.svg
                         div(class="video-block__label text-body hidden md:block")
@@ -46,3 +46,8 @@ section.videos-screen(class=(videos_screen_upper ? "videos-screen--with-upper-bl
             span(class="cursor-pointer link link--invert inline-block title title--size-h4 text-primary title--underline-black js-toggle-list-button transition hover:text-black")
                 span.js-toggle-list-more-text Alle Videos
                 span.js-toggle-list-less-text.hidden  Weniger
+    .video-modal.js-video-modal
+        button.js-video-modal-btn-close
+            include ../../assets/img/svg-sprite/close.svg
+        .video-modal-content
+            iframe(class="js-video-modal-frame" id="youtube" width="100%" height="100%" frameborder="0" allow="autoplay" allowfullscreen src="")

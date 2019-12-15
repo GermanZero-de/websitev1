@@ -1,0 +1,23 @@
+extends ../partials/layouts/main.pug
+
+block content
+    append variables
+        - locals.isIndexPage = true
+    include ../partials/screens/menu-screen
+    include ../partials/mixins/empty.pug
+    append variables
+        - locals.header_bg = 'background-image: radial-gradient(64.3% 64.3% at 32.06% 59.21%, rgba(0, 0, 0, 0.740084) 0%, rgba(0, 0, 0, 0.0001) 100%), linear-gradient(0deg, rgba(255, 255, 255, 0.0001) 45.55%, rgba(0, 0, 0, 0.603065) 84.88%), url(/assets/img/first-screen.png); '
+        - locals.letter_response_text = 'An error has occured.'
+    include ../partials/screens/first-screen
+    - locals.letter_response_text = false
+    include ../partials/screens/goal-screen
+    - locals.call_screen_bg_pos_r = true
+    - locals.call_screen_image_big = '/assets/img/call-lg.jpg'
+    - locals.call_screen_image_small = '/assets/img/call.jpg'
+    include ../partials/screens/call-screen
+    .bg-secondary
+        - locals.videos_screen_upper = true
+        include ../partials/screens/videos-screen
+    - locals.events_screen_bg = '/assets/img/events-bg.png'
+    include ../partials/screens/events-screen
+    include ../partials/screens/footer
