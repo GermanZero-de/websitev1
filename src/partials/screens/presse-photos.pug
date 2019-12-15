@@ -1,0 +1,23 @@
+.presse-photos
+    div(class="mx-auto text-center mb-6 lg:mb-7")
+        .title.title--size-h2.text-black.arrow-block.inline-block
+            .arrow-block__icon.text-white
+                include ../../assets/img/svg-sprite/text-arrow.svg
+            span Presse photos
+    div(class="pt-6 lg:pt-8 bg")
+        .container
+            div(class="mx-2 lg:-mx-3 flex justify-center flex-wrap")
+                .swiper-container.py-3
+                    .swiper-wrapper
+                        .swiper-slide
+                            img.w-full.object-cover(src="/assets/img/presse-photos/1.jpg")
+                        .swiper-slide
+                            img.w-full.object-cover(src="/assets/img/presse-photos/2.jpg")
+                        .swiper-slide
+                            img.w-full.object-cover(src="/assets/img/presse-photos/3.jpg")
+                        .swiper-slide
+                            img.w-full.object-cover(src="/assets/img/presse-photos/4.jpg")
+                    .swiper-prev
+                        include ../../assets/img/svg-sprite/arrow-slider.svg
+                    .swiper-next
+                        include ../../assets/img/svg-sprite/arrow-slider.svg
