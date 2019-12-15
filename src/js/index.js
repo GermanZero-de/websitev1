@@ -3,21 +3,21 @@ import Swiper from './modules/Swiper';
 import MenuModal from './modules/MenuModal';
 import VideoModal from './modules/VideoModal';
 import scrollIt from './modules/ScrollIt/ScrollIt';
-import { formsHandler } from './modules/Validation';
+import {formsHandler} from './modules/Validation';
 import {
   API_PATH, ApiHandler, checkStatus, DEFAULT_CONTENT_TYPE, parseJSON,
 } from './modules/Api';
 import Notifications from './modules/Notifications';
 import EventEmitter from './modules/EventEmitter';
 import GetQueryParams from './GetQueryParams';
-import { NOTIFICATION_ERROR } from './modules/constants';
+import {NOTIFICATION_ERROR} from './modules/constants';
 import Choices from 'choices.js';
 import 'choices.js/public/assets/styles/choices.min.css';
 
 document.addEventListener('DOMContentLoaded', () => {
   const emitter = new EventEmitter();
   // eslint-disable-next-line no-unused-vars
-  const notifications = new Notifications({ emitter });
+  const notifications = new Notifications({emitter});
   const forms = document.querySelectorAll('.js-form');
   [...forms].forEach(formsHandler(emitter));
   [...forms].forEach(ApiHandler(emitter));
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (selects.length) {
     // eslint-disable-next-line no-new,new-cap,dot-notation
-    [...selects].forEach((select) => new Choices(select, { removeItemButton: true }));
+    [...selects].forEach((select) => new Choices(select, {removeItemButton: true}));
   }
 
   /**
@@ -66,19 +66,22 @@ document.addEventListener('DOMContentLoaded', () => {
   if (showMoreElements.length) {
     [...showMoreElements].forEach((listElement) => {
       let show = false;
-      listElement.querySelector('.js-toggle-list-button').addEventListener('click', (e) => {
-        const buttonElement = e.currentTarget;
-        show = !show;
-        [...listElement.querySelectorAll('.js-toggle-list-item')].forEach((listItemElement) => {
-          listItemElement.classList.toggle('hidden', !show);
+      const btn = listElement.querySelector('.js-toggle-list-button');
+      if (btn) {
+        btn.addEventListener('click', (e) => {
+          const buttonElement = e.currentTarget;
+          show = !show;
+          [...listElement.querySelectorAll('.js-toggle-list-item')].forEach((listItemElement) => {
+            listItemElement.classList.toggle('hidden', !show);
+          });
+          const wrapperEl = listElement.querySelector('.js-toggle-list-wrapper');
+          if (wrapperEl) {
+            wrapperEl.classList.toggle('isShown', show);
+          }
+          buttonElement.querySelector('.js-toggle-list-more-text').classList.toggle('hidden', show);
+          buttonElement.querySelector('.js-toggle-list-less-text').classList.toggle('hidden', !show);
         });
-        const wrapperEl = listElement.querySelector('.js-toggle-list-wrapper');
-        if (wrapperEl) {
-          wrapperEl.classList.toggle('isShown', show);
-        }
-        buttonElement.querySelector('.js-toggle-list-more-text').classList.toggle('hidden', show);
-        buttonElement.querySelector('.js-toggle-list-less-text').classList.toggle('hidden', !show);
-      });
+      }
     });
   }
 
