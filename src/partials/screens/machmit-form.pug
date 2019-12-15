@@ -117,7 +117,7 @@ form.form.js-form.flex.flex-wrap.-mx-2.js-custom-machmit-form(
                 input(class="form__input js-form-control" name="custom_sphere" type="text" value="" onkeyup="this.setAttribute('value', this.value);" )
                 span.form__control-placeholder sonstiges
                 span.form__error-message
-    //-div(class="px-2 w-full mb-4")
+    div(class="px-2 w-full mb-4 js-sphere-radios hidden")
             .title.title--size-h4.mb-1 Wieviel Zeit kannst du für GermanZero aufbringen
             div(class="form-control")
                 label.relative.block.mb-1
@@ -169,13 +169,13 @@ form.form.js-form.flex.flex-wrap.-mx-2.js-custom-machmit-form(
     div(class="px-2 w-full mb-2")
         div(class="form-control")
             label.relative.form__checkbox
-                input(class="js-form-control" name="newsletter" type="checkbox")
+                input(class="js-form-control" name="newsletter" type="checkbox" checked)
                 span.form__checkbox-placeholder Ja, ich möchte den GermanZero-Newsletter bekommen.
                 span.form__error-message
     div(class="px-2 w-full mb-2")
         div(class="form-control")
             label.relative.form__checkbox
-                input(class="js-form-control" name="privacy" type="checkbox")
+                input(class="js-form-control" name="privacy" type="checkbox" checked)
                 span.form__checkbox-placeholder
                     span Ja, ich habe die
                         a(href="/datenschutz").mx-1.underline.link Datenschutzbestimmungen

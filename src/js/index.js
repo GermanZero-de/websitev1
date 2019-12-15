@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       // eslint-disable-next-line no-bitwise
-      document.querySelector('.js-sphere-radios').classList.toggle('hidden', !~selectedOptions.indexOf('tatkräftig'));
+      [...document.querySelectorAll('.js-sphere-radios')].forEach((radio) => radio.classList.toggle('hidden', !~selectedOptions.indexOf('tatkräftig')));
     });
   }
 
@@ -123,7 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   let navbar = document.getElementById("nav-fixed")
-  window.onscroll = function() {
+  window.onscroll = function () {
     if (window.pageYOffset > 100) {
       navbar.style.top = "0";
     } else {
