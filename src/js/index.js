@@ -1,6 +1,7 @@
 import './polyfills';
 import Swiper from './modules/Swiper';
 import MenuModal from './modules/MenuModal';
+import VideoModal from './modules/VideoModal';
 import scrollIt from './modules/ScrollIt/ScrollIt';
 import { formsHandler } from './modules/Validation';
 import {
@@ -133,3 +134,4 @@ window.onload = () => {
 
 // eslint-disable-next-line no-new
 new MenuModal();
+new VideoModal();
