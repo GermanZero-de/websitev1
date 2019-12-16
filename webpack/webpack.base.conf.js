@@ -5,6 +5,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+// const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 const PATHS = {
   src: path.join(__dirname, '../src'),
@@ -87,17 +88,45 @@ module.exports = {
         loader: 'babel-loader',
         exclude: /node_modules/,
       }, {
-        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+        test: /\.(woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
         loader: 'file-loader',
         options: {
           name: '[name].[ext]',
         },
       }, {
-        test: /\.(png|jpg|gif|svg)$/,
-        loader: 'file-loader',
-        options: {
-          name: '[name].[ext]',
-        },
+        test: /\.(png|jpe?g|gif|svg|webp)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+            },
+          },
+          {
+            loader: 'image-webpack-loader',
+            options: {
+              mozjpeg: {
+                progressive: true,
+                quality: 65,
+              },
+              // optipng.enabled: false will disable optipng
+              optipng: {
+                enabled: false,
+              },
+              pngquant: {
+                quality: [0.65, 0.90],
+                speed: 4,
+              },
+              gifsicle: {
+                interlaced: false,
+              },
+              // the webp option will enable WEBP
+              webp: {
+                quality: 75,
+              },
+            },
+          },
+        ],
       }, {
         test: /\.pcss$/,
         use: [
@@ -131,7 +160,7 @@ module.exports = {
           },
         ],
       },
-      {
+      /* {
         test: /\.svg$/,
         include: path.resolve(__dirname, '../src/assets/img/svg-sprite'),
         use: [
@@ -139,7 +168,8 @@ module.exports = {
           'svg-transform-loader',
           'svgo-loader',
         ],
-      }],
+      } */
+    ],
   },
   resolve: {
     alias: {
@@ -157,6 +187,16 @@ module.exports = {
       { from: `${PATHS.src}/${PATHS.assets}`, to: `${PATHS.assets}` },
       { from: `${PATHS.src}/static`, to: '' },
     ]),
+    /*
+    new OptimizeCssAssetsPlugin({
+      assetNameRegExp: /\.optimize\.css$/g,
+      cssProcessor: require('cssnano'),
+      cssProcessorPluginOptions: {
+        preset: ['default', { discardComments: { removeAll: true } }],
+      },
+      canPrint: true,
+    }),
+    */
 
     new SpriteLoaderPlugin(),
 

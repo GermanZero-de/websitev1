@@ -1,15 +1,16 @@
 section.videos-screen(class=(videos_screen_upper ? "videos-screen--with-upper-block" : ''))
-    div(class="mx-auto text-center mb-4 pb-2 lg:mb-6")
-        .title.title--size-h2.text-black.inline-block.goal-screen__title.mb-2
-            span Aktuelles
-        .text-content.text-content--size-1.mb-2
-            span Hier finden Sie aktuelle Informationen über unsere Massnahmen
-        .title.title--size-h2.text-black.inline-block.goal-screen__title.mb-2
-            span Kontakt
-        .text-content.text-content--size-1.mb-2
-            span
-                | Kontakt - Für Presseanfragen wenden Sie sich bitte an Klaudia Kelleh
-                a(href="mailto:presse@germanzero.de" class="ml-1 link") (presse@germanzero.de)
+    if(!isIndexPage)
+        div(class="mx-auto text-center mb-4 pb-2 lg:mb-6")
+            .title.title--size-h2.text-black.inline-block.goal-screen__title.mb-2
+                span Aktuelles
+            .text-content.text-content--size-1.mb-2
+                span Hier finden Sie aktuelle Informationen über unsere Massnahmen
+            .title.title--size-h2.text-black.inline-block.goal-screen__title.mb-2
+                span Kontakt
+            .text-content.text-content--size-1.mb-2
+                span
+                    | Kontakt - Für Presseanfragen wenden Sie sich bitte an Klaudia Kelleh
+                    a(href="mailto:presse@germanzero.de" class="ml-1 link") (presse@germanzero.de)
     .container.js-toggle-list
         div(class="flex flex-wrap -mx-2 lg:-mx-3")
             div(class="w-full lg:w-6/12 px-3 md:px-7 lg:px-3 xl:pr-3 mb-5 md:mb-6 lg:mb-7")
