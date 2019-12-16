@@ -4,13 +4,14 @@ block content
     include ../partials/screens/menu-screen
     append variables
         - locals.header_bg = 'background-image: url(/assets/img/presse-bg.jpg);'
-        - locals.quoteTitle = '“GermanZero entwickelt sich langsam zu einer professionellen Bewegung.“'
-        - locals.quoteText = 'Thomas Kreuzfeldt, taz'
+        - locals.quoteTitle = ''
+        - locals.quoteText = ''
     include ../partials/screens/quote-screen
     .bg-white
         - locals.videos_screen_upper = false
         include ../partials/screens/videos-screen
     include ../partials/screens/files-screen
+    include ../partials/screens/presse-photos
     - locals.events_screen_bg = ''
     include ../partials/screens/events-screen
     include ../partials/screens/footer

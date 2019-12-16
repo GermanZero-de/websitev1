@@ -7,37 +7,36 @@
     div(class="pt-6 lg:pt-8 bg" style="background-image: url('/assets/img/events-bg.png')")
         .container
             div(class="mx-2 lg:-mx-3 flex justify-center")
-                div(class="px-2 lg:px-3 w-full sm:w-10/12 lg:w-8/12 pb-1")
+                div(class="px-2 lg:px-3 w-full sm:w-10/12 lg:w-8/12 pb-1 toggle-list")
+                    input(class="toggle-list__visibility-state" type="checkbox" style="display:none" id="toggleAllFiles")
                     .files-card.bg-white.mb-6
                         .files-card__image-block
                             .responsive-image.files-card__image.mb-2
-                                img(src="/assets/img/files-1.jpg")
+                                img(src="/downloads/preview-1.jpg" alt="")
                         .files-card__content-block
-                            .files-card__tag.font-tertiary.text-black.mb-2 #eckpunktepapier
-                            .files-card__subtitle.content.content--size-2.mb-1 Berlin, 12. Dezember 2019
-                            .files-card__title.title.title--size-h4.mb-3 Präsentation der Pressekonferenz
+                            //- .files-card__tag.font-tertiary.text-black.mb-2 #eckpunktepapier
+                            .files-card__subtitle.content.content--size-2.mb-1 02.12.2019
+                            .files-card__title.title.title--size-h4.mb-3 GermanZero Vorabinformation
                             .files-card__text.content.content--size-2.mb-6
-                                | Heute wurden in Berlin die Eckpunkte unseres Klimaplans vorgestellt.
-                                | Heinrich Strößenreuther sagte dazu „Toll, was da alles drin steht.“
-                                | Die Präsentation der Pressekonferenz steht jetzt zum Download zur Verfügung.
+                                | Hier finden Sie wictige allgemeine Information zu GermanZero
                             .flex.justify-between
-                                .files-card__info PDF, 1.4 MB
-                                a.text-primary.link--invert.underline.uppercase(href="#") DOWNLOAD STARTEN
+                                .files-card__info PDF, 0.11 MB
+                                a.text-primary.link--invert.underline.uppercase(download target="_blank" href="/downloads/GermanZero_Kampagnen-Briefingdokument_02.12.19_Short.pdf") DOWNLOAD STARTEN
                     .files-card.bg-white.mb-6
                         .files-card__image-block
                             .responsive-image.files-card__image.mb-2
-                                img(src="/assets/img/files-2.jpg")
+                                img(src="/downloads/preview-2.jpg" alt="")
                         .files-card__content-block
-                            .files-card__tag.font-tertiary.text-black.mb-2 #eckpunktepapier
-                            .files-card__subtitle.content.content--size-2.mb-1 Berlin, 12. Dezember 2019
-                            .files-card__title.title.title--size-h4.mb-3 Präsentation der Pressekonferenz
+                            //- .files-card__tag.font-tertiary.text-black.mb-2 #eckpunktepapier
+                            .files-card__subtitle.content.content--size-2.mb-1 02.12.2019
+                            .files-card__title.title.title--size-h4.mb-3 Logo Paket
                             .files-card__text.content.content--size-2.mb-6
-                                | Heute wurden in Berlin die Eckpunkte unseres Klimaplans vorgestellt.
-                                | Heinrich Strößenreuther sagte dazu „Toll, was da alles drin steht.“
-                                | Die Präsentation der Pressekonferenz steht jetzt zum Download zur Verfügung.
+                                | Unsere Logos zum Download
                             .flex.justify-between
-                                .files-card__info PDF, 1.4 MB
-                                a.text-primary.link--invert.underline.uppercase(href="#") DOWNLOAD STARTEN
-                    div(class="text-center pb-9 sm:pb-10 lg:pb-9")
-                        a.link.link--invert.inline-block.title.title--size-h4.text-primary.title--underline-black(href="#") Weitere Downloads anzeigen
+                                .files-card__info ZIP, 0.34 MB
+                                a.text-primary.link--invert.underline.uppercase(download target="_blank" href="/downloads/G0_Logos_RGB.zip") DOWNLOAD STARTEN
+                    //- div(class="text-center pb-9 sm:pb-10 lg:pb-9")
+                        label(class="cursor-pointer link link--invert inline-block title title--size-h4 text-primary title--underline-black transition hover:text-black" for="toggleAllFiles")
+                            span(class="toggle-list__visibility-text toggle-list__visibility-text--more") Weitere Downloads anzeigen
+                            span(class="toggle-list__visibility-text toggle-list__visibility-text--less") Weniger Downloads anzeigen
 

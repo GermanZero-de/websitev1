@@ -1,0 +1,27 @@
+extends ../../partials/layouts/main.pug
+
+block content
+    include ../../partials/screens/menu-screen
+    append variables
+        - locals.header_bg = 'background-image: url(/assets/img/machmit-first-screen.jpg);'
+        - locals.quoteTitle = '“GermanZero ist toll und wird jeden Tag toller. Stark, wer alles mit dabei ist.“'
+        - locals.quoteText = 'Heinrich Strößenreuther, Chef-Aktivist'
+    include ../../partials/screens/quote-screen
+    div(class="container pt-6 md:pt-9")
+        div(class="flex -mx-2 -lg:mx-3 justify-center")
+            div(class="px-2 lg:px-3 w-10/12 md:w-8/12")
+                .title.title--size-h2.text-black.mb-2 Mit Innovationen und Effizienz zur Klimaneutalität
+                div(class="content content--size-2 text-black mb-6 sm:mb-7 lg:mb-10 xl:mb-10 text-block")
+                    p Der Industriesektor – also die Gesamtheit der großen Produktionsanlagen außerhalb der Energiewirtschaft – ist mit 22 % die zweitgrößte Emissionsquelle in Deutschland. In dieser Zahl sind der Bezug von Strom und Wärme aus öffentlichen Netzen, die Emissionen durch die Verwendung oder Entsorgung von aus Erdöl und Erdgas gewonnenen Produkten und die Gütertransporte nicht berücksichtigt.
+                    p Ungefähr zwei Drittel dieser Emissionen stammen aus dem Energieverbrauch der Industrie – also von selbst erzeugtem Strom und Wärme. Diese Emissionen können durch Elektrifizierung und durch Umstellung auf erneuerbare Brennstoffe wie z. B. grünen Wasserstoff nahezu vollständig vermieden werden. Hierfür ist der rasche Aufbau sehr großer Kapazitäten von erneuerbarer Energie erforderlich. Das verbleibende Drittel der Emissionen besteht aus sogenannten Prozessemissionen. So entstehen z. B in der Stahl- und Zement-Produktion durch chemische Reaktionen erhebliche Mengen an CO2. Hier können teilweise die Produktionsverfahren geändert werden. In einigen Bereichen ist das nicht möglich. Dann kann nur versucht werden, weniger Material zu verbrauchen, Recycling zu nutzen oder das Produkt durch nachhaltigere Produkte zu ersetzen. Durch CO2-Recycling können die verbleibenden unvermeidbaren Emissionen genutzt werden, um den Kohlenstoffbedarf der Chemischen Industrie mit zu decken und dort weitere Emissionen zu vermeiden. Im gleichen Maße kann dabei gleichzeitig auf fossile Rohstoffe verzichtet werden. Die erforderliche grundlegende industrielle Transformation muss durch große finanzielle Zuschüsse gezielt unterstützt werden, damit die nötigen Investitionen sicher getätigt werden können. Der Einsatz von CO2- Abscheidung und -Speicherung (CCS) ist nicht Teil des Maßnahmenpakets.
+
+    div(class="pt-6 md:pt-8 story-block-container")
+        .story-block-container__bg(style="background-image: url('/assets/img/arrows-sprite.png'), linear-gradient(180deg, rgba(244,211,0,1) 0%, rgba(244,211,0,1) 100%)")
+        .container
+            div(class="-mx-2 lg:-mx-3 flex flex-wrap justify-center mb-8 lg:mb-7")
+                div(class="px-2 lg:px-3 md:w-1/12 hidden md:block")
+                div(class="px-2 lg:px-3 w-full md:w-10/12 text-block")
+                    include ./industrie.html
+                div(class="px-2 lg:px-3 md:w-1/12 hidden md:block")
+    include ../../partials/screens/events-screen
+    include ../../partials/screens/footer

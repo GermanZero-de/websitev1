@@ -1,24 +1,39 @@
-div.menu-screen#menu-screen
-    span.menu-btn-close#menu-btn-close
-        include ../../assets/img/svg-sprite/menu.svg
-        span Schließen
-    ul#menu-screen-list
-        li Unser Plan
-        li.sublist Der Klimaplan
+div.menu-screen.js-menu-screen
+    span(class="menu-btn-close js-menu-btn-close cursor-pointer transition hover:text-primary")
+        include ../../assets/img/svg-sprite/close.svg
+        span(class="hidden lg:inline md:hidden") Schließen
+    ul.menu-screen__list.js-menu-screen__list
+        li.menu-screen__list-item.js-menu-list-item
+            a(href="/fahrplan") Unser Vorgehen
+        li.menu-screen__list-item.js-menu-list-item.menu-screen__list-item--sublist
+            a(class="hover:text-primary transition" href="/klimaplan") Der Klimaplan
+            span(class="js-menu-btn-open-sub menu-screen__open-sub cursor-pointer transition hover:text-primary") >
             ul
-                li Verkehr
-                li Industrie
-                li Landwirtschaft
-                li Infrastruktur
-                li Bilddung
-        li.sublist Wer wir sind
-            ul
-                li Verkehr
-                li Industrie
-                li Landwirtschaft
-                li Infrastruktur
-                li Bilddung
-        li Jobs
-        li Presse
-        li FAQ
-        li Kontakt
+                li
+                    a(class="hover:text-primary transition" href="/klimaplan/energie") Energie
+                li
+                    a(class="hover:text-primary transition" href="/klimaplan/gebaeude_waerme") Gebäude & Wärme
+                li
+                    a(class="hover:text-primary transition" href="/klimaplan/landwirtschaft_nutzung") Landwirtschaft & Landnutzung
+                li
+                    a(class="hover:text-primary transition" href="/klimaplan/verkehr") Verkehr
+                li
+                    a(class="hover:text-primary transition" href="/klimaplan/industrie") Industrie
+                li
+                    a(class="hover:text-primary transition" href="/klimaplan/konsum") Konsum
+        li.menu-screen__list-item.js-menu-list-item
+            a(class="hover:text-primary transition" href="/presse") Presse
+        li.menu-screen__list-item.js-menu-list-item
+            a(class="hover:text-primary transition" href="/datenschutz") Datenschutz
+        li.menu-screen__list-item.js-menu-list-item
+            a(class="hover:text-primary transition" href="/impressum") Impressum
+        //- li.menu-screen__list-item.js-menu-list-item
+            a(class="hover:text-primary transition" href="/wersindwir") Wer sind wir
+        // - li.menu-screen__list-item.js-menu-list-item
+            a(class="hover:text-primary transition" href="/partner") Partner
+        //- li.menu-screen__list-item.js-menu-list-item
+            a(class="hover:text-primary transition" href="/medienspiegel") Medienspiegel
+        li.menu-screen__list-item.js-menu-list-item
+            a(class="hover:text-primary transition" target="_blank" href="http://germanzero.join.com") Jobs
+        li.menu-screen__list-item.js-menu-list-item
+            a(class="hover:text-primary transition" href="/english_summary") English Summary

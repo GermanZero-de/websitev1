@@ -1,38 +1,68 @@
+                            .flex.justify-end
 .articles-slider.bg-secondary.pt-2
     div(class="py-5 sm:py-7 md:py-9")
         .container
-            div(class="flex -mx-2 lg:-mx-3")
-                div(class="px-2 lg:px-3 w-full sm:w-6/12 md:w-4/12 flex flex-col flex-1")
-                    .articles-slider__slide.flex.flex-col.flex-1
-                        a(class="articles-slider__image mb-4 relative responsive-image block" href="#")
-                            img(src='/assets/img/articles-temp/article-1.jpg')
-                        a(class="articles-slider__title overflow-hidden title title--size-h3 mb-2 inline-block" href="#") Verkehr
-                        div(class="articles-slider__text overflow-hidden mb-2")
-                            | Vestibulum id ligula porta felis euismod semper.
-                            | Cras mattis consectetur purus sit amet fermentum.
-                            | Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
-                        .flex.justify-end
-                            a.articles-slider__action.button.button--black-o Detaillierter
+            .swiper-container
+                .swiper-wrapper
+                    .swiper-slide
+                        .articles-slider__slide.flex.flex-col.flex-1
+                            a(class="articles-slider__image mb-4 relative responsive-image block" href="/klimaplan/verkehr")
+                                img(src='/assets/img/articles-temp/article-1.jpg')
+                            a(class="articles-slider__title transition hover:text-primary overflow-hidden title title--size-h3 mb-2 inline-block" href="/klimaplan/verkehr") Energie
+                            div(class="articles-slider__text overflow-hidden mb-2")
+                                | Die wichtigsten Ziele: Energieeinsparung, Energieeffizienz und die rasche Umstellung aller Sektoren auf erneuerbare Energie – von der Industrie bis zum Verkehr.
+                            .flex.justify-end
+                                a.articles-slider__action.button.button--black-o(href="/klimaplan/verkehr") Detaillierter
+                    .swiper-slide
+                        .articles-slider__slide.flex.flex-col.flex-1
+                            a(class="articles-slider__image mb-4 relative responsive-image block" href="/klimaplan/industrie")
+                                img(src='/assets/img/articles-temp/article-2.jpg')
+                            a(class="articles-slider__title transition hover:text-primary overflow-hidden title title--size-h3 mb-2 inline-block" href="/klimaplan/industrie") Industrie
+                            div(class="articles-slider__text overflow-hidden mb-2")
+                                | Mit Ressourceneffizienz und geschlossenen Materialkreisläufen reduzieren wir den Energiebedarf. Die Prozesse werden auf erneuerbare Energien sowie klimaneutrale Brennstoffe umgestellt.
+                            .flex.justify-end
+                                a.articles-slider__action.button.button--black-o(href="/klimaplan/industrie") Detaillierter
+                    .swiper-slide
+                        .articles-slider__slide.flex.flex-col.flex-1
+                            a(class="articles-slider__image mb-4 relative responsive-image block" href="/klimaplan/landwirtschaft_nutzung")
+                                img(src='/assets/img/articles-temp/article-3.jpg')
+                            a(class="articles-slider__title transition hover:text-primary overflow-hidden title title--size-h3 mb-2 inline-block" href="/klimaplan/landwirtschaft_nutzung") Verkehr
+                            div(class="articles-slider__text overflow-hidden mb-2")
+                                | Der öffentliche Verkehr wird massiv ausgebaut, die Innenstädte für Radverkehr und Fußgänger optimiert. Autofahren wird reduziert und konsequent elektrisch.
+                            .flex.justify-end
+                                a.articles-slider__action.button.button--black-o(href="/klimaplan/landwirtschaft_nutzung") Detaillierter
+                    .swiper-slide
+                        .articles-slider__slide.flex.flex-col.flex-1
+                            a(class="articles-slider__image mb-4 relative responsive-image block" href="/klimaplan/verkehr")
+                                img(src='/assets/img/articles-temp/article-1.jpg')
+                            a(class="articles-slider__title transition hover:text-primary overflow-hidden title title--size-h3 mb-2 inline-block" href="/klimaplan/verkehr") Gebäude & Wärme
+                            div(class="articles-slider__text overflow-hidden mb-2")
+                                | Energetische Gebäudesanierung wird massiv verstärkt. Der verbleibende Energiebedarf wird aus erneuerbaren Energien gedeckt, zum Beispiel mit Wärmepumpen-Technologie.
+                            .flex.justify-end
+                                a.articles-slider__action.button.button--black-o(href="/klimaplan/verkehr") Detaillierter
+                    .swiper-slide
+                        .articles-slider__slide.flex.flex-col.flex-1
+                            a(class="articles-slider__image mb-4 relative responsive-image block" href="/klimaplan/industrie")
+                                img(src='/assets/img/articles-temp/article-2.jpg')
+                            a(class="articles-slider__title transition hover:text-primary overflow-hidden title title--size-h3 mb-2 inline-block" href="/klimaplan/industrie") Landwirtschaft & Landnutzung
+                            div(class="articles-slider__text overflow-hidden mb-2")
+                                | Emissionen aus der Tierhaltung werden reduziert. Ein neues Leitbild wird entwickelt, das Raum für kleine Betriebe und hohe Qualität bietet. Natürliche CO2 Speicher wie Moore und Wälder werden geschützt.
+                            .flex.justify-end
+                               a.articles-slider__action.button.button--black-o(href="/klimaplan/industrie") Detaillierter
+                    .swiper-slide
+                        .articles-slider__slide.flex.flex-col.flex-1
+                            a(class="articles-slider__image mb-4 relative responsive-image block" href="/klimaplan/landwirtschaft_nutzung")
+                                img(src='/assets/img/articles-temp/article-3.jpg')
+                            a(class="articles-slider__title transition hover:text-primary overflow-hidden title title--size-h3 mb-2 inline-block" href="/klimaplan/landwirtschaft_nutzung") Konsum
+                            div(class="articles-slider__text overflow-hidden mb-2")
+                                | Klimaschonende Lebensstilveränderungen, die zunächst etwas Umgewöhnung erfordern, sich dann aber als deutliche Verbesserung der Lebensqualität herausstellen können.
+                            .flex.justify-end
+                                a.articles-slider__action.button.button--black-o(href="/klimaplan/landwirtschaft_nutzung") Detaillierter
+                .swiper-prev
+                    include ../../assets/img/svg-sprite/arrow-slider.svg
+                .swiper-next
+                    include ../../assets/img/svg-sprite/arrow-slider.svg
 
-                div(class="px-2 lg:px-3 w-full sm:w-6/12 md:w-4/12 flex flex-col flex-1")
-                    .articles-slider__slide.flex.flex-col.flex-1
-                        a(class="articles-slider__image mb-4 relative responsive-image block" href="#")
-                            img(src='/assets/img/articles-temp/article-2.jpg')
-                        a(class="articles-slider__title overflow-hidden title title--size-h3 mb-2 inline-block" href="#") Industrie
-                        div(class="articles-slider__text overflow-hidden mb-2")
-                            | Vestibulum id ligula porta felis euismod semper. Cras mattis consectetur
-                            | purus sit amet fermentum. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
-                        .flex.justify-end
-                            a.articles-slider__action.button.button--black-o Detaillierter
 
-                div(class="px-2 lg:px-3 w-full sm:w-6/12 md:w-4/12 flex flex-col flex-1")
-                    .articles-slider__slide.flex.flex-col.flex-1
-                        a(class="articles-slider__image mb-4 relative responsive-image block" href="#")
-                            img(src='/assets/img/articles-temp/article-3.jpg')
-                        a(class="articles-slider__title overflow-hidden title title--size-h3 mb-2 inline-block" href="#") Landwirtschaft
-                        div(class="articles-slider__text overflow-hidden mb-2")
-                            | Donec sed odio dui. Vestibulum id ligula porta felis euismod semper.
-                            | Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Vivamus sagittis lacus vel augue laoreet rutrum fauc.
-                        .flex.justify-end
-                            a.articles-slider__action.button.button--black-o Detaillierter
+
 

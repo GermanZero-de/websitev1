@@ -1,0 +1,28 @@
+extends ../partials/layouts/main.pug
+
+block content
+    include ../partials/screens/menu-screen
+    append variables
+        - locals.header_bg = 'background-image: url(/assets/img/machmit-first-screen.jpg);'
+        - locals.quoteTitle = '“GermanZero ist toll und wird jeden Tag toller. Stark, wer alles mit dabei ist.“'
+        - locals.quoteText = 'Heinrich Strößenreuther, Chef-Aktivist'
+    include ../partials/screens/quote-screen
+    div(class="container pt-6 md:pt-9")
+        div(class="flex -mx-2 -lg:mx-3 justify-center")
+            div(class="px-2 lg:px-3 w-10/12 md:w-8/12")
+                .title.title--size-h2.text-black.mb-2 Datenschutzerklärung
+                div(class="content content--size-2 text-black mb-6 sm:mb-7 lg:mb-10 xl:mb-10 text-block")
+                    p Wir freuen uns sehr über Ihr Interesse an unserem Verein. Datenschutz hat einen besonders hohen Stellenwert für die Verantwortlichen von GermanZero. Eine Nutzung der Internetseiten der GermanZero ist grundsätzlich ohne jede Angabe personenbezogener Daten möglich. Sofern eine betroffene Person besondere Services unseres Unternehmens über unsere Internetseite in Anspruch nehmen möchte, könnte jedoch eine Verarbeitung personenbezogener Daten erforderlich werden. Ist die Verarbeitung personenbezogener Daten erforderlich und besteht für eine solche Verarbeitung keine gesetzliche Grundlage, holen wir generell eine Einwilligung der betroffenen Person ein.
+                    p Die Verarbeitung personenbezogener Daten, beispielsweise des Namens, der Anschrift, E-Mail-Adresse oder Telefonnummer einer betroffenen Person, erfolgt stets im Einklang mit der Datenschutz-Grundverordnung und in Übereinstimmung mit den für die GermanZero geltenden landesspezifischen Datenschutzbestimmungen. Mittels dieser Datenschutzerklärung möchte unser Unternehmen die Öffentlichkeit über Art, Umfang und Zweck der von uns erhobenen, genutzten und verarbeiteten personenbezogenen Daten informieren. Ferner werden betroffene Personen mittels dieser Datenschutzerklärung über die ihnen zustehenden Rechte aufgeklärt.
+                    p Die GermanZero hat als für die Verarbeitung Verantwortlicher zahlreiche technische und organisatorische Maßnahmen umgesetzt, um einen möglichst lückenlosen Schutz der über diese Internetseite verarbeiteten personenbezogenen Daten sicherzustellen. Dennoch können Internetbasierte Datenübertragungen grundsätzlich Sicherheitslücken aufweisen, sodass ein absoluter Schutz nicht gewährleistet werden kann. Aus diesem Grund steht es jeder betroffenen Person frei, personenbezogene Daten auch auf alternativen Wegen, beispielsweise telefonisch, an uns zu übermitteln.
+
+    div(class="pt-6 md:pt-8 story-block-container")
+        .story-block-container__bg(style="background-image: url('/assets/img/arrows-sprite.png'), linear-gradient(180deg, rgba(244,211,0,1) 0%, rgba(244,211,0,1) 100%)")
+        .container
+            div(class="-mx-2 lg:-mx-3 flex flex-wrap justify-center mb-8 lg:mb-7")
+                div(class="px-2 lg:px-3 md:w-1/12 hidden md:block")
+                div(class="px-2 lg:px-3 w-full md:w-10/12 text-block")
+                    include ./datenschutz.html
+                div(class="px-2 lg:px-3 md:w-1/12 hidden md:block")
+    include ../partials/screens/events-screen
+    include ../partials/screens/footer

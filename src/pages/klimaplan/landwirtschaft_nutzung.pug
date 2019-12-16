@@ -1,0 +1,26 @@
+extends ../../partials/layouts/main.pug
+
+block content
+    include ../../partials/screens/menu-screen
+    append variables
+        - locals.header_bg = 'background-image: url(/assets/img/machmit-first-screen.jpg);'
+        - locals.quoteTitle = '“GermanZero ist toll und wird jeden Tag toller. Stark, wer alles mit dabei ist.“'
+        - locals.quoteText = 'Heinrich Strößenreuther, Chef-Aktivist'
+    include ../../partials/screens/quote-screen
+    div(class="container pt-6 md:pt-9")
+        div(class="flex -mx-2 -lg:mx-3 justify-center")
+            div(class="px-2 lg:px-3 w-10/12 md:w-8/12")
+                .title.title--size-h2.text-black.mb-2 Die Nutzung ländlicher Räume nachhaltig umgestalten
+                div(class="content content--size-2 text-black mb-6 sm:mb-7 lg:mb-10 xl:mb-10 text-block")
+                    p Die Art, wie wir unser Land nutzen, hat große Auswirkungen auf die Klimabilanz und schlägt derzeit mit ca. 8,1 % der Gesamtemissionen zu Buche. In diesem Handlungsfeld betrachten wir sowohl Emissionen aus der Landwirtschaft wie auch Emissionen und Kohlenstofffestlegung anderer Landnutzungsformen. Die Lachgas- und Methanemissionen der Landwirtschaft entstehen aus biologischen Prozessen und lassen sich nicht vollständig vermeiden. Wenn alle anderen Sektoren in Deutschland treibhausgasfrei werden, wird die Landwirtschaft der Hauptemittent von Treibhausgasen sein. Durch die Landnutzung können aber auch die Kohlenstoffvorräte von Böden, Wäldern und Holzprodukten weiter aufgebaut und dadurch „negative Emissionen“ ermöglicht werden.
+
+    div(class="pt-6 md:pt-8 story-block-container")
+        .story-block-container__bg(style="background-image: url('/assets/img/arrows-sprite.png'), linear-gradient(180deg, rgba(244,211,0,1) 0%, rgba(244,211,0,1) 100%)")
+        .container
+            div(class="-mx-2 lg:-mx-3 flex flex-wrap justify-center mb-8 lg:mb-7")
+                div(class="px-2 lg:px-3 md:w-1/12 hidden md:block")
+                div(class="px-2 lg:px-3 w-full md:w-10/12 text-block")
+                    include ./landwirtschaft_nutzung.html
+                div(class="px-2 lg:px-3 md:w-1/12 hidden md:block")
+    include ../../partials/screens/events-screen
+    include ../../partials/screens/footer

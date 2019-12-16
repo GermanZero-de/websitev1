@@ -1,0 +1,16 @@
+extends ../partials/layouts/main.pug
+
+block content
+    include ../partials/screens/menu-screen
+    append variables
+        - locals.header_bg = 'background-image: url(/assets/img/machmit-first-screen.jpg);'
+        - locals.quoteTitle = '“GermanZero ist toll und wird jeden Tag toller. Stark, wer alles mit dabei ist.“'
+        - locals.quoteText = 'Heinrich Strößenreuther, Chef-Aktivist'
+    include ../partials/screens/quote-screen
+    div(class="pt-6 md:pt-8")
+        .container
+            div(class="-mx-2 lg:-mx-3 flex flex-wrap justify-center mb-8 lg:mb-7")
+                div(class="px-2 lg:px-3 w-full sm:w-10/12 lg:w-8/12")
+                    include ../static/donate.html
+    include ../partials/screens/events-screen
+    include ../partials/screens/footer

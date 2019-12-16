@@ -1,30 +1,33 @@
 section.videos-screen(class=(videos_screen_upper ? "videos-screen--with-upper-block" : ''))
     div(class="mx-auto text-center mb-4 pb-2 lg:mb-6")
-        .title.title--size-h2.text-black.arrow-block.inline-block.goal-screen__title
-            .arrow-block__icon.text-white
-                include ../../assets/img/svg-sprite/text-arrow.svg
-            span Aktuelle Updates
-    .container
+        .title.title--size-h2.text-black.inline-block.goal-screen__title.mb-2
+            span Aktuelles
+        .text-content.text-content--size-1.mb-2
+            span Hier finden Sie aktuelle Informationen über unsere Massnahmen
+        .title.title--size-h2.text-black.inline-block.goal-screen__title.mb-2
+            span Kontakt
+        .text-content.text-content--size-1.mb-2
+            span
+                | Kontakt - Für Presseanfragen wenden Sie sich bitte an Klaudia Kelleh
+                a(href="mailto:presse@germanzero.de" class="ml-1 link") (presse@germanzero.de)
+    .container.js-toggle-list
         div(class="flex flex-wrap -mx-2 lg:-mx-3")
             div(class="w-full lg:w-6/12 px-3 md:px-7 lg:px-3 xl:pr-3 mb-5 md:mb-6 lg:mb-7")
                 .video-block.text-black
                     div(class="video-block__tag md:mb-3 lg:mb-4") #dasindwir
-                    div(class="video-block__title md:hidden mb-2") Vor dem Bundestag
-                    .video-block__video(style="background-image: url('/assets/img/article-test-1.png')")
+                    div(class="video-block__title md:hidden mb-2") Die RBB Abendschau vom 24.09.2019 über GermanZero
+                    .video-block__video(style="background-image: url('https://img.youtube.com/vi/4-eAmEvjtyA/0.jpg')" data-youtube-id="4-eAmEvjtyA").js-video-modal-btn
                         .video-block__play.flex.items-center.justify-center
                             include ../../assets/img/svg-sprite/arrow-slider.svg
                         div(class="video-block__label text-body hidden md:block")
                             span.bg-secondary.px-2
-                                | Vor dem Bundestag
-            div(class="w-full lg:w-6/12 px-3 md:px-7 lg:px-3 xl:pr-3 mb-5 md:mb-6 lg:mb-7")
-                .video-block.text-black
-                    div(class="video-block__tag md:mb-3 lg:mb-4") #wirbleibendran
-                    div(class="video-block__title md:hidden mb-2") Verhandlungen im Paul-Löbe haus
-                    .video-block__video(style="background-image: url('/assets/img/article-test-1.png')")
-                        .video-block__play.flex.items-center.justify-center
-                            include ../../assets/img/svg-sprite/arrow-slider.svg
-                        div(class="video-block__label text-body hidden md:block")
-                            span.bg-secondary.px-2
-                                | Verhandlungen im Paul-Löbe haus
-        div(class="text-center pb-9 sm:pb-10 lg:pb-9")
-            a.link.link--invert.inline-block.title.title--size-h4.text-primary.title--underline-black(href="#") Alle Videos
+                                | Die RBB Abendschau vom 24.09.2019 über GermanZero
+        //- div(class="text-center pb-9 sm:pb-10 lg:pb-9")
+            span(class="cursor-pointer link link--invert inline-block title title--size-h4 text-primary title--underline-black js-toggle-list-button transition hover:text-black")
+                span.js-toggle-list-more-text Alle Videos
+                span.js-toggle-list-less-text.hidden  Weniger
+    .video-modal.js-video-modal
+        button.js-video-modal-btn-close
+            include ../../assets/img/svg-sprite/close.svg
+        .video-modal-content
+            iframe(class="js-video-modal-frame" id="youtube" width="100%" height="100%" frameborder="0" allow="autoplay" allowfullscreen src="")

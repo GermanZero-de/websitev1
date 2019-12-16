@@ -18,7 +18,7 @@ footer.footer
                         .call-form__header Spenden
                         .call-form__text.mb-9.pb-3.flex-1 Wer keine Zeit hat, der kann mit Spenden helfen. Jeder Euro hilft! Spenden ab  5 Euro bewegen tatsächlich.
                         div
-                            button.button.button--black-o.w-full.text-center
+                            a.button.button--black-o.w-full.text-center(href="/spenden")
                                 span Jetzt spenden
     .footer__section.bg-black
         .container
@@ -27,25 +27,37 @@ footer.footer
                 div(class="px-2 lg:px-3 w-full lg:w-8/12 flex flex-wrap")
                     div(class="mb-7 md:mb-0 w-full md:w-1/2 footer__side footer__side--with-divider flex flex-wrap")
                         div(class="font-body footer__link mb-6 md:mb-4 lg:mb-2 title title--size-h5 font-normal text-white w-1/2 pr-5 text-right")
-                            a(href="#" class="link") Presse
+                            a(href="/presse" class="link") Presse
                         div(class="font-body footer__link mb-6 md:mb-4 lg:mb-2 title title--size-h5 font-normal text-white w-1/2 pl-5 text-left")
-                            a(href="#" class="link") Kontakt
+                            a(href="mailto:info@germanzero.de" class="link") Kontakt
+
                         div(class="font-body footer__link mb-6 md:mb-4 lg:mb-2 title title--size-h5 font-normal text-white w-1/2 pr-5 text-right")
-                            a(href="#" class="link") Datenschutza
+                            a(href="germanzero.join.com" class="link") Jobs
                         div(class="font-body footer__link mb-6 md:mb-4 lg:mb-2 title title--size-h5 font-normal text-white w-1/2 pl-5 text-left")
-                            a(href="#" class="link") Impressum
+                            a(href="/english_summary" class="link") English Summary
+                        //- div(class="font-body footer__link mb-6 md:mb-4 lg:mb-2 title title--size-h5 font-normal text-white w-1/2 pr-5 text-right")
+                            a(href="/wersindwir" class="link") Wer sind wir
+                        //- div(class="font-body footer__link mb-6 md:mb-4 lg:mb-2 title title--size-h5 font-normal text-white w-1/2 pl-5 text-left")
+                            a(href="/partner" class="link") Partner
+                        //- div(class="font-body footer__link mb-6 md:mb-4 lg:mb-2 title title--size-h5 font-normal text-white w-1/2 pr-5 text-right")
+                            a(href="/medienspiegel" class="link") Medienspiegel
+
+                        div(class="font-body footer__link mb-6 md:mb-4 lg:mb-2 title title--size-h5 font-normal text-white w-1/2 pr-5 text-right")
+                            a(href="/datenschutz" class="link") Datenschutz
+                        div(class="font-body footer__link mb-6 md:mb-4 lg:mb-2 title title--size-h5 font-normal text-white w-1/2 pl-5 text-left")
+                            a(href="/impressum" class="link") Impressum
                     div(class="w-full md:w-1/2 flex items-center")
                         div(class="px-5 w-full md:pl-6 lg:pr-0 flex justify-between items-center")
-                            a(class="footer__icon link text-white hover:text-primary" href="#")
+                            a(class="footer__icon link text-white hover:text-primary" href="https://www.facebook.com/GermanZero-101124947919410/" target="_blank")
                                 include ../../assets/img/svg-sprite/facebook.svg
-                            a(class="footer__icon link text-white hover:text-primary" href="#")
+                            a(class="footer__icon link text-white hover:text-primary" href="https://twitter.com/_germanzero" target="_blank")
                                 include ../../assets/img/svg-sprite/twitter.svg
-                            a(class="footer__icon link text-white hover:text-primary" href="#")
+                            a(class="footer__icon link text-white" href="https://www.youtube.com/channel/UCyio7GV0kpXeOu5m6Xo6A3A" target="_blank")
                                 include ../../assets/img/svg-sprite/youtube.svg
-                            a(class="footer__icon link text-white hover:text-primary" href="#")
+                            a(class="footer__icon link text-white hover:text-primary" href="https://www.instagram.com/_germanzero/" target="_blank")
                                 include ../../assets/img/svg-sprite/instagram.svg
             div(class="flex")
                 div(class="px-2 lg:px-3 hidden lg:block w-full lg:w-1/12")
                 div(class="px-2 lg:px-3 w-full lg:w-10/12 flex flex-wrap justify-center md:justify-between")
                     div(class="font-body title title--size-h5 font-normal text-white mb-6 mr-2 lg:mr-auto") ©  GermanZero e.V. 2019
-                    a(class="font-body title title--size-h5 font-normal text-white underline mb-6 link" href="#") Nach oben!
+                    a(class="font-body title title--size-h5 font-normal text-white underline mb-6 link js-scroll-it" href="#header-screen") Nach oben!
