@@ -37,6 +37,7 @@ const htmlPlugins = getFilesFromDir(PAGE_DIR, ['.pug']).map((filePath) => {
   return new HtmlWebpackPlugin({
     // chunks: [fileName.replace(path.extname(fileName), ''), 'vendor'],
     template: filePath,
+    inject: 'head',
     filename: `.${fileName.replace(/\.pug$/, '.html')}`,
   });
 });

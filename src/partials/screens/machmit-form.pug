@@ -2,7 +2,7 @@
 - locals.cities = [];
 
 form.form.js-form.flex.flex-wrap.-mx-2.js-custom-machmit-form(
-    name='newsletter'
+    name='machmit-form'
     action="https://api.germanzero.de/subscriptions"
     data-success-message="Vielen Dank, dass du dich für unseren Newsletter Angemeldet hast. Du erhältst in Kürze eine E-Mail von uns."
 )
@@ -85,13 +85,21 @@ form.form.js-form.flex.flex-wrap.-mx-2.js-custom-machmit-form(
                 span.form__control-placeholder Mobilfunknummer
                 span.form__error-message
     div(class="px-2 w-full mb-4")
+        .title.title--size-h5 Wie ich GermanZero unterstützen kann (obligatorisch, ein oder mehrere)
         div(class="form-control")
-            label.relative.block
-                select(class="form__select js-form-control js-select-custom js-show-sphere" name="assists" data-validation-rule='["required"]' multiple)
-                    option(value="") Wie ich GermanZero unterstützen kann (obligatorisch, ein oder mehrere)
-                    option(value="tatkräftig") tatkräftig
-                    option(value="finanzstark") finanzstark
-                    option(value="reichweitenstark") reichweitenstark
+            label.relative.form__checkbox
+                input(class="js-form-control" name="assists_finanzstark" value="finanzstark" type="checkbox")
+                span.form__checkbox-placeholder finanzstark
+                span.form__error-message
+        div(class="form-control")
+            label.relative.form__checkbox
+                input(class="js-form-control" name="assists_reichweitenstark" value="reichweitenstark" type="checkbox")
+                span.form__checkbox-placeholder reichweitenstark
+                span.form__error-message
+        div(class="form-control")
+            label.relative.form__checkbox
+                input(class="js-form-control js-show-sphere" name="assists_tatkräftig" value="tatkräftig" type="checkbox")
+                span.form__checkbox-placeholder tatkräftig
                 span.form__error-message
     div(class="px-2 w-full mb-4 js-sphere-radios hidden")
         .title.title--size-h4.mb-1 Sage uns bitte, in welchem Bereich du uns unterstützen kannst und wieviel Zeit du dafür aufwänden kannst.
