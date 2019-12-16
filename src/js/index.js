@@ -1,23 +1,23 @@
 import './polyfills';
+import Choices from 'choices.js';
 import Swiper from './modules/Swiper';
 import MenuModal from './modules/MenuModal';
 import VideoModal from './modules/VideoModal';
 import scrollIt from './modules/ScrollIt/ScrollIt';
-import {formsHandler} from './modules/Validation';
+import { formsHandler } from './modules/Validation';
 import {
   API_PATH, ApiHandler, checkStatus, DEFAULT_CONTENT_TYPE, parseJSON,
 } from './modules/Api';
 import Notifications from './modules/Notifications';
 import EventEmitter from './modules/EventEmitter';
 import GetQueryParams from './GetQueryParams';
-import {NOTIFICATION_ERROR} from './modules/constants';
-import Choices from 'choices.js';
+import { NOTIFICATION_ERROR } from './modules/constants';
 import 'choices.js/public/assets/styles/choices.min.css';
 
 document.addEventListener('DOMContentLoaded', () => {
   const emitter = new EventEmitter();
   // eslint-disable-next-line no-unused-vars
-  const notifications = new Notifications({emitter});
+  const notifications = new Notifications({ emitter });
   const forms = document.querySelectorAll('.js-form');
   [...forms].forEach(formsHandler(emitter));
   [...forms].forEach(ApiHandler(emitter));
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (selects.length) {
     // eslint-disable-next-line no-new,new-cap,dot-notation
-    [...selects].forEach((select) => new Choices(select, {removeItemButton: true}));
+    [...selects].forEach((select) => new Choices(select, { removeItemButton: true }));
   }
 
   /**
@@ -44,17 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }));
 
     document.querySelector('.js-show-sphere').addEventListener('change', (e) => {
-      const selectedOptions = [];
-      for (let i = 0, len = e.target.options.length; i < len; i++) {
-        const opt = e.target.options[i];
-
-        if (opt.selected) {
-          selectedOptions.push(opt.value);
-        }
-      }
-
-      // eslint-disable-next-line no-bitwise
-      [...document.querySelectorAll('.js-sphere-radios')].forEach((radio) => radio.classList.toggle('hidden', !~selectedOptions.indexOf('tatkräftig')));
+      [...document.querySelectorAll('.js-sphere-radios')].forEach((radio) => radio.classList.toggle('hidden', !e.currentTarget.checked));
     });
   }
 
@@ -128,13 +118,18 @@ document.addEventListener('DOMContentLoaded', () => {
       navbar.style.top = '-50px';
     }
   };
+
+  // eslint-disable-next-line no-new
+  [...document.querySelectorAll('.js-video-element')].forEach((videoModal) => {
+    // eslint-disable-next-line no-new
+    new VideoModal(videoModal);
+  });
+
+  // eslint-disable-next-line no-new
+  new MenuModal();
 });
 
 window.onload = () => {
   // eslint-disable-next-line no-new
   // new Swiper('.swiper-container');
 };
-
-// eslint-disable-next-line no-new
-new MenuModal();
-new VideoModal();
