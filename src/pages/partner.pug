@@ -1,0 +1,41 @@
+extends ../partials/layouts/main.pug
+
+block content
+    include ../partials/screens/menu-screen
+    append variables
+        - locals.header_bg = 'background-image: url(/assets/img/machmit-first-screen.jpg);'
+        - locals.quoteTitle = '“GermanZero ist eine Bewegung. Wir gewinnen jeden Tag neue Unterstützerinnen und Unterstützer.”'
+        - locals.quoteText = 'Heinrich Strößenreuther, Chef-Aktivist'
+    include ../partials/screens/quote-screen
+    div(class="container pt-6 md:pt-9")
+        div(class="flex -mx-2 -lg:mx-3 justify-center")
+            div(class="px-2 lg:px-3 w-full")
+                div(class="title title--size-h2 text-black text-center mb-5 sm:mb-6") Unsere Partner
+                div(class="content content--size-2 text-black mb-6 sm:mb-7 lg:mb-10 xl:mb-10 text-block")
+                    div(class="flex flex-wrap -mx-2 lg:-mx-3")
+                        div(class="w-full sm:w-6/12 lg:w-3/12 px-2 lg:px-3 my-2 lg:my-3")
+                            div.text-center.card.card--form
+                                a(class="responsive-image responsive-image--1/1 transition hover:opacity-60 block mb-4 text-center" href="https://www.floridafilm.de" target="_blank")
+                                    img(src="/assets/img/placeholders/no-image-default.png")
+                                a(href="https://www.floridafilm.de" target="_blank" class="link")
+                                    span Florida Film
+                        div(class="w-full sm:w-6/12 lg:w-3/12 px-2 lg:px-3 my-2 lg:my-3")
+                            div.text-center.card.card--form
+                                a(class="responsive-image responsive-image--1/1 transition hover:opacity-60 block mb-4 text-center" href="https://www.ignore-gravity.com" target="_blank")
+                                    img(src="/assets/img/partners/ignore-gravity.svg")
+                                a(href="https://www.ignore-gravity.com" target="_blank" class="link")
+                                    span Ignore-Gravity
+                        div(class="w-full sm:w-6/12 lg:w-3/12 px-2 lg:px-3 my-2 lg:my-3")
+                            div.text-center.card.card--form
+                                a(class="responsive-image responsive-image--1/1 transition hover:opacity-60 block mb-4 text-center" href="https://www.serviceplan.com" target="_blank")
+                                    img(src="/assets/img/partners/service-plang.svg")
+                                a(href="https://www.serviceplan.com" target="_blank" class="link")
+                                    span Serviceplan
+                        div(class="w-full sm:w-6/12 lg:w-3/12 px-2 lg:px-3 my-2 lg:my-3")
+                            div.text-center.card.card--form
+                                a(class="responsive-image responsive-image--1/1 transition hover:opacity-60 block mb-4 text-center" href="https://www.togetherforfuture.net" target="_blank")
+                                    img(src="/assets/img/partners/together-for-future.png")
+                                a(href="https://www.togetherforfuture.net" target="_blank" class="link")
+                                    span TogehterForFuture
+    include ../partials/screens/events-screen
+    include ../partials/screens/footer
