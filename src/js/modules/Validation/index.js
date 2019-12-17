@@ -33,6 +33,18 @@ export const formsHandler = (emitter) => (formEl) => {
       if (formEl.getAttribute('name') === formName) {
         formEl.classList.remove('isPending');
         formEl.reset();
+        // eslint-disable-next-line no-param-reassign
+        [...formEl.querySelectorAll('input:not([type=checkbox]):not([type=radio])')].forEach((input) => {
+          // eslint-disable-next-line no-param-reassign
+          input.value = '';
+          input.setAttribute('value', '');
+        });
+        [...formEl.querySelectorAll('input=[type=checkbox]')].forEach((checkbox) => {
+          // eslint-disable-next-line no-param-reassign
+          checkbox.checked = false;
+        });
+        // eslint-disable-next-line no-param-reassign
+        [...formEl.querySelectorAll('select')].forEach((select) => select.value = '');
       }
     });
   }
