@@ -1,5 +1,6 @@
 const merge = require('webpack-merge');
 const TerserPlugin = require('terser-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const baseWebpackConfig = require('./webpack.base.conf');
 
 const buildWebpackConfig = merge(baseWebpackConfig, {
@@ -7,11 +8,14 @@ const buildWebpackConfig = merge(baseWebpackConfig, {
   mode: 'production',
   optimization: {
     minimize: true,
-    minimizer: [new TerserPlugin({
-      terserOptions: {
-        safari10: true,
-      },
-    })],
+    minimizer: [
+      new TerserPlugin({
+        terserOptions: {
+          safari10: true,
+        },
+      }),
+      new OptimizeCSSAssetsPlugin({}),
+    ],
   },
 });
 
