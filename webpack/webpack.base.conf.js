@@ -1,11 +1,11 @@
 const path = require('path');
 const fs = require('fs');
+// const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-// const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 const PATHS = {
   src: path.join(__dirname, '../src'),
