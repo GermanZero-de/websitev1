@@ -47,6 +47,7 @@
     "lodash.throttle": "^4.1.1",
     "mini-css-extract-plugin": "^0.8.0",
     "node-sass": "^4.13.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.3",
     "postcss-custom-properties": "^9.0.2",
     "postcss-each-variables": "^0.3.0",
     "postcss-extend": "^1.0.5",
@@ -79,7 +80,6 @@
     "eslint": "^6.7.1",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.18.2",
-    "optimize-css-assets-webpack-plugin": "^5.0.3",
     "webpack-bundle-analyzer": "^3.6.0",
     "webpack-dev-server": "^3.9.0"
   }
