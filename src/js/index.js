@@ -44,9 +44,10 @@ document.addEventListener('DOMContentLoaded', () => {
       document.querySelector('.js-custom-sphere').classList.toggle('hidden', e.target.value !== 'custom');
     }));
 
-    document.querySelector('.js-show-sphere').addEventListener('change', (e) => {
-      [...document.querySelectorAll('.js-sphere-radios')].forEach((radio) => radio.classList.toggle('hidden', !e.currentTarget.checked));
-    });
+    [...document.querySelectorAll('.js-show-sphere')].forEach((el) => el.addEventListener('change', (e) => {
+      const show = [...document.querySelectorAll('.js-show-sphere:checked')].length;
+      [...document.querySelectorAll('.js-sphere-radios')].forEach((radio) => radio.classList.toggle('hidden', !show));
+    }));
   }
 
   /**
