@@ -1,23 +1,24 @@
 import './polyfills';
 import Choices from 'choices.js';
+import LazyLoad from 'vanilla-lazyload';
 import Swiper from './modules/Swiper';
 import MenuModal from './modules/MenuModal';
 import VideoModal from './modules/VideoModal';
 import scrollIt from './modules/ScrollIt/ScrollIt';
-import { formsHandler } from './modules/Validation';
+import {formsHandler} from './modules/Validation';
 import {
   API_PATH, ApiHandler, checkStatus, DEFAULT_CONTENT_TYPE, parseJSON,
 } from './modules/Api';
 import Notifications from './modules/Notifications';
 import EventEmitter from './modules/EventEmitter';
 import GetQueryParams from './GetQueryParams';
-import { NOTIFICATION_ERROR } from './modules/constants';
+import {NOTIFICATION_ERROR} from './modules/constants';
 import 'choices.js/public/assets/styles/choices.min.css';
 
 document.addEventListener('DOMContentLoaded', () => {
   const emitter = new EventEmitter();
   // eslint-disable-next-line no-unused-vars
-  const notifications = new Notifications({ emitter });
+  const notifications = new Notifications({emitter});
   const forms = document.querySelectorAll('.js-form');
   [...forms].forEach(formsHandler(emitter));
   [...forms].forEach(ApiHandler(emitter));
@@ -31,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (selects.length) {
     // eslint-disable-next-line no-new,new-cap,dot-notation
-    [...selects].forEach((select) => new Choices(select, { removeItemButton: true }));
+    [...selects].forEach((select) => new Choices(select, {removeItemButton: true}));
   }
 
   /**
@@ -110,14 +111,15 @@ document.addEventListener('DOMContentLoaded', () => {
       });
   }
 
+  /* fixed header */
   const navbar = document.getElementById('nav-fixed');
-  window.onscroll = function () {
+  window.addEventListener('scroll', () => {
     if (window.pageYOffset > 100) {
       navbar.style.top = '0';
     } else {
       navbar.style.top = '-50px';
     }
-  };
+  });
 
   // eslint-disable-next-line no-new
   [...document.querySelectorAll('.js-video-element')].forEach((videoModal) => {
@@ -127,6 +129,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // eslint-disable-next-line no-new
   new MenuModal();
+
+  // eslint-disable-next-line no-unused-vars
+  const lazyLoad = new LazyLoad({
+    elements_selector: '.js-lazy-image',
+  });
 });
 
 window.onload = () => {
