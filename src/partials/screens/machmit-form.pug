@@ -88,56 +88,69 @@ form.form.js-form.flex.flex-wrap.-mx-2.js-custom-machmit-form(
         .title.title--size-h5 Wie ich GermanZero unterstützen kann (obligatorisch, ein oder mehrere)
         div(class="form-control")
             label.relative.form__checkbox
-                input(class="js-form-control js-show-sphere" name="assists_scientific" value="scientific" type="checkbox")
-                span.form__checkbox-placeholder Inhaltlich/wissenschaftlich
+                input(class="js-form-control" name="assists_finanzstark" value="finanzstark" type="checkbox")
+                span.form__checkbox-placeholder finanzstark
                 span.form__error-message
         div(class="form-control")
             label.relative.form__checkbox
-                input(class="js-form-control js-show-sphere" name="assists_cooperation" value="cooperation" type="checkbox")
-                span.form__checkbox-placeholder Kooperation
+                input(class="js-form-control" name="assists_reichweitenstark" value="reichweitenstark" type="checkbox")
+                span.form__checkbox-placeholder reichweitenstark
                 span.form__error-message
         div(class="form-control")
             label.relative.form__checkbox
-                input(class="js-form-control js-show-sphere" name="assists_text-ads-media" value="text-ads-media" type="checkbox")
-                span.form__checkbox-placeholder Texte/Werbung/Medien
+                input(class="js-form-control js-show-sphere" name="assists_tatkräftig" value="tatkräftig" type="checkbox")
+                span.form__checkbox-placeholder tatkräftig
                 span.form__error-message
+    div(class="px-2 w-full mb-4 js-sphere-radios hidden")
+        .title.title--size-h4.mb-1 Sage uns bitte, in welchem Bereich du uns unterstützen kannst und wieviel Zeit du dafür aufwänden kannst.
         div(class="form-control")
-            label.relative.form__checkbox
-                input(class="js-form-control js-show-sphere" name="assists_fundraising" value="fundraising" type="checkbox")
-                span.form__checkbox-placeholder Fundraising
-                span.form__error-message
-        div(class="form-control")
-            label.relative.form__checkbox
-                input(class="js-form-control js-show-sphere" name="assists_it" value="it" type="checkbox")
-                span.form__checkbox-placeholder IT
-                span.form__error-message
-        div(class="form-control")
-            label.relative.form__checkbox
-                input(class="js-form-control js-show-sphere" name="assists_organisation" value="organisation" type="checkbox")
-                span.form__checkbox-placeholder Organisationsaufbau
-                span.form__error-message
-        div(class="form-control")
-            label.relative.form__checkbox
-                input(class="js-form-control js-show-sphere" name="assists_local-team" value="local-team" type="checkbox")
-                span.form__checkbox-placeholder GermanZero-Team in meinem Ort
+            label.relative.block.mb-1
+                input(class="form__radio js-form-control js-show-custom-field" type="radio" name="sphere" value="it" checked)
+                span.form__radio-placeholder IT
+            label.relative.block.mb-1
+                input(class="form__radio js-form-control js-show-custom-field" type="radio" name="sphere" value="local-team")
+                span.form__radio-placeholder GermanZero-Team in meinem Ort
+            label.relative.block.mb-1
+                input(class="form__radio js-form-control js-show-custom-field" type="radio" name="sphere" value="accounting")
+                span.form__radio-placeholder Buchhaltung / Accounting
+            label.relative.block.mb-1
+                input(class="form__radio js-form-control js-show-custom-field" type="radio" name="sphere" value="text-ads-media")
+                span.form__radio-placeholder Texte / Werbung / Medien
+            label.relative.block.mb-1
+                input(class="form__radio js-form-control js-show-custom-field" type="radio" name="sphere" value="scientific")
+                span.form__radio-placeholder Inhaltlich/wissenschaftlich
+            label.relative.block.mb-1
+                input(class="form__radio js-form-control js-show-custom-field" type="radio" name="sphere" value="cooperation")
+                span.form__radio-placeholder Kooperation
+            label.relative.block.mb-1
+                input(class="form__radio js-form-control js-show-custom-field" type="radio" name="sphere" value="fundraising")
+                span.form__radio-placeholder Fundraising
+            label.relative.block.mb-1
+                input(class="form__radio js-form-control js-show-custom-field" type="radio" name="sphere" value="custom")
+                span.form__radio-placeholder sonstiges
+            span.form__error-message
+        div(class="form-control mt-2 hidden js-custom-sphere")
+            label.relative.block
+                input(class="form__input js-form-control" name="custom_sphere" type="text" value="" onkeyup="this.setAttribute('value', this.value);" )
+                span.form__control-placeholder sonstiges
                 span.form__error-message
     div(class="px-2 w-full mb-4 js-sphere-radios hidden")
             .title.title--size-h4.mb-1 Wieviel Zeit kannst du für GermanZero aufbringen
             div(class="form-control")
                 label.relative.block.mb-1
-                    input(class="form__radio js-form-control" type="radio" name="time" value="5" checked)
+                    input(class="form__radio js-form-control" type="radio" name="time" value="5")
                     span.form__radio-placeholder bis zu 5 Stunden / Woche
                 label.relative.block.mb-1
                     input(class="form__radio js-form-control" type="radio" name="time" value="10" checked)
                     span.form__radio-placeholder bis zu 10 Stunden / Woche
                 label.relative.block.mb-1
-                    input(class="form__radio js-form-control" type="radio" name="time" value="20" checked)
+                    input(class="form__radio js-form-control" type="radio" name="time" value="20")
                     span.form__radio-placeholder bis zu 20 Stunden / Woche
                 label.relative.block.mb-1
-                    input(class="form__radio js-form-control" type="radio" name="time" value="30" checked)
+                    input(class="form__radio js-form-control" type="radio" name="time" value="30")
                     span.form__radio-placeholder bis zu 30 Stunden / Woche
                 label.relative.block.mb-1
-                    input(class="form__radio js-form-control" type="radio" name="time" value="40" checked)
+                    input(class="form__radio js-form-control" type="radio" name="time" value="40")
                     span.form__radio-placeholder bis zu 40 Stunden / Woche
                 span.form__error-message
     div(class="px-2 w-full mb-4")
