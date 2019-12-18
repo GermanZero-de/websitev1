@@ -15,6 +15,22 @@ export const FORM_ERROR_SELECTOR = 'form__error-message';
 export const UNKNOWN_VALIDATION_TEXT = 'Field is invalid';
 export const VALIDATION_ATTRIBUTE = 'data-validation-rule';
 
+/**
+ * Checks is element valid by rule
+ * @param element
+ * @param rule
+ * @param rules
+ * @returns {boolean}
+ */
+export const isValid = (element, rule, rules) => {
+  if (element.tagName === 'INPUT' && element.getAttribute('type') === 'checkbox') {
+    if (rule === 'required') {
+      return !!element.checked;
+    }
+  }
+  return !!rules[rule].test(element.value);
+};
+
 export const formsHandler = (emitter) => (formEl) => {
   let formIsValid = true;
   const submitEl = formEl.querySelector('.js-form-submit');
@@ -61,7 +77,7 @@ export const formsHandler = (emitter) => (formEl) => {
             if (validationAttribute) {
               const validations = JSON.parse(validationAttribute);
               validations.forEach((validation) => {
-                if (!validationRules[validation].test(controlEl.value)) {
+                if (!isValid(controlEl, validation, validationRules)) {
                   controlIsValid = false;
                   formIsValid = false;
                   errorMessage = window.validationMessages[validation] || UNKNOWN_VALIDATION_TEXT;
@@ -85,9 +101,9 @@ export const formsHandler = (emitter) => (formEl) => {
         formEl.classList.add('isPending');
         const formData = new FormData(formEl);
         const formEntries = formData.entries();
-        const json = Object.assign(...Array.from(formEntries, ([x, y]) => ({ [x]: y })));
+        const json = Object.assign(...Array.from(formEntries, ([x, y]) => ({[x]: y})));
 
-        const cEvent = CustomEventPoly(DATA_SENT_EVENT, { data: json });
+        const cEvent = CustomEventPoly(DATA_SENT_EVENT, {data: json});
         formEl.dispatchEvent(cEvent);
       } else {
         const errorsElements = [...formEl.querySelectorAll(`.${FORM_ERROR_SELECTOR}`)];
