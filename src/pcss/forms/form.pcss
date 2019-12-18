@@ -220,6 +220,14 @@
         input:checked ~ &::after {
             display: block;
         }
+
+        input.invalid ~ & {
+            color: theme('colors.primary');
+
+            &::before {
+                border-color: theme('colors.primary');
+            }
+        }
     }
 
     &__radio-placeholder {

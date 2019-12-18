@@ -6,23 +6,32 @@ export default class VideoModal {
     this.containerElementFrame = document.querySelector('.js-video-modal-frame');
     this.openBtnElements = videoElement.querySelectorAll('.js-video-modal-btn');
     this.closeBtnElements = document.querySelectorAll('.js-video-modal-btn-close');
-    this.toggleModalHandler = this.toggleModalHandler.bind(this);
+    this.openModalHandler = this.openModalHandler.bind(this);
+    this.closeModalHandler = this.closeModalHandler.bind(this);
     this.addListeners();
   }
 
   addListeners() {
-    [...this.openBtnElements].forEach((el) => el.addEventListener('click', this.toggleModalHandler, true));
-    [...this.closeBtnElements].forEach((el) => el.addEventListener('click', this.toggleModalHandler, false));
+    [...this.openBtnElements].forEach((el) => el.addEventListener('click', this.openModalHandler, true));
+    [...this.closeBtnElements].forEach((el) => el.addEventListener('click', this.closeModalHandler));
   }
 
   removeListeners() {
-    [...this.openBtnElements].forEach((el) => el.removeEventListener('click', this.toggleModalHandler, true));
-    [...this.closeBtnElements].forEach((el) => el.removeEventListener('click', this.toggleModalHandler, false));
+    [...this.openBtnElements].forEach((el) => el.removeEventListener('click', this.openModalHandler, true));
+    [...this.closeBtnElements].forEach((el) => el.removeEventListener('click', this.closeModalHandler));
   }
 
-  toggleModalHandler(event) {
-    this.isOpen = !this.isOpen;
+  closeModalHandler(event) {
+    this.isOpen = false;
+    this.render(event);
+  }
 
+  openModalHandler(event) {
+    this.isOpen = !this.isOpen;
+    this.render(event);
+  }
+
+  render(event) {
     if (this.isOpen) {
       const id = event.target.getAttribute('data-youtube-id');
       const autoplay = '?autoplay=1';
