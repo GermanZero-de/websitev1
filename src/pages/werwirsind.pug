@@ -1,0 +1,14 @@
+extends ../partials/layouts/main.pug
+
+block content
+    include ../partials/screens/menu-screen
+    append variables
+        - locals.header_bg = 'background-image: url(/assets/img/presse-bg.jpg);'
+        - locals.quoteTitle = ''
+        - locals.quoteText = ''
+        - locals.isHeaderHeightAuto = true
+    include ../partials/screens/quote-screen
+    include ../partials/screens/who-we-are-screen
+    - locals.events_screen_bg = ''
+    include ../partials/screens/events-screen
+    include ../partials/screens/footer

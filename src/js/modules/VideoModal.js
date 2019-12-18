@@ -27,7 +27,7 @@ export default class VideoModal {
   }
 
   openModalHandler(event) {
-    this.isOpen = !this.isOpen;
+    this.isOpen = true;
     this.render(event);
   }
 
