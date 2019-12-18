@@ -43,8 +43,8 @@ export const ApiHandler = (emitter) => (formEl) => formEl.addEventListener(DATA_
     .then(parseJSON)
     .then((res) => {
       if (emitter) {
-        emitter.emit(SEND_SUCCESS, formName);
         emitter.emit(NOTIFICATION_SUCCESS, formEl.getAttribute(SUCCESS_MESSAGE_ATTRIBUTE));
+        emitter.emit(SEND_SUCCESS, formName);
       }
     })
     .catch((error) => {
@@ -52,8 +52,8 @@ export const ApiHandler = (emitter) => (formEl) => formEl.addEventListener(DATA_
         if (error.response) {
           error.response.json().then((errRes) => {
             console.error(errRes);
-            emitter.emit(SEND_ERROR, formName);
             emitter.emit(NOTIFICATION_ERROR, errRes);
+            emitter.emit(SEND_ERROR, formName);
           });
         }
       }

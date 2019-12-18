@@ -14,6 +14,7 @@ import EventEmitter from './modules/EventEmitter';
 import GetQueryParams from './GetQueryParams';
 import {NOTIFICATION_ERROR} from './modules/constants';
 import 'choices.js/public/assets/styles/choices.min.css';
+import LeaveModal from './modules/LeaveModal';
 
 document.addEventListener('DOMContentLoaded', () => {
   const emitter = new EventEmitter();
@@ -134,6 +135,11 @@ document.addEventListener('DOMContentLoaded', () => {
   // eslint-disable-next-line no-unused-vars
   const lazyLoad = new LazyLoad({
     elements_selector: '.js-lazy-image',
+  });
+
+  const modal = new LeaveModal({
+    template: '.js-leave-modal-template',
+
   });
 });
 

@@ -1,9 +1,9 @@
-import {NOTIFICATION_ERROR, NOTIFICATION_SUCCESS} from '../constants';
+import { NOTIFICATION_ERROR, NOTIFICATION_SUCCESS } from '../constants';
 
 const MAIN_CSS_CLASS = 'notifications';
 
 export default class Notifications {
-  constructor({emitter}) {
+  constructor({ emitter }) {
     this.el = document.querySelector('.js-notifications');
     this.visible = false;
     this.type = 'success';
@@ -17,7 +17,8 @@ export default class Notifications {
 
   addListeners() {
     this.subscriptions.push(this.emitter.subscribe(NOTIFICATION_SUCCESS, (data) => {
-      this.show({content: data});
+      console.log(NOTIFICATION_SUCCESS, data);
+      this.show({ content: data });
     }));
 
     this.subscriptions.push(this.emitter.subscribe(NOTIFICATION_ERROR, (data) => {
@@ -32,7 +33,7 @@ export default class Notifications {
     });
   }
 
-  show({type = 'success', delay = 6000, content = ''}) {
+  show({ type = 'success', delay = 6000, content = '' }) {
     if (this.tm) {
       clearTimeout(this.tm);
     }
