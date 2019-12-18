@@ -195,16 +195,6 @@ module.exports = {
       {from: `${PATHS.src}/${PATHS.assets}`, to: `${PATHS.assets}`},
       {from: `${PATHS.src}/static`, to: ''},
     ]),
-    /*
-    new OptimizeCssAssetsPlugin({
-      assetNameRegExp: /\.optimize\.css$/g,
-      cssProcessor: require('cssnano'),
-      cssProcessorPluginOptions: {
-        preset: ['default', { discardComments: { removeAll: true } }],
-      },
-      canPrint: true,
-    }),
-    */
 
     new SpriteLoaderPlugin(),
 
