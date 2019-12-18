@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (selects.length) {
     // eslint-disable-next-line no-new,new-cap,dot-notation
-    [...selects].forEach((select) => new Choices(select, {removeItemButton: true}));
+    [...selects].forEach((select) => new Choices(select, {removeItemButton: true, shouldSort: false}));
   }
 
   /**

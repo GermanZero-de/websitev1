@@ -85,7 +85,7 @@ form.form.js-form.flex.flex-wrap.-mx-2.js-custom-machmit-form(
                 span.form__control-placeholder Mobilfunknummer
                 span.form__error-message
     div(class="px-2 w-full mb-4")
-        .title.title--size-h5 Wie ich GermanZero unterstützen kann (obligatorisch, ein oder mehrere)
+        .title.title--size-h5 Wie ich GermanZero unterstützen kann*
         div(class="form-control")
             label.relative.form__checkbox
                 input(class="js-form-control" name="assists_finanzstark" value="finanzstark" type="checkbox")
@@ -135,24 +135,24 @@ form.form.js-form.flex.flex-wrap.-mx-2.js-custom-machmit-form(
                 span.form__control-placeholder sonstiges
                 span.form__error-message
     div(class="px-2 w-full mb-4 js-sphere-radios hidden")
-            .title.title--size-h4.mb-1 Wieviel Zeit kannst du für GermanZero aufbringen
-            div(class="form-control")
-                label.relative.block.mb-1
-                    input(class="form__radio js-form-control" type="radio" name="time" value="5")
-                    span.form__radio-placeholder bis zu 5 Stunden / Woche
-                label.relative.block.mb-1
-                    input(class="form__radio js-form-control" type="radio" name="time" value="10" checked)
-                    span.form__radio-placeholder bis zu 10 Stunden / Woche
-                label.relative.block.mb-1
-                    input(class="form__radio js-form-control" type="radio" name="time" value="20")
-                    span.form__radio-placeholder bis zu 20 Stunden / Woche
-                label.relative.block.mb-1
-                    input(class="form__radio js-form-control" type="radio" name="time" value="30")
-                    span.form__radio-placeholder bis zu 30 Stunden / Woche
-                label.relative.block.mb-1
-                    input(class="form__radio js-form-control" type="radio" name="time" value="40")
-                    span.form__radio-placeholder bis zu 40 Stunden / Woche
-                span.form__error-message
+        .title.title--size-h4.mb-1 Wieviel Zeit kannst du für GermanZero aufbringen
+        div(class="form-control")
+            label.relative.block.mb-1
+                input(class="form__radio js-form-control" type="radio" name="time" value="5")
+                span.form__radio-placeholder bis zu 5 Stunden / Woche
+            label.relative.block.mb-1
+                input(class="form__radio js-form-control" type="radio" name="time" value="10" checked)
+                span.form__radio-placeholder bis zu 10 Stunden / Woche
+            label.relative.block.mb-1
+                input(class="form__radio js-form-control" type="radio" name="time" value="20")
+                span.form__radio-placeholder bis zu 20 Stunden / Woche
+            label.relative.block.mb-1
+                input(class="form__radio js-form-control" type="radio" name="time" value="30")
+                span.form__radio-placeholder bis zu 30 Stunden / Woche
+            label.relative.block.mb-1
+                input(class="form__radio js-form-control" type="radio" name="time" value="40")
+                span.form__radio-placeholder bis zu 40 Stunden / Woche
+            span.form__error-message
     div(class="px-2 w-full mb-4")
         div(class="form-control")
             label.relative.block
@@ -171,12 +171,6 @@ form.form.js-form.flex.flex-wrap.-mx-2.js-custom-machmit-form(
                 input(class="form__input js-form-control" name="instagram" type="text" value="" onkeyup="this.setAttribute('value', this.value);" )
                 span.form__control-placeholder instagram link
                 span.form__error-message
-    div(class="px-2 w-full mb-4")
-        div(class="form-control")
-            label.relative.block
-                input(class="form__input js-form-control" name="freeTime" type="text" value="" onkeyup="this.setAttribute('value', this.value);" )
-                span.form__control-placeholder Wie viel Zeit hast Du für uns pro Woche?
-                span.form__error-message
     //- div(class="px-2 w-full mb-4")
             div(class="form-control")
                 label.relative.block
@@ -192,11 +186,11 @@ form.form.js-form.flex.flex-wrap.-mx-2.js-custom-machmit-form(
     div(class="px-2 w-full mb-2")
         div(class="form-control")
             label.relative.form__checkbox
-                input(class="js-form-control" name="privacy" type="checkbox" checked)
+                input(class="js-form-control" name="privacy" type="checkbox" checked data-validation-rule='["required"]')
                 span.form__checkbox-placeholder
                     span Ja, ich habe die
                         a(href="/datenschutz").mx-1.underline.link Datenschutzbestimmungen
-                    span gelesen.
+                    span gelesen. *
                 span.form__error-message
     div(class="px-2 w-full mb-4")
         button.button.button--primary.js-form-submit(type="button")
