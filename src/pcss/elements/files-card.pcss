@@ -18,11 +18,19 @@
         }
     }
 
+    &__title {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
     &__image {
         padding-top: 66.803278688%;
     }
 
     &__content-block {
         flex-grow: 1;
+        max-width: 100%;
+        min-width: 0;
     }
 }
