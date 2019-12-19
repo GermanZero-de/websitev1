@@ -12,12 +12,12 @@ export default class VideoModal {
   }
 
   addListeners() {
-    [...this.openBtnElements].forEach((el) => el.addEventListener('click', this.openModalHandler, true));
+    [...this.openBtnElements].forEach((el) => el.addEventListener('click', this.openModalHandler));
     [...this.closeBtnElements].forEach((el) => el.addEventListener('click', this.closeModalHandler));
   }
 
   removeListeners() {
-    [...this.openBtnElements].forEach((el) => el.removeEventListener('click', this.openModalHandler, true));
+    [...this.openBtnElements].forEach((el) => el.removeEventListener('click', this.openModalHandler));
     [...this.closeBtnElements].forEach((el) => el.removeEventListener('click', this.closeModalHandler));
   }
 
@@ -33,7 +33,7 @@ export default class VideoModal {
 
   render(event) {
     if (this.isOpen) {
-      const id = event.target.getAttribute('data-youtube-id');
+      const id = event.currentTarget.getAttribute('data-youtube-id');
       const autoplay = '?autoplay=1';
       const relatedNo = '&rel=0';
       const src = `//www.youtube.com/embed/${id}${autoplay}${relatedNo}`;
