@@ -1,6 +1,6 @@
 .modal {
-    //visibility: hidden;
-    //opacity: 0;
+    visibility: hidden;
+    opacity: 0;
     transition: visibility .3s ease, opacity .3s ease;
     position: absolute;
     left: 0;
@@ -11,6 +11,7 @@
     justify-content: center;
     align-content: center;
     overflow: auto;
+    z-index: 9999;
 
     &__bg {
         background: rgba(0, 0, 0, .1);
