@@ -33,7 +33,11 @@
         display: inline-flex;
         align-items: center;
         justify-content: space-between;
-        margin: 50px 20px;
+        margin: 20px 20px;
+
+        @screen md {
+            margin: 50px 20px;
+        }
 
         span {
             padding: 0 20px;
@@ -46,8 +50,6 @@
         flex-direction: column;
         justify-content: center;
         right: 50%;
-        top: 15%;
-        bottom: 10%;
         margin: auto;
         padding: 20px 0;
         border-right: 3px solid theme('colors.body');
@@ -58,6 +60,11 @@
         text-align: right;
         color: theme('colors.body');
         transition: all 0.5s ease-in;
+
+        @screen md {
+            top: 15%;
+            bottom: 10%;
+        }
     }
 
     &__list-item {

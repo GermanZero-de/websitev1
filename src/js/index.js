@@ -137,10 +137,19 @@ document.addEventListener('DOMContentLoaded', () => {
     elements_selector: '.js-lazy-image',
   });
 
+  // eslint-disable-next-line no-unused-vars
   const modal = new LeaveModal({
     template: '.js-leave-modal-template',
-
   });
+
+  [...document.querySelectorAll('.js-text-crop-wrapper')].forEach((el) => {
+      let isVisible = false;
+      el.addEventListener('click', (e) => {
+        isVisible = !isVisible;
+        el.querySelector('.js-text-crop').classList.toggle('isVisible', isVisible);
+      });
+    }
+  );
 });
 
 window.onload = () => {
