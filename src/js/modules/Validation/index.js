@@ -1,3 +1,5 @@
+// eslint-disable-next-line no-unused-vars
+import formDataEntries from 'form-data-entries';
 import {
   DATA_SENT_EVENT, SEND_ERROR, SEND_START, SEND_SUCCESS,
 } from '../constants';
@@ -55,10 +57,11 @@ export const formsHandler = (emitter) => (formEl) => {
           input.value = '';
           input.setAttribute('value', '');
         });
-        [...formEl.querySelectorAll('input=[type=checkbox]')].forEach((checkbox) => {
+        [...formEl.querySelectorAll('input[type=checkbox]')].forEach((checkbox) => {
           // eslint-disable-next-line no-param-reassign
           checkbox.checked = false;
         });
+
         // eslint-disable-next-line no-param-reassign
         [...formEl.querySelectorAll('select')].forEach((select) => select.value = '');
       }
@@ -99,10 +102,14 @@ export const formsHandler = (emitter) => (formEl) => {
 
       if (formIsValid) {
         formEl.classList.add('isPending');
-        const formData = new FormData(formEl);
-        const formEntries = formData.entries();
-        const json = Object.assign(...Array.from(formEntries, ([x, y]) => ({[x]: y})));
-
+        // const formData = new FormData(formEl);
+        // const formEntries = formData.entries();
+        // const json = Object.assign(...Array.from(formEntries, ([x, y]) => ({[x]: y})));
+        const json = {};
+        // eslint-disable-next-line no-restricted-syntax
+        for (const [name, value] of formDataEntries(formEl)) {
+          json[name] = value;
+        }
         const cEvent = CustomEventPoly(DATA_SENT_EVENT, {data: json});
         formEl.dispatchEvent(cEvent);
       } else {

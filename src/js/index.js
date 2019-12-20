@@ -1,3 +1,6 @@
+// eslint-disable-next-line no-unused-vars
+import regeneratorRuntime from 'regenerator-runtime';
+import 'core-js/es/symbol';
 import './polyfills';
 import Choices from 'choices.js';
 import LazyLoad from 'vanilla-lazyload';
@@ -21,8 +24,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // eslint-disable-next-line no-unused-vars
   const notifications = new Notifications({emitter});
   const forms = document.querySelectorAll('.js-form');
-  [...forms].forEach(formsHandler(emitter));
+  window.emitter = emitter;
   [...forms].forEach(ApiHandler(emitter));
+  [...forms].forEach(formsHandler(emitter));
 
   [...document.querySelectorAll('.js-scroll-it')].forEach((el) => el.addEventListener('click', (e) => {
     e.preventDefault();
@@ -82,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const mySwiper = new Swiper('.swiper-container', {
       // slidesPerView: 1,
       // speed: 400,
-      // spaceBetween: 100,Bleiben Sie informiert!
+      // spaceBetween: 100,
     });
   }
 
@@ -143,16 +147,10 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   [...document.querySelectorAll('.js-text-crop-wrapper')].forEach((el) => {
-      let isVisible = false;
-      el.addEventListener('click', (e) => {
-        isVisible = !isVisible;
-        el.querySelector('.js-text-crop').classList.toggle('isVisible', isVisible);
-      });
-    }
-  );
+    let isVisible = false;
+    el.addEventListener('click', (e) => {
+      isVisible = !isVisible;
+      el.querySelector('.js-text-crop').classList.toggle('isVisible', isVisible);
+    });
+  });
 });
-
-window.onload = () => {
-  // eslint-disable-next-line no-new
-  // new Swiper('.swiper-container');
-};

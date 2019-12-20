@@ -79,7 +79,6 @@ module.exports = {
       {
         enforce: 'pre',
         test: /(\.m?js) | (\.vue)$/,
-        exclude: /node_modules/,
         loader: 'eslint-loader',
         options: {
           cache: true,
@@ -88,7 +87,13 @@ module.exports = {
       {
         test: /\.m?js$/,
         loader: 'babel-loader',
-        exclude: /node_modules/,
+        exclude: {
+          test: /node_modules/,
+          // including some packages that I want to transpile:
+          not: [
+            /(ssr-window|dom7|swiper|micromodal)/,
+          ],
+        },
       }, {
         test: /\.(woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
         loader: 'file-loader',
