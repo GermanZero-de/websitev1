@@ -282,7 +282,7 @@
 }
 
 /* custom select */
-.choices {
+body .choices {
     margin-bottom: auto;
 
     &__inner {
@@ -329,7 +329,7 @@
     }
 }
 
-.choices__list--multiple .choices__item {
+body  .choices__list--multiple .choices__item {
     background-color: theme('colors.white');
     border: 1px solid theme('colors.black');
     color: theme('colors.black');
@@ -340,19 +340,19 @@
     }
 }
 
-.choices[data-type*=select-multiple] .choices__button,
-.choices[data-type*=text] .choices__button {
+body .choices[data-type*=select-multiple] .choices__button,
+body .choices[data-type*=text] .choices__button {
     border-left: none;
     background-color: theme('colors.black');
     margin: 0 5px 0 10px;
 }
 
-.choices[data-type*=select-multiple] .choices__input {
+body .choices[data-type*=select-multiple] .choices__input {
     padding-left: 0 !important;
     font-size: 16px;
     line-height: 19px;
 }
 
-.choices[data-type*=select-multiple] .choices__inner {
+body .choices[data-type*=select-multiple] .choices__inner {
     padding-bottom: 0 !important;
 }
