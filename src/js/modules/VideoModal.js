@@ -12,13 +12,13 @@ export default class VideoModal {
   }
 
   addListeners() {
-    [...this.openBtnElements].forEach((el) => el.addEventListener('click', this.openModalHandler));
-    [...this.closeBtnElements].forEach((el) => el.addEventListener('click', this.closeModalHandler));
+    this.openBtnElements.forEach((el) => el.addEventListener('click', this.openModalHandler));
+    this.closeBtnElements.forEach((el) => el.addEventListener('click', this.closeModalHandler));
   }
 
   removeListeners() {
-    [...this.openBtnElements].forEach((el) => el.removeEventListener('click', this.openModalHandler));
-    [...this.closeBtnElements].forEach((el) => el.removeEventListener('click', this.closeModalHandler));
+    this.openBtnElements.forEach((el) => el.removeEventListener('click', this.openModalHandler));
+    this.closeBtnElements.forEach((el) => el.removeEventListener('click', this.closeModalHandler));
   }
 
   closeModalHandler(event) {

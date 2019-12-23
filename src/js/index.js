@@ -1,8 +1,4 @@
-// eslint-disable-next-line no-unused-vars
-import regeneratorRuntime from 'regenerator-runtime';
-import 'core-js/es/symbol';
 import './polyfills';
-import Choices from 'choices.js';
 import LazyLoad from 'vanilla-lazyload';
 import Swiper from './modules/Swiper';
 import MenuModal from './modules/MenuModal';
@@ -16,19 +12,18 @@ import Notifications from './modules/Notifications';
 import EventEmitter from './modules/EventEmitter';
 import GetQueryParams from './GetQueryParams';
 import {NOTIFICATION_ERROR} from './modules/constants';
-import 'choices.js/public/assets/styles/choices.min.css';
 import LeaveModal from './modules/LeaveModal';
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
   const emitter = new EventEmitter();
   // eslint-disable-next-line no-unused-vars
   const notifications = new Notifications({emitter});
   const forms = document.querySelectorAll('.js-form');
   window.emitter = emitter;
-  [...forms].forEach(ApiHandler(emitter));
-  [...forms].forEach(formsHandler(emitter));
+  forms.forEach(ApiHandler(emitter));
+  forms.forEach(formsHandler(emitter));
 
-  [...document.querySelectorAll('.js-scroll-it')].forEach((el) => el.addEventListener('click', (e) => {
+  document.querySelectorAll('.js-scroll-it').forEach((el) => el.addEventListener('click', (e) => {
     e.preventDefault();
     scrollIt(0, 700, 'easeInOutCubic');
   }));
@@ -36,8 +31,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const selects = document.querySelectorAll('.js-select-custom');
 
   if (selects.length) {
-    // eslint-disable-next-line no-new,new-cap,dot-notation
-    [...selects].forEach((select) => new Choices(select, {removeItemButton: true, shouldSort: false}));
+    try {
+      const [Module] = await Promise.all([import('choices.js'), import('choices.js/public/assets/styles/choices.min.css')]);
+      const Choices = Module.default;
+      selects.forEach((select) => new Choices(select,
+        {
+          removeItemButton: true,
+          shouldSort: false,
+        }));
+    } catch (err) {
+      console.error(err);
+    }
   }
 
   /**
@@ -45,13 +49,13 @@ document.addEventListener('DOMContentLoaded', () => {
    */
   if (document.querySelector('.js-custom-machmit-form')) {
     const showCustomRadios = document.querySelectorAll('.js-show-custom-field');
-    [...showCustomRadios].forEach((radio) => radio.addEventListener('change', (e) => {
+    showCustomRadios.forEach((radio) => radio.addEventListener('change', (e) => {
       document.querySelector('.js-custom-sphere').classList.toggle('hidden', e.target.value !== 'custom');
     }));
 
-    [...document.querySelectorAll('.js-show-sphere')].forEach((el) => el.addEventListener('change', (e) => {
-      const show = [...document.querySelectorAll('.js-show-sphere:checked')].length;
-      [...document.querySelectorAll('.js-sphere-radios')].forEach((radio) => radio.classList.toggle('hidden', !show));
+    document.querySelectorAll('.js-show-sphere').forEach((el) => el.addEventListener('change', () => {
+      const show = document.querySelectorAll('.js-show-sphere:checked').length;
+      document.querySelectorAll('.js-sphere-radios').forEach((radio) => radio.classList.toggle('hidden', !show));
     }));
   }
 
@@ -61,14 +65,14 @@ document.addEventListener('DOMContentLoaded', () => {
    */
   const showMoreElements = document.querySelectorAll('.js-toggle-list');
   if (showMoreElements.length) {
-    [...showMoreElements].forEach((listElement) => {
+    showMoreElements.forEach((listElement) => {
       let show = false;
       const btn = listElement.querySelector('.js-toggle-list-button');
       if (btn) {
         btn.addEventListener('click', (e) => {
           const buttonElement = e.currentTarget;
           show = !show;
-          [...listElement.querySelectorAll('.js-toggle-list-item')].forEach((listItemElement) => {
+          listElement.querySelectorAll('.js-toggle-list-item').forEach((listItemElement) => {
             listItemElement.classList.toggle('hidden', !show);
           });
           const wrapperEl = listElement.querySelector('.js-toggle-list-wrapper');
@@ -83,11 +87,14 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   if (document.querySelector('.swiper-container')) {
-    const mySwiper = new Swiper('.swiper-container', {
-      // slidesPerView: 1,
-      // speed: 400,
-      // spaceBetween: 100,
-    });
+    try {
+      const [Module] = await Promise.all([import('swiper'), import('swiper/css/swiper.min.css')]);
+      const SwiperPlugin = Module.default;
+      // eslint-disable-next-line no-unused-vars
+      const mySwiper = new Swiper('.swiper-container', {}, SwiperPlugin);
+    } catch (e) {
+      console.error(e);
+    }
   }
 
   /**
@@ -128,7 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // eslint-disable-next-line no-new
-  [...document.querySelectorAll('.js-video-element')].forEach((videoModal) => {
+  document.querySelectorAll('.js-video-element').forEach((videoModal) => {
     // eslint-disable-next-line no-new
     new VideoModal(videoModal);
   });
@@ -146,9 +153,9 @@ document.addEventListener('DOMContentLoaded', () => {
     template: '.js-leave-modal-template',
   });
 
-  [...document.querySelectorAll('.js-text-crop-wrapper')].forEach((el) => {
+  document.querySelectorAll('.js-text-crop-wrapper').forEach((el) => {
     let isVisible = false;
-    el.addEventListener('click', (e) => {
+    el.addEventListener('click', () => {
       isVisible = !isVisible;
       el.querySelector('.js-text-crop').classList.toggle('isVisible', isVisible);
     });

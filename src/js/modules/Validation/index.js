@@ -52,18 +52,18 @@ export const formsHandler = (emitter) => (formEl) => {
         formEl.classList.remove('isPending');
         formEl.reset();
         // eslint-disable-next-line no-param-reassign
-        [...formEl.querySelectorAll('input:not([type=checkbox]):not([type=radio])')].forEach((input) => {
+        formEl.querySelectorAll('input:not([type=checkbox]):not([type=radio])').forEach((input) => {
           // eslint-disable-next-line no-param-reassign
           input.value = '';
           input.setAttribute('value', '');
         });
-        [...formEl.querySelectorAll('input[type=checkbox]')].forEach((checkbox) => {
+        formEl.querySelectorAll('input[type=checkbox]').forEach((checkbox) => {
           // eslint-disable-next-line no-param-reassign
           checkbox.checked = false;
         });
 
         // eslint-disable-next-line no-param-reassign
-        [...formEl.querySelectorAll('select')].forEach((select) => select.value = '');
+        formEl.querySelectorAll('select').forEach((select) => (select.value = ''));
       }
     });
   }
@@ -113,7 +113,7 @@ export const formsHandler = (emitter) => (formEl) => {
         const cEvent = CustomEventPoly(DATA_SENT_EVENT, {data: json});
         formEl.dispatchEvent(cEvent);
       } else {
-        const errorsElements = [...formEl.querySelectorAll(`.${FORM_ERROR_SELECTOR}`)];
+        const errorsElements = formEl.querySelectorAll(`.${FORM_ERROR_SELECTOR}`);
         if (errorsElements.length) {
           const minOffset = errorsElements.reduce((acc, cur) => {
             const curTop = getCoords(cur.parentElement).top;
