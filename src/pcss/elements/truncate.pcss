@@ -1,0 +1,43 @@
+.truncate {
+
+    &__input {
+        opacity: 0;
+        position: absolute;
+        pointer-events: none;
+        appearance: none;
+    }
+
+    &__content {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        white-space: normal;
+    }
+
+    &__input:focus ~ &__label-more {
+        outline: -webkit-focus-ring-color auto 5px;
+    }
+
+    &__input:checked + &__content {
+        -webkit-line-clamp: unset;
+    }
+
+    &__label-more,
+    &__label-less {
+        font-size: .9rem;
+        line-height: 1;
+        outline: none;
+        display: inline-block;
+
+        .isIE & {
+            display: none !important;
+        }
+    }
+
+    &__input:checked ~ &__label-more,
+    &__input:not(:checked) ~ &__label-less,
+    &__content:not(.isTruncated) ~ &__label-more {
+        display: none;
+    }
+}
