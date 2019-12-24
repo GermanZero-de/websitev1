@@ -13,8 +13,16 @@ import EventEmitter from './modules/EventEmitter';
 import GetQueryParams from './GetQueryParams';
 import {NOTIFICATION_ERROR} from './modules/constants';
 import LeaveModal from './modules/LeaveModal';
+import TruncateText from './modules/Truncate/truncate';
+import detectIE from './modules/detectIE';
 
 document.addEventListener('DOMContentLoaded', async () => {
+  const ieVersion = detectIE();
+  if (ieVersion && ieVersion < 12) {
+    document.body.classList.add('isIE');
+    document.body.classList.add(`ie-${ieVersion}`);
+  }
+
   const emitter = new EventEmitter();
   // eslint-disable-next-line no-unused-vars
   const notifications = new Notifications({emitter});
@@ -84,6 +92,14 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
       }
     });
+  }
+
+  if (document.querySelectorAll('.js-read-more').length) {
+    try {
+      TruncateText(document.querySelectorAll('.js-read-more'));
+    } catch (e) {
+      console.error(e);
+    }
   }
 
   if (document.querySelector('.swiper-container')) {
