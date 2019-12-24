@@ -1,5 +1,3 @@
-import SwiperPlugin from 'swiper';
-
 const DEFAULT_OPTIONS = {
   loop: false,
   centeredSlides: false,
@@ -28,7 +26,7 @@ const DEFAULT_OPTIONS = {
 };
 
 export default class Swiper {
-  constructor(el, customOptions = {}) {
+  constructor(el, customOptions = {}, SwiperPlugin) {
     this.el = el;
     this.options = {
       ...DEFAULT_OPTIONS,

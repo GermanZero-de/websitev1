@@ -56,17 +56,6 @@ module.exports = {
     path: PATHS.dist,
     publicPath: '/',
   },
-  optimization: {
-    splitChunks: {
-      cacheGroups: {
-        commons: {
-          test: /[\\/]node_modules[\\/]/,
-          name: 'vendors',
-          chunks: 'all',
-        },
-      },
-    },
-  },
   module: {
     rules: [
       {
@@ -79,7 +68,6 @@ module.exports = {
       {
         enforce: 'pre',
         test: /(\.m?js) | (\.vue)$/,
-        exclude: /node_modules/,
         loader: 'eslint-loader',
         options: {
           cache: true,
@@ -87,8 +75,18 @@ module.exports = {
       },
       {
         test: /\.m?js$/,
-        loader: 'babel-loader',
-        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'babel-loader',
+          },
+        ],
+        include: [
+          path.resolve(PATHS.src),
+          /* swiper needs to be polyfilled */
+          path.resolve('node_modules/dom7'),
+          path.resolve('node_modules/ssr-window'),
+          path.resolve('node_modules/swiper'),
+        ],
       }, {
         test: /\.(woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
         loader: 'file-loader',

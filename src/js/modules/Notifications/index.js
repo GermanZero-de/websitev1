@@ -17,7 +17,6 @@ export default class Notifications {
 
   addListeners() {
     this.subscriptions.push(this.emitter.subscribe(NOTIFICATION_SUCCESS, (data) => {
-      console.log(NOTIFICATION_SUCCESS, data);
       this.show({ content: data });
     }));
 

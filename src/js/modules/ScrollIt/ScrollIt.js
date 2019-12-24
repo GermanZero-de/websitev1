@@ -64,7 +64,7 @@ export default function scrollIt(destination, duration = 200, easing = 'linear',
     const timeFunction = easings[easing](time);
     window.scroll(0, Math.ceil((timeFunction * (destinationOffsetToScroll - start)) + start));
 
-    if (Math.ceil(window.scrollY) === Math.ceil(destinationOffsetToScroll)) {
+    if (Math.ceil(typeof window.scrollY !== 'undefined' ? window.scrollY : window.pageYOffset) === Math.ceil(destinationOffsetToScroll)) {
       if (callback) {
         callback();
       }

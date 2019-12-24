@@ -3,18 +3,176 @@ table.table-energie {
     text-align: left;
     font-size: 12px;
 }
+
 table.table-energie .w-60 {
     width: 60%;
     border-right: 1px solid #FFF;
 }
-table.table-energie .bg-head-table  {
+
+table.table-energie .bg-head-table {
     background: #FF3B44;
 }
-table.table-energie .bg-yellow  {
+
+table.table-energie .bg-yellow {
     background: #f8e257;
 }
-@media(max-width: 600px) {
+
+@media (max-width: 600px) {
     table.table-energie {
         width: 100%;
+    }
+}
+
+.table {
+    table-layout: fixed;
+    max-width: 100%;
+    width: 100%;
+    overflow: hidden;
+    border-collapse: collapse;
+
+    @screen md {
+        display: table;
+    }
+
+    &__body-cell,
+    &__head-cell {
+        padding: .75rem 1.5rem;
+    }
+
+    &,
+    &__body,
+    &__body-cell,
+    &__row {
+
+        @screen md {
+            border: 1px solid #ccc;
+        }
+    }
+
+    &__body-cell {
+        position: relative;
+        display: flex;
+        align-items: center;
+        padding: .75rem 1.5rem .75rem 50%;
+        padding: .75rem 1.5rem .75rem calc(50% + .75rem);
+        border: 1px solid #ccc;
+        border-top: none;
+
+        &:first-child {
+            border-top: 1px solid #ccc;
+        }
+
+        &::before {
+            background: rgba(0, 0, 0, .05);
+            content: attr(data-title);
+            position: absolute;
+            left: 0;
+            top: 0;
+            min-width: 50%;
+            max-width: 50%;
+            width: 50%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: .75rem 1.5rem;
+            font-weight: bold;
+            font-size: 1rem;
+            text-transform: uppercase;
+        }
+
+        @screen md {
+            display: table-cell;
+            padding: .75rem 1.5rem;
+
+            &::before {
+                display: none;
+            }
+        }
+
+        &--first {
+            text-align: center;
+        }
+    }
+
+    &__head,
+    &__head-cell {
+        border: 1px solid #ccc;
+    }
+
+    &__head {
+        display: none;
+
+        @screen md {
+            display: table-header-group;
+        }
+    }
+
+    &__body {
+
+        @screen md {
+            display: table-row-group;
+        }
+    }
+
+    &,
+    &__body,
+    &__row {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+    }
+
+    &__row:nth-child(2n) {
+
+        @screen md {
+            background-color: rgba(0, 0, 0, .05);
+        }
+    }
+
+    &__head-cell {
+        padding: .75rem 1.5rem;
+        text-align: left;
+
+        &--first {
+            width: 130px;
+            text-align: center;
+        }
+    }
+
+    &__body-content {
+        min-height: 1.5em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 100%;
+
+        @screen md {
+            white-space: nowrap;
+            height: 1.5em;
+        }
+
+        &.isShown {
+            white-space: normal;
+            height: auto;
+        }
+    }
+
+    &__body-content-inner {
+        display: table;
+        width: 100%;
+    }
+
+    &__body-text {
+        display: table-cell;
+        vertical-align: middle;
+    }
+
+    &__row {
+        margin-bottom: 1rem;
+
+        @screen md {
+            display: table-row;
+            margin-bottom: 0;
+        }
     }
 }
