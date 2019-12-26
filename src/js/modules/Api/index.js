@@ -25,11 +25,18 @@ export function parseJSON(response) {
   return response.json();
 }
 
-export const ApiHandler = (emitter) => (formEl) => formEl.addEventListener(DATA_SENT_EVENT, (e) => {
-  const {data} = e.detail;
+export const ApiHandler = (emitter) => (formEl) => formEl.addEventListener(DATA_SENT_EVENT, async (e) => {
+  const { data } = e.detail;
   const formName = formEl.getAttribute('name');
   if (emitter) {
     emitter.emit(SEND_START, formEl.getAttribute('name'));
+  }
+  if (formEl.hasAttribute('with-captcha') && window.grecaptcha) {
+    try {
+      data.token = await window.grecaptcha.execute('6LcqGcoUAAAAAOx-ynLFWhuftjUAAX_tzw2fcaiD', { action: 'submit' });
+    } catch (error) {
+      console.error(error);
+    }
   }
   fetch(formEl.getAttribute(API_PATH_ATTR), {
     method: 'POST',
@@ -43,7 +50,7 @@ export const ApiHandler = (emitter) => (formEl) => formEl.addEventListener(DATA_
     .then(parseJSON)
     .then((res) => {
       if (emitter) {
-        emitter.emit(NOTIFICATION_SUCCESS, formEl.getAttribute(SUCCESS_MESSAGE_ATTRIBUTE));
+        emitter.emit(NOTIFICATION_SUCCESS, formEl.getAttribute(SUCCESS_MESSAGE_ATTRIBUTE) || res ? res.message : undefined);
         emitter.emit(SEND_SUCCESS, formName);
       }
     })

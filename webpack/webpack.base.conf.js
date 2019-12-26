@@ -1,10 +1,15 @@
 const path = require('path');
 const fs = require('fs');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+
+const dotenv = require('dotenv').config({
+  path: path.resolve('.env'),
+});
 
 const PATHS = {
   src: path.join(__dirname, '../src'),
@@ -193,7 +198,9 @@ module.exports = {
       {from: `${PATHS.src}/${PATHS.assets}`, to: `${PATHS.assets}`},
       {from: `${PATHS.src}/static`, to: ''},
     ]),
-
+    new webpack.DefinePlugin({
+      'process.env': JSON.stringify(dotenv.parsed),
+    }),
     new SpriteLoaderPlugin(),
 
     ...htmlPlugins,
