@@ -68,9 +68,6 @@ module.exports = {
         loader: 'pug-loader',
         options: {
           basedir: path.resolve(__dirname, '../src'),
-          globals: {
-            'process.env': JSON.stringify(dotenv.parsed),
-          },
         },
       },
       {

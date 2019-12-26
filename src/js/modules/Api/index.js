@@ -33,7 +33,7 @@ export const ApiHandler = (emitter) => (formEl) => formEl.addEventListener(DATA_
   }
   if (formEl.hasAttribute('with-captcha') && window.grecaptcha) {
     try {
-      data.token = await window.grecaptcha.execute(process.env.GOOGLE_CAPTCHA_BROWSER_KEY, { action: 'submit' });
+      data.token = await window.grecaptcha.execute('6LcqGcoUAAAAAOx-ynLFWhuftjUAAX_tzw2fcaiD', { action: 'submit' });
     } catch (error) {
       console.error(error);
     }
