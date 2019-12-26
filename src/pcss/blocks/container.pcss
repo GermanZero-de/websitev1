@@ -1,10 +1,14 @@
 .container {
-  max-width: 1310px;
-  /* + x2 gutter padding (30px) */
+    max-width: 1310px;
+    /* + x2 gutter padding (30px) */
 
-  @apply px-2;
+    @apply px-2;
 
-  @screen lg {
-    @apply px-3;
-  }
+    @screen lg {
+        @apply px-3;
+    }
+}
+
+.button.fixed + div > .grecaptcha-badge {
+    bottom: 54px !important;
 }
