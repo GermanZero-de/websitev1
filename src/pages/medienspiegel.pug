@@ -54,7 +54,7 @@ block content
                                     label.truncate.inline-block.max-w-full
                                         input(type="checkbox" class="truncate__input")
                                         if item.link
-                                            a(href=`${item.link}` class="js-read-more truncate__content link link--invert text-primary table__body-content")=item.title + item.title + item.title
+                                            a(href=`${item.link}` class="js-read-more truncate__content link link--invert text-primary table__body-content")=item.title
                                         else
                                             span(class="js-read-more truncate__content")=item.title
                                         .truncate__label-more(role="button") Weiterlesen
