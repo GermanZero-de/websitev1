@@ -50,7 +50,7 @@ export const ApiHandler = (emitter) => (formEl) => formEl.addEventListener(DATA_
     .then(parseJSON)
     .then((res) => {
       if (emitter) {
-        emitter.emit(NOTIFICATION_SUCCESS, formEl.getAttribute(SUCCESS_MESSAGE_ATTRIBUTE) || res ? res.message : undefined);
+        emitter.emit(NOTIFICATION_SUCCESS, formEl.getAttribute(SUCCESS_MESSAGE_ATTRIBUTE) || (res ? res.message : undefined));
         emitter.emit(SEND_SUCCESS, formName);
       }
     })
