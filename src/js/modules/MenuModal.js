@@ -11,6 +11,20 @@ export default class MenuModal {
     this.toggleModalHandler = this.toggleModalHandler.bind(this);
     this.subHandler = this.subHandler.bind(this);
     this.addListeners();
+
+    let initDataSet = this.containerElement.dataset.menuScreenParams;
+    if (initDataSet) {
+      try {
+        initDataSet = JSON.parse(initDataSet);
+      } catch (e) {
+        console.error(e);
+      }
+    }
+    if (initDataSet.activeSubList && window.innerWidth > 500) {
+      this.activeSubList = initDataSet.activeSubList;
+      const listItem = this.listElement.querySelectorAll('.js-menu-list-item')[this.activeSubList];
+      listItem.querySelector('.js-menu-btn-open-sub').classList.toggle('active', true);
+    }
   }
 
   addListeners() {
