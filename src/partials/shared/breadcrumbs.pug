@@ -1,0 +1,7 @@
+.breadcrumbs
+    each breadcrumb, index in breadcrumbs
+        span
+            if((index + 1) !== breadcrumbs.length)
+                a(href=`${breadcrumb.href}`)= breadcrumb.title
+            else
+                a= breadcrumb.title
