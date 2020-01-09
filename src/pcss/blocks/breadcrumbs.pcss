@@ -34,7 +34,8 @@
         @screen md {
 
             &:not(:last-child)::after {
-                content: '᛫';
+                //content: '᛫';
+                content: '\21d0\00a0';
                 margin-left: .5em;
             }
         }
@@ -59,7 +60,7 @@
         }
 
         &:not([href]) {
-            color: theme('colors.primary');
+            color: theme('colors.body');
         }
     }
 
