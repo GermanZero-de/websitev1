@@ -33,6 +33,37 @@ export const isValid = (element, rule, rules) => {
   return !!rules[rule].test(element.value);
 };
 
+/**
+ * Validate single control function
+ * @param controlEl {HTMLElement} input or control element
+ * @returns {boolean} Returns is control valid
+ */
+export const validateControl = (controlEl) => {
+  let controlIsValid = true;
+  try {
+    const validationAttribute = controlEl.getAttribute(VALIDATION_ATTRIBUTE);
+    let errorMessage = '';
+    if (validationAttribute) {
+      const validations = JSON.parse(validationAttribute);
+      validations.forEach((validation) => {
+        if (!isValid(controlEl, validation, validationRules)) {
+          controlIsValid = false;
+          errorMessage = window.validationMessages[validation] || UNKNOWN_VALIDATION_TEXT;
+        }
+      });
+    }
+    const errorEl = controlEl.parentElement.querySelector(`.${FORM_ERROR_SELECTOR}`);
+    if (errorEl) {
+      errorEl.classList.toggle('isActive', !controlIsValid);
+      errorEl.textContent = errorMessage;
+      controlEl.classList.toggle('invalid', !controlIsValid);
+    }
+  } catch (e) {
+    console.error(e);
+  }
+  return controlIsValid;
+};
+
 export const formsHandler = (emitter) => (formEl) => {
   let formIsValid = true;
   const submitEl = formEl.querySelector('.js-form-submit');
@@ -67,53 +98,40 @@ export const formsHandler = (emitter) => (formEl) => {
       }
     });
   }
+
   if (submitEl) {
     submitEl.addEventListener('click', () => {
       formIsValid = true;
-      formEl
-        .querySelectorAll('.js-form-control')
-        .forEach((controlEl) => {
-          let controlIsValid = true;
-          try {
-            const validationAttribute = controlEl.getAttribute(VALIDATION_ATTRIBUTE);
-            let errorMessage = '';
-            if (validationAttribute) {
-              const validations = JSON.parse(validationAttribute);
-              validations.forEach((validation) => {
-                if (!isValid(controlEl, validation, validationRules)) {
-                  controlIsValid = false;
-                  formIsValid = false;
-                  errorMessage = window.validationMessages[validation] || UNKNOWN_VALIDATION_TEXT;
-                }
-              });
-            }
-            const errorEl = controlEl.parentElement.querySelector(`.${FORM_ERROR_SELECTOR}`);
-            if (errorEl) {
-              errorEl.classList.toggle('isActive', !controlIsValid);
-              errorEl.textContent = errorMessage;
-              controlEl.classList.toggle('invalid', !controlIsValid);
-            }
-          } catch (e) {
-            console.error(e);
-          }
-        });
+
+      /* validate all controls one by one */
+      const allControlsCurrentValidity = Array.from(formEl.querySelectorAll('.js-form-control')).map(validateControl);
+
+      /* if at least 1 is invalid */
+      if (allControlsCurrentValidity.filter((v) => !v).length) {
+        formIsValid = false;
+      }
 
       formEl.classList.toggle('isValid', formIsValid);
 
       if (formIsValid) {
         formEl.classList.add('isPending');
-        // const formData = new FormData(formEl);
-        // const formEntries = formData.entries();
-        // const json = Object.assign(...Array.from(formEntries, ([x, y]) => ({[x]: y})));
         const json = {};
         // eslint-disable-next-line no-restricted-syntax
         for (const [name, value] of formDataEntries(formEl)) {
-          json[name] = value;
+          if (Object.hasOwnProperty.call(json, name)) {
+            if (Array.isArray(json[name])) {
+              json[name].push(value);
+            } else {
+              json[name] = [json[name], value];
+            }
+          } else {
+            json[name] = value;
+          }
         }
         const cEvent = CustomEventPoly(DATA_SENT_EVENT, {data: json});
         formEl.dispatchEvent(cEvent);
       } else {
-        const errorsElements = formEl.querySelectorAll(`.${FORM_ERROR_SELECTOR}`);
+        const errorsElements = Array.from(formEl.querySelectorAll(`.${FORM_ERROR_SELECTOR}`));
         if (errorsElements.length) {
           const minOffset = errorsElements.reduce((acc, cur) => {
             const curTop = getCoords(cur.parentElement).top;
@@ -124,4 +142,8 @@ export const formsHandler = (emitter) => (formEl) => {
       }
     });
   }
+
+  formEl.querySelectorAll('.js-form-control').forEach((control) => control.addEventListener('blur', (e) => {
+    validateControl(e.target);
+  }));
 };
