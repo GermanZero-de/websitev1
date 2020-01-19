@@ -9,15 +9,18 @@
     transition: all 0.5s ease-in;
 
     &__open-sub {
-        font-family: cursive;
-        font-size: 20px;
+        font-size: 28px;
         display: inline-block;
-        vertical-align: middle;
+        vertical-align: baseline;
         height: 25px;
         width: 35px;
         line-height: 1;
         margin: auto;
         text-align: center;
+
+        &.active {
+            color: theme('colors.error');
+        }
     }
 
     &.active {
@@ -73,7 +76,8 @@
 
         &--sublist {
             padding-right: 25px;
-            .active + ul{
+
+            .active + ul {
                 z-index: 9;
                 opacity: 1;
             }
@@ -112,6 +116,7 @@
                 position: relative;
                 line-height: 41px;
                 white-space: nowrap;
+
                 &:hover::after {
                     content: ' ';
                     position: absolute;
