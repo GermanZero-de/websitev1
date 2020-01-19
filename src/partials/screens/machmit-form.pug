@@ -88,26 +88,26 @@ form.form.js-form.flex.flex-wrap.-mx-2.js-custom-machmit-form(
                 span.form__control-placeholder Mobilfunknummer
                 span.form__error-message
     div(class="px-2 w-full mb-4")
-        .title.title--size-h5 Wie ich GermanZero unterstützen kann:*
+        .title.title--size-h5 Wie ich German Zero unterstützen kann:*
         div(class="form-control")
             label.relative.form__checkbox
                 input(class="js-form-control" name="assits" value="finanzstark" type="checkbox")
-                span.form__checkbox-placeholder finanzstark
+                span.form__checkbox-placeholder Finanzstark
                 span.form__error-message
         div(class="form-control")
             label.relative.form__checkbox
                 input(class="js-form-control" name="assits" value="reichweitenstark" type="checkbox")
-                span.form__checkbox-placeholder reichweitenstark
+                span.form__checkbox-placeholder Reichweitenstark
                 span.form__error-message
         div(class="form-control")
             label.relative.form__checkbox
                 input(class="js-form-control js-show-sphere" name="assits" value="tatkräftig" type="checkbox")
-                span.form__checkbox-placeholder tatkräftig
+                span.form__checkbox-placeholder Tatkräftig
                 span.form__error-message
     div(class="px-2 w-full mb-4 js-sphere-radios hidden")
-        .title.title--size-h4.mb-1 Sage uns bitte, du dafür aufwenden kannst.
-        - sphereOptions = [{title: 'It', value: 'it'}, {title: 'GermanZero-Team in meinem Ort', value: 'local-team'}, {title: 'Buchhaltung / Accounting', value: 'accounting'}, {title: 'Texte / Werbung / Medien', value: 'text-ads-media'}, {title: 'Inhaltlich/wissenschaftlich', value: 'scientific'}, {title: 'Kooperation', value: 'cooperation'}, {title: 'Fundraising', value: 'fundraising'}, {title: 'sonstiges', value: 'custom'}]
-        - sphereOptionChecked = 'it' // js-show-custom-field
+        .title.title--size-h4.mb-1 In welchem Bereich möchtest du GermanZero unterstützen?
+        - sphereOptions = [{title: 'IT', value: 'it'}, {title: 'GermanZeroTeam in meinem Ort', value: 'local-team'}, {title: 'Buchhaltung / Accounting', value: 'accounting'}, {title: 'Texte / Werbung / Medien', value: 'text-ads-media'}, {title: 'Inhaltlich / Wissenschaftlich', value: 'scientific'}, {title: 'Kooperationen', value: 'cooperation'}, {title: 'Fundraising', value: 'fundraising'}, {title: 'Sonstiges', value: 'custom'}]
+        //- sphereOptionChecked = 'it'  js-show-custom-field
         each field in sphereOptions
             div(class="form-control")
                 label.relative.form__checkbox
@@ -117,10 +117,10 @@ form.form.js-form.flex.flex-wrap.-mx-2.js-custom-machmit-form(
         div(class="form-control mt-2 hidden js-custom-sphere")
             label.relative.block
                 input(class="form__input js-form-control" name="custom_sphere" type="text" value="" onkeyup="this.setAttribute('value', this.value);" )
-                span.form__control-placeholder sonstiges
+                span.form__control-placeholder Sonstiges
                 span.form__error-message
     div(class="px-2 w-full mb-4 js-sphere-radios hidden")
-        .title.title--size-h4.mb-1 Wieviel Zeit kannst du für GermanZero aufbringen
+        .title.title--size-h4.mb-1 Wieviel Zeit kannst du für GermanZero aufbringen?
         div(class="form-control")
             label.relative.block.mb-1
                 input(class="form__radio js-form-control" type="radio" name="time" value="5")
