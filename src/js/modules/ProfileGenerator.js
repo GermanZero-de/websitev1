@@ -30,6 +30,7 @@ export default class ProfileGenerator {
   constructor() {
     this.fileUploadInput = document.querySelector('.js-profile-upload-file-dialog');
     this.uploadProfileButton = document.querySelector('.js-upload-profile');
+    this.previewImage = document.querySelector('.js-profile-preview');
     this.profileOverlays = document.querySelectorAll('.js-profile-overlay');
     this.profileImageSrc = '';
     this.overlayImageSrc = this.profileOverlays.length > 0 && this.profileOverlays[0].getAttribute('src');
@@ -39,6 +40,10 @@ export default class ProfileGenerator {
     this.loadImage = this.loadImage.bind(this);
     this.uploadImage = this.uploadImage.bind(this);
     this.addListeners();
+  }
+
+  updateImagePreview() {
+    if (this.previewImage) this.previewImage.setAttribute('src', this.mergedProfileImageSrc);
   }
 
   uploadImage(event) {
@@ -95,6 +100,7 @@ export default class ProfileGenerator {
 
     const imgSrc = canvas.toDataURL('image/png', 0.92);
     this.mergedProfileImageSrc = imgSrc;
+    this.updateImagePreview();
   }
 
   addListeners() {
