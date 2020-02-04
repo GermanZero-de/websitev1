@@ -30,8 +30,11 @@ export default class ProfileGenerator {
   constructor() {
     this.fileUploadInput = document.querySelector('.js-profile-upload-file-dialog');
     this.uploadProfileButton = document.querySelector('.js-upload-profile');
+    this.profileOverlays = document.querySelectorAll('.js-profile-overlay');
     this.profileImageSrc = '';
+    this.overlayImageSrc = this.profileOverlays.length > 0 && this.profileOverlays[0].getAttribute('src');
 
+    this.changeOverlayHandler = this.changeOverlayHandler.bind(this);
     this.loadImage = this.loadImage.bind(this);
     this.uploadImage = this.uploadImage.bind(this);
     this.addListeners();
@@ -55,13 +58,20 @@ export default class ProfileGenerator {
     reader.readAsDataURL(src);
   }
 
+  async changeOverlayHandler(index) {
+    const overlayImagePreview = this.profileOverlays[index];
+    this.overlayImageSrc = overlayImagePreview && overlayImagePreview.getAttribute('src');
+  }
+
   addListeners() {
     this.fileUploadInput.addEventListener('change', this.uploadImage);
     this.uploadProfileButton.addEventListener('click', () => this.fileUploadInput.click());
+    this.profileOverlays.forEach((el, index) => el.addEventListener('click', () => this.changeOverlayHandler(index), true));
   }
 
   removeListeners() {
     this.fileUploadInput.removeEventListener('change', this.uploadImage);
     this.uploadProfileButton.removeEventListener('click', () => this.fileUploadInput.click());
+    this.profileOverlays.forEach((el, index) => el.removeEventListener('click', () => this.changeOverlayHandler(index), true));
   }
 }
