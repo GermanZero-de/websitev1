@@ -26,6 +26,30 @@ const validateImage = (src, size = 4 * 1024 * 1024) => {
   }
 };
 
+const calcScaledDimensions = (imageToScale, fixedImage) => {
+  const { width: width1, height: height1 } = imageToScale;
+  const { width: width2, height: height2 } = fixedImage;
+
+  const widthDiff = width1 - width2;
+  const heightDiff = height1 - height2;
+
+  let width;
+  let height;
+
+  if (widthDiff < heightDiff) {
+    width = (width1 * width2) / width1;
+    height = (height1 * width2) / width1;
+  } else {
+    width = (width1 * height2) / height1;
+    height = (height1 * height2) / height1;
+  }
+
+  return {
+    width,
+    height,
+  };
+};
+
 export default class ProfileGenerator {
   constructor() {
     this.fileUploadInput = document.querySelector('.js-profile-upload-file-dialog');
@@ -82,7 +106,7 @@ export default class ProfileGenerator {
       img.src = src;
     });
   }
-  
+
   async mergeProfileImageWithOverlay() {
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
@@ -93,7 +117,8 @@ export default class ProfileGenerator {
 
     if (this.profileImageSrc !== '') {
       const profileImage = await this.openImage(this.profileImageSrc);
-      ctx.drawImage(profileImage, 0, 0);
+      const { width, height } = calcScaledDimensions(profileImage, overlayImage);
+      ctx.drawImage(profileImage, 0, 0, width, height);
     }
 
     ctx.drawImage(overlayImage, 0, 0);
