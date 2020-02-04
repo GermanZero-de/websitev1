@@ -33,6 +33,7 @@ export default class ProfileGenerator {
     this.profileOverlays = document.querySelectorAll('.js-profile-overlay');
     this.profileImageSrc = '';
     this.overlayImageSrc = this.profileOverlays.length > 0 && this.profileOverlays[0].getAttribute('src');
+    this.mergedProfileImageSrc = '';
 
     this.changeOverlayHandler = this.changeOverlayHandler.bind(this);
     this.loadImage = this.loadImage.bind(this);
@@ -61,6 +62,37 @@ export default class ProfileGenerator {
   async changeOverlayHandler(index) {
     const overlayImagePreview = this.profileOverlays[index];
     this.overlayImageSrc = overlayImagePreview && overlayImagePreview.getAttribute('src');
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  async openImage(src) {
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.onerror = () => reject(createError('Could not load image.', errorTypes.LOAD_ERROR));
+      img.onload = () => {
+        resolve(img);
+      };
+      img.src = src;
+    });
+  }
+  
+  async mergeProfileImageWithOverlay() {
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+
+    const overlayImage = await this.openImage(this.overlayImageSrc);
+    canvas.width = overlayImage.width;
+    canvas.height = overlayImage.height;
+
+    if (this.profileImageSrc !== '') {
+      const profileImage = await this.openImage(this.profileImageSrc);
+      ctx.drawImage(profileImage, 0, 0);
+    }
+
+    ctx.drawImage(overlayImage, 0, 0);
+
+    const imgSrc = canvas.toDataURL('image/png', 0.92);
+    this.mergedProfileImageSrc = imgSrc;
   }
 
   addListeners() {
