@@ -50,6 +50,15 @@ const calcScaledDimensions = (imageToScale, fixedImage) => {
   };
 };
 
+const calcOffsetToCenter = (width, height, targetWidth, targetHeight) => {
+  const x = -(width - targetWidth) / 2;
+  const y = -(height - targetHeight) / 2;
+  return {
+    x,
+    y,
+  };
+};
+
 export default class ProfileGenerator {
   constructor() {
     this.fileUploadInput = document.querySelector('.js-profile-upload-file-dialog');
@@ -118,7 +127,8 @@ export default class ProfileGenerator {
     if (this.profileImageSrc !== '') {
       const profileImage = await this.openImage(this.profileImageSrc);
       const { width, height } = calcScaledDimensions(profileImage, overlayImage);
-      ctx.drawImage(profileImage, 0, 0, width, height);
+      const { x, y } = calcOffsetToCenter(width, height, overlayImage.width, overlayImage.height);
+      ctx.drawImage(profileImage, x, y, width, height);
     }
 
     ctx.drawImage(overlayImage, 0, 0);
