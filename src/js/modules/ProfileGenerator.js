@@ -60,9 +60,11 @@ const calcOffsetToCenter = (width, height, targetWidth, targetHeight) => {
 };
 
 export default class ProfileGenerator {
-  constructor() {
+  constructor(downloadName) {
+    this.downloadName = downloadName;
     this.fileUploadInput = document.querySelector('.js-profile-upload-file-dialog');
     this.uploadProfileButton = document.querySelector('.js-upload-profile');
+    this.downloadProfileButton = document.querySelector('.js-download-profile');
     this.previewImage = document.querySelector('.js-profile-preview');
     this.profileOverlays = document.querySelectorAll('.js-profile-overlay');
     this.profileImageSrc = '';
@@ -138,15 +140,37 @@ export default class ProfileGenerator {
     this.updateImagePreview();
   }
 
+  async downloadProfileImage(downloadName) {
+    if (this.mergedProfileImageSrc !== '') {
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      const image = await this.openImage(this.mergedProfileImageSrc);
+
+      canvas.width = image.width;
+      canvas.height = image.height;
+
+      ctx.drawImage(image, 0, 0);
+
+      const link = document.createElement('a');
+      link.download = downloadName;
+      canvas.toBlob((blob) => {
+        link.href = URL.createObjectURL(blob);
+        link.click();
+      });
+    }
+  }
+
   addListeners() {
     this.fileUploadInput.addEventListener('change', this.uploadImage);
     this.uploadProfileButton.addEventListener('click', () => this.fileUploadInput.click());
+    this.downloadProfileButton.addEventListener('click', () => this.downloadProfileImage(this.downloadName));
     this.profileOverlays.forEach((el, index) => el.addEventListener('click', () => this.changeOverlayHandler(index), true));
   }
 
   removeListeners() {
     this.fileUploadInput.removeEventListener('change', this.uploadImage);
     this.uploadProfileButton.removeEventListener('click', () => this.fileUploadInput.click());
+    this.downloadProfileButton.removeEventListener('click', () => this.downloadProfileImage(this.downloadName));
     this.profileOverlays.forEach((el, index) => el.removeEventListener('click', () => this.changeOverlayHandler(index), true));
   }
 }
