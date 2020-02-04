@@ -55,6 +55,7 @@ export default class ProfileGenerator {
     const reader = new FileReader();
     reader.onload = async (event) => {
       this.profileImageSrc = event.target.result;
+      await this.mergeProfileImageWithOverlay();
     };
     reader.readAsDataURL(src);
   }
@@ -62,6 +63,7 @@ export default class ProfileGenerator {
   async changeOverlayHandler(index) {
     const overlayImagePreview = this.profileOverlays[index];
     this.overlayImageSrc = overlayImagePreview && overlayImagePreview.getAttribute('src');
+    await this.mergeProfileImageWithOverlay();
   }
 
   // eslint-disable-next-line class-methods-use-this
