@@ -2,6 +2,7 @@ import './polyfills';
 import LazyLoad from 'vanilla-lazyload';
 import Swiper from './modules/Swiper';
 import MenuModal from './modules/MenuModal';
+import ProfileGenerator from './modules/ProfileGenerator';
 import VideoModal from './modules/VideoModal';
 import scrollIt from './modules/ScrollIt/ScrollIt';
 import {formsHandler} from './modules/Validation';
@@ -65,6 +66,14 @@ document.addEventListener('DOMContentLoaded', async () => {
       const show = document.querySelectorAll('.js-show-sphere:checked').length;
       document.querySelectorAll('.js-sphere-radios').forEach((radio) => radio.classList.toggle('hidden', !show));
     }));
+  }
+
+  /**
+   * Profil Generator logik
+   */
+  if (document.querySelector('.js-profile-upload-file-dialog')) {
+    // eslint-disable-next-line no-new
+    new ProfileGenerator('gz-profilbild.png');
   }
 
   /**
