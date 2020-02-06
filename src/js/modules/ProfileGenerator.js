@@ -59,6 +59,8 @@ const calcOffsetToCenter = (width, height, targetWidth, targetHeight) => {
   };
 };
 
+const calcSrcPathFromPreview = (previewPath) => previewPath.replace('previews/', '');
+
 export default class ProfileGenerator {
   constructor(downloadName) {
     this.downloadName = downloadName;
@@ -68,7 +70,7 @@ export default class ProfileGenerator {
     this.previewImage = document.querySelector('.js-profile-preview');
     this.profileOverlays = document.querySelectorAll('.js-profile-overlay');
     this.profileImageSrc = '';
-    this.overlayImageSrc = this.profileOverlays.length > 0 && this.profileOverlays[0].getAttribute('src');
+    this.overlayImageSrc = calcSrcPathFromPreview(this.profileOverlays.length > 0 && this.profileOverlays[0].getAttribute('src'));
     this.mergedProfileImageSrc = '';
     this.canvas = document.createElement('canvas');
     this.ctx = this.canvas.getContext('2d');
@@ -110,7 +112,8 @@ export default class ProfileGenerator {
 
   async changeOverlayHandler(index) {
     const overlayImagePreview = this.profileOverlays[index];
-    this.overlayImageSrc = overlayImagePreview && overlayImagePreview.getAttribute('src');
+    const previewSrc = overlayImagePreview && overlayImagePreview.getAttribute('src');
+    this.overlayImageSrc = calcSrcPathFromPreview(previewSrc);
     await this.mergeProfileImageWithOverlay();
   }
 
