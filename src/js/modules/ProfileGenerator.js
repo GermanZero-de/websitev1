@@ -70,11 +70,19 @@ export default class ProfileGenerator {
     this.profileImageSrc = '';
     this.overlayImageSrc = this.profileOverlays.length > 0 && this.profileOverlays[0].getAttribute('src');
     this.mergedProfileImageSrc = '';
+    this.canvas = document.createElement('canvas');
+    this.ctx = this.canvas.getContext('2d');
 
     this.changeOverlayHandler = this.changeOverlayHandler.bind(this);
     this.loadImage = this.loadImage.bind(this);
     this.uploadImage = this.uploadImage.bind(this);
     this.addListeners();
+  }
+
+  clearAndFitCanvas(width, height) {
+    this.canvas.width = width;
+    this.canvas.height = height;
+    this.ctx.clearRect(0, 0, width, height);
   }
 
   updateImagePreview() {
@@ -119,41 +127,33 @@ export default class ProfileGenerator {
   }
 
   async mergeProfileImageWithOverlay() {
-    const canvas = document.createElement('canvas');
-    const ctx = canvas.getContext('2d');
-
     const overlayImage = await this.openImage(this.overlayImageSrc);
-    canvas.width = overlayImage.width;
-    canvas.height = overlayImage.height;
+    this.clearAndFitCanvas(overlayImage.width, overlayImage.height);
 
     if (this.profileImageSrc !== '') {
       const profileImage = await this.openImage(this.profileImageSrc);
       const { width, height } = calcScaledDimensions(profileImage, overlayImage);
       const { x, y } = calcOffsetToCenter(width, height, overlayImage.width, overlayImage.height);
-      ctx.drawImage(profileImage, x, y, width, height);
+      this.ctx.drawImage(profileImage, x, y, width, height);
     }
 
-    ctx.drawImage(overlayImage, 0, 0);
+    this.ctx.drawImage(overlayImage, 0, 0);
 
-    const imgSrc = canvas.toDataURL('image/png', 0.92);
+    const imgSrc = this.canvas.toDataURL('image/png', 0.92);
     this.mergedProfileImageSrc = imgSrc;
     this.updateImagePreview();
   }
 
   async downloadProfileImage(downloadName) {
     if (this.mergedProfileImageSrc !== '') {
-      const canvas = document.createElement('canvas');
-      const ctx = canvas.getContext('2d');
       const image = await this.openImage(this.mergedProfileImageSrc);
+      this.clearAndFitCanvas(image.width, image.height);
 
-      canvas.width = image.width;
-      canvas.height = image.height;
-
-      ctx.drawImage(image, 0, 0);
+      this.ctx.drawImage(image, 0, 0);
 
       const link = document.createElement('a');
       link.download = downloadName;
-      canvas.toBlob((blob) => {
+      this.canvas.toBlob((blob) => {
         link.href = URL.createObjectURL(blob);
         link.click();
       });
