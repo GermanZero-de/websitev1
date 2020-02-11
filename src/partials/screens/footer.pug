@@ -5,7 +5,6 @@ footer.footer
                 img(class="js-lazy-image" data-src="../../assets/img/teamwork.png")
         .container.mx-auto
             div(class="flex flex-wrap -mx-2 lg:-mx-3 pb-5 lg:pb-3 items-stretch")
-                div(class="px-2 lg:px-3 hidden lg:block w-2/12")
                 div(class="px-2 lg:px-3 flex items-stretch justify-stretch w-full md:w-6/12 lg:w-4/12 mb-6")
                     append variables
                         - locals.newsletter_class = "flex-grow-1 w-full card--shadowed"
@@ -20,6 +19,14 @@ footer.footer
                         div
                             a.button.button--black-o.w-full.text-center(href="/spenden")
                                 span Jetzt spenden
+                div(class="px-2 lg:px-3 flex items-stretch justify-stretch w-full md:w-6/12 lg:w-4/12 mb-6")
+                    .call-form.card.card--form.bg-primary.text-white.flex.flex-col.w-full
+                        .card__info #profilbild
+                        .call-form__header Profilbild
+                        .call-form__text.mb-9.pb-3.flex-grow Erstellen Sie ein Profilbild, dass zeigt, dass GermanZero das Richtige tut!
+                        div
+                            a.button.button--black-o.w-full.text-center(href="/profilbild-erstellen")
+                                span Jetzt Profilbild erstellen
     .footer__section.bg-black
         .container
             div(class="flex -mx-2 lg:-mx-3 mb-6 pb-2")
