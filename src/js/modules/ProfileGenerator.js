@@ -1,3 +1,10 @@
+import overlay1 from '../../assets/img/avatar-overlays/facebook-profile-overlay01.png';
+import overlay2 from '../../assets/img/avatar-overlays/facebook-profile-overlay02.png';
+import overlay3 from '../../assets/img/avatar-overlays/facebook-profile-overlay03.png';
+import overlay4 from '../../assets/img/avatar-overlays/facebook-profile-overlay04.png';
+import overlay5 from '../../assets/img/avatar-overlays/facebook-profile-overlay05.png';
+import overlay6 from '../../assets/img/avatar-overlays/facebook-profile-overlay06.png';
+
 const errorTypes = {
   TYPE_ERROR: 'TYPE_ERROR',
   SRC_ERROR: 'SRC_ERROR',
@@ -59,8 +66,6 @@ const calcOffsetToCenter = (width, height, targetWidth, targetHeight) => {
   };
 };
 
-const calcSrcPathFromPreview = (previewPath) => previewPath.replace('previews/', '');
-
 export default class ProfileGenerator {
   constructor(downloadName) {
     this.downloadName = downloadName;
@@ -70,15 +75,22 @@ export default class ProfileGenerator {
     this.previewImage = document.querySelector('.js-profile-preview');
     this.profileOverlays = document.querySelectorAll('.js-profile-overlay');
     this.profileImageSrc = '';
-    this.overlayImageSrc = calcSrcPathFromPreview(this.profileOverlays.length > 0 && this.profileOverlays[0].getAttribute('src'));
     this.mergedProfileImageSrc = '';
     this.canvas = document.createElement('canvas');
     this.ctx = this.canvas.getContext('2d');
+    this.overlays = [overlay1, overlay2, overlay3, overlay4, overlay5, overlay6];
+    this.overlayImageSrc = this.getOriginalOverlaySrc(this.profileOverlays.length > 0 && this.profileOverlays[0].getAttribute('src'));
 
     this.changeOverlayHandler = this.changeOverlayHandler.bind(this);
     this.loadImage = this.loadImage.bind(this);
     this.uploadImage = this.uploadImage.bind(this);
     this.addListeners();
+  }
+
+  getOriginalOverlaySrc(previewSrc) {
+    const overlyFilename = previewSrc.split('/')
+      .pop();
+    return this.overlays.find((overlay) => overlay.includes(overlyFilename));
   }
 
   clearAndFitCanvas(width, height) {
@@ -113,7 +125,7 @@ export default class ProfileGenerator {
   async changeOverlayHandler(index) {
     const overlayImagePreview = this.profileOverlays[index];
     const previewSrc = overlayImagePreview && overlayImagePreview.getAttribute('src');
-    this.overlayImageSrc = calcSrcPathFromPreview(previewSrc);
+    this.overlayImageSrc = this.getOriginalOverlaySrc(previewSrc);
     await this.mergeProfileImageWithOverlay();
   }
 
