@@ -19,10 +19,11 @@ block content
         .story-block-container__bg.bg-secondary
         .container
             div(class="-mx-2 lg:-mx-3 flex flex-wrap justify-center mb-8 lg:mb-7")
-                div(class="px-2 lg:px-3 lg:w-1/12 xl:w-2/12 hidden md:block")
                 div(class="px-2 lg:px-3 w-full md:w-10/12 xl:w-8/12")
                     .title.title--size-h3.mb-5.text-center Jetzt personalisiertes Profilbild erstellen!
-                    include ../partials/screens/profile-generator
+                    div(class="content content--size-2 text-black text-block")
+                        p Das Bild wird ausschließlich in Ihrem Browser verarbeitet und nicht an unseren Server gesendet.
+    include ../partials/screens/profile-generator
                 div(class="px-2 lg:px-3 lg:w-1/12 xl:w-2/12 hidden md:block")
     include ../partials/screens/events-screen
     include ../partials/screens/footer
