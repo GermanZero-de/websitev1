@@ -121,6 +121,8 @@ export default class ProfileGenerator {
 
       this.clearAndFitCanvas(size);
       this.ctx.drawImage(profileImage, x, y);
+      this.ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+      this.ctx.fillRect(0, 0, size, size);
     } else {
       size = 400;
       this.clearAndFitCanvas(size);
