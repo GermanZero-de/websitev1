@@ -97,6 +97,7 @@ export default class ProfileGenerator {
     const overlayImagePreview = this.profileOverlays[index];
     const previewSrc = overlayImagePreview && overlayImagePreview.getAttribute('src');
     this.overlayImageSrc = previewSrc;
+    this.overlayImage = overlayImagePreview;
     await this.mergeProfileImageWithOverlay();
   }
 
@@ -128,8 +129,9 @@ export default class ProfileGenerator {
       this.clearAndFitCanvas(size);
     }
 
-    const overlayImage = await this.openImage(this.overlayImageSrc);
-    this.ctx.drawImage(overlayImage, 0, 0, size, size);
+    // const overlayImage = await this.openImage(this.overlayImageSrc);
+    // this.ctx.drawImage(overlayImage, 0, 0, size, size);
+    this.ctx.drawImage(this.overlayImage, 0, 0, size, size);
 
     const imgSrc = this.canvas.toDataURL('image/png', 0.92);
     this.mergedProfileImageSrc = imgSrc;
