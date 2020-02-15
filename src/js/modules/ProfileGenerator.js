@@ -56,12 +56,10 @@ export default class ProfileGenerator {
     this.fileUploadInput = document.querySelector('.js-profile-upload-file-dialog');
     this.uploadProfileButton = document.querySelector('.js-upload-profile');
     this.downloadProfileButton = document.querySelector('.js-download-profile');
-    this.previewImage = document.querySelector('.js-profile-preview');
     this.overlays = [overlay1, overlay2, overlay3, overlay4, overlay5, overlay6];
     this.profileOverlays = document.querySelectorAll('.js-profile-overlay');
     this.profileImageSrc = '';
-    this.mergedProfileImageSrc = '';
-    this.canvas = document.createElement('canvas');
+    this.canvas = document.querySelector('.js-profile-canvas');
     this.ctx = this.canvas.getContext('2d');
     this.overlayImageSrc = this.profileOverlays.length > 0 && this.getOverlaySrc(this.profileOverlays[0].getAttribute('src'));
 
@@ -69,6 +67,7 @@ export default class ProfileGenerator {
     this.loadImage = this.loadImage.bind(this);
     this.uploadImage = this.uploadImage.bind(this);
     this.addListeners();
+    this.mergeProfileImageWithOverlay();
   }
 
   getOverlaySrc(previewSrc) {
@@ -82,10 +81,6 @@ export default class ProfileGenerator {
     this.canvas.width = size;
     this.canvas.height = size;
     this.ctx.clearRect(0, 0, size, size);
-  }
-
-  updateImagePreview() {
-    if (this.previewImage) this.previewImage.setAttribute('src', this.mergedProfileImageSrc);
   }
 
   uploadImage(event) {
@@ -111,7 +106,6 @@ export default class ProfileGenerator {
     const overlayImagePreview = this.profileOverlays[index];
     const previewSrc = overlayImagePreview && overlayImagePreview.getAttribute('src');
     this.overlayImageSrc = this.getOverlaySrc(previewSrc);
-    this.overlayImage = overlayImagePreview;
     await this.mergeProfileImageWithOverlay();
   }
 
@@ -146,22 +140,15 @@ export default class ProfileGenerator {
 
     const overlayImage = await this.openImage(this.overlayImageSrc);
     this.ctx.drawImage(overlayImage, 0, 0, size, size);
-    // this.ctx.drawImage(this.overlayImage, 0, 0, size, size);
-
-    const imgSrc = this.canvas.toDataURL('image/png', 0.92);
-    this.mergedProfileImageSrc = imgSrc;
-    this.updateImagePreview();
   }
 
   async downloadProfileImage(downloadName) {
-    if (this.mergedProfileImageSrc !== '') {
-      const link = document.createElement('a');
-      link.download = downloadName;
-      this.canvas.toBlob((blob) => {
-        link.href = URL.createObjectURL(blob);
-        link.click();
-      });
-    }
+    const link = document.createElement('a');
+    link.download = downloadName;
+    this.canvas.toBlob((blob) => {
+      link.href = URL.createObjectURL(blob);
+      link.click();
+    });
   }
 
   addListeners() {
