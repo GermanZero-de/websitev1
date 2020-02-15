@@ -148,7 +148,7 @@ export default class ProfileGenerator {
     this.canvas.toBlob((blob) => {
       link.href = URL.createObjectURL(blob);
       link.click();
-    });
+    }, 'image/jpeg', 0.92);
   }
 
   addListeners() {
