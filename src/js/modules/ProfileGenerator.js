@@ -105,6 +105,7 @@ export default class ProfileGenerator {
   async openImage(src) {
     return new Promise((resolve, reject) => {
       const img = new Image();
+      img.crossOrigin = 'Anonymous';
       img.onerror = () => reject(createError('Could not load image.', errorTypes.LOAD_ERROR));
       img.onload = () => {
         resolve(img);
