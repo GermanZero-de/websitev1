@@ -1,9 +1,9 @@
-import overlay1 from '../../assets/img/avatar-overlays/facebook-profile-overlay01.png';
-import overlay2 from '../../assets/img/avatar-overlays/facebook-profile-overlay02.png';
-import overlay3 from '../../assets/img/avatar-overlays/facebook-profile-overlay03.png';
-import overlay4 from '../../assets/img/avatar-overlays/facebook-profile-overlay04.png';
-import overlay5 from '../../assets/img/avatar-overlays/facebook-profile-overlay05.png';
-import overlay6 from '../../assets/img/avatar-overlays/facebook-profile-overlay06.png';
+import overlay1 from '../../assets/img/avatar-overlays/facebook-profile-overlay20200212-01.svg';
+import overlay2 from '../../assets/img/avatar-overlays/facebook-profile-overlay20200212-02.svg';
+import overlay3 from '../../assets/img/avatar-overlays/facebook-profile-overlay20200212-03.svg';
+import overlay4 from '../../assets/img/avatar-overlays/facebook-profile-overlay20200212-04.svg';
+import overlay5 from '../../assets/img/avatar-overlays/facebook-profile-overlay20200212-05.svg';
+import overlay6 from '../../assets/img/avatar-overlays/facebook-profile-overlay20200212-06.svg';
 
 const errorTypes = {
   TYPE_ERROR: 'TYPE_ERROR',
@@ -33,33 +33,17 @@ const validateImage = (src, size = 4 * 1024 * 1024) => {
   }
 };
 
-const calcScaledDimensions = (imageToScale, fixedImage) => {
-  const { width: width1, height: height1 } = imageToScale;
-  const { width: width2, height: height2 } = fixedImage;
-
-  const widthDiff = width1 - width2;
-  const heightDiff = height1 - height2;
-
-  let width;
-  let height;
-
-  if (widthDiff < heightDiff) {
-    width = (width1 * width2) / width1;
-    height = (height1 * width2) / width1;
+const calcOffsetToCenter = (width, height) => {
+  const size = Math.min(width, height);
+  let x;
+  let y;
+  if (width === size) {
+    x = 0;
+    y = -(height - size) / 2;
   } else {
-    width = (width1 * height2) / height1;
-    height = (height1 * height2) / height1;
+    x = -(width - size) / 2;
+    y = 0;
   }
-
-  return {
-    width,
-    height,
-  };
-};
-
-const calcOffsetToCenter = (width, height, targetWidth, targetHeight) => {
-  const x = -(width - targetWidth) / 2;
-  const y = -(height - targetHeight) / 2;
   return {
     x,
     y,
@@ -72,35 +56,31 @@ export default class ProfileGenerator {
     this.fileUploadInput = document.querySelector('.js-profile-upload-file-dialog');
     this.uploadProfileButton = document.querySelector('.js-upload-profile');
     this.downloadProfileButton = document.querySelector('.js-download-profile');
-    this.previewImage = document.querySelector('.js-profile-preview');
+    this.overlays = [overlay1, overlay2, overlay3, overlay4, overlay5, overlay6];
     this.profileOverlays = document.querySelectorAll('.js-profile-overlay');
     this.profileImageSrc = '';
-    this.mergedProfileImageSrc = '';
-    this.canvas = document.createElement('canvas');
+    this.canvas = document.querySelector('.js-profile-canvas');
     this.ctx = this.canvas.getContext('2d');
-    this.overlays = [overlay1, overlay2, overlay3, overlay4, overlay5, overlay6];
-    this.overlayImageSrc = this.getOriginalOverlaySrc(this.profileOverlays.length > 0 && this.profileOverlays[0].getAttribute('src'));
+    this.overlayImageSrc = this.profileOverlays.length > 0 && this.getOverlaySrc(this.profileOverlays[0].getAttribute('src'));
 
     this.changeOverlayHandler = this.changeOverlayHandler.bind(this);
     this.loadImage = this.loadImage.bind(this);
     this.uploadImage = this.uploadImage.bind(this);
     this.addListeners();
+    this.mergeProfileImageWithOverlay();
   }
 
-  getOriginalOverlaySrc(previewSrc) {
-    const overlyFilename = previewSrc.split('/')
+  getOverlaySrc(previewSrc) {
+    const overlayFilename = previewSrc.split('/')
       .pop();
-    return this.overlays.find((overlay) => overlay.includes(overlyFilename));
+    return this.overlays.find((overlay) => overlay.includes(overlayFilename));
   }
 
-  clearAndFitCanvas(width, height) {
-    this.canvas.width = width;
-    this.canvas.height = height;
-    this.ctx.clearRect(0, 0, width, height);
-  }
-
-  updateImagePreview() {
-    if (this.previewImage) this.previewImage.setAttribute('src', this.mergedProfileImageSrc);
+  clearAndFitCanvas(size) {
+    // Overlays can only be squares
+    this.canvas.width = size;
+    this.canvas.height = size;
+    this.ctx.clearRect(0, 0, size, size);
   }
 
   uploadImage(event) {
@@ -125,7 +105,7 @@ export default class ProfileGenerator {
   async changeOverlayHandler(index) {
     const overlayImagePreview = this.profileOverlays[index];
     const previewSrc = overlayImagePreview && overlayImagePreview.getAttribute('src');
-    this.overlayImageSrc = this.getOriginalOverlaySrc(previewSrc);
+    this.overlayImageSrc = this.getOverlaySrc(previewSrc);
     await this.mergeProfileImageWithOverlay();
   }
 
@@ -133,6 +113,7 @@ export default class ProfileGenerator {
   async openImage(src) {
     return new Promise((resolve, reject) => {
       const img = new Image();
+      img.crossOrigin = 'Anonymous';
       img.onerror = () => reject(createError('Could not load image.', errorTypes.LOAD_ERROR));
       img.onload = () => {
         resolve(img);
@@ -142,37 +123,32 @@ export default class ProfileGenerator {
   }
 
   async mergeProfileImageWithOverlay() {
-    const overlayImage = await this.openImage(this.overlayImageSrc);
-    this.clearAndFitCanvas(overlayImage.width, overlayImage.height);
-
+    let size;
     if (this.profileImageSrc !== '') {
       const profileImage = await this.openImage(this.profileImageSrc);
-      const { width, height } = calcScaledDimensions(profileImage, overlayImage);
-      const { x, y } = calcOffsetToCenter(width, height, overlayImage.width, overlayImage.height);
-      this.ctx.drawImage(profileImage, x, y, width, height);
+      size = Math.min(profileImage.width, profileImage.height);
+      const { x, y } = calcOffsetToCenter(profileImage.width, profileImage.height);
+
+      this.clearAndFitCanvas(size);
+      this.ctx.drawImage(profileImage, x, y);
+      this.ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+      this.ctx.fillRect(0, 0, size, size);
+    } else {
+      size = 400;
+      this.clearAndFitCanvas(size);
     }
 
-    this.ctx.drawImage(overlayImage, 0, 0);
-
-    const imgSrc = this.canvas.toDataURL('image/png', 0.92);
-    this.mergedProfileImageSrc = imgSrc;
-    this.updateImagePreview();
+    const overlayImage = await this.openImage(this.overlayImageSrc);
+    this.ctx.drawImage(overlayImage, 0, 0, size, size);
   }
 
   async downloadProfileImage(downloadName) {
-    if (this.mergedProfileImageSrc !== '') {
-      const image = await this.openImage(this.mergedProfileImageSrc);
-      this.clearAndFitCanvas(image.width, image.height);
-
-      this.ctx.drawImage(image, 0, 0);
-
-      const link = document.createElement('a');
-      link.download = downloadName;
-      this.canvas.toBlob((blob) => {
-        link.href = URL.createObjectURL(blob);
-        link.click();
-      });
-    }
+    const link = document.createElement('a');
+    link.download = downloadName;
+    this.canvas.toBlob((blob) => {
+      link.href = URL.createObjectURL(blob);
+      link.click();
+    }, 'image/jpeg', 0.92);
   }
 
   addListeners() {

@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', async () => {
    */
   if (document.querySelector('.js-profile-upload-file-dialog')) {
     // eslint-disable-next-line no-new
-    new ProfileGenerator('gz-profilbild.png');
+    new ProfileGenerator('gz-profilbild.jpg');
   }
 
   /**
