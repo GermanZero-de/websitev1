@@ -14,6 +14,7 @@ import Video from './modules/Video';
 import Selects from './modules/Selects';
 import ReadMore from './modules/ReadMore';
 import App from './app';
+import ProfileGenerator from './modules/ProfileGenerator';
 
 document.addEventListener('DOMContentLoaded', async () => {
   /* eslint-disable no-new */
@@ -51,6 +52,14 @@ document.addEventListener('DOMContentLoaded', async () => {
   new ReadMore();
 
   new TextCrop();
+
+  /**
+   * Profil Generator logik
+   */
+  if (document.querySelector('.js-profile-upload-file-dialog')) {
+    // eslint-disable-next-line no-new
+    new ProfileGenerator('gz-profilbild.jpg');
+  }
 
   /**
    * Custom app logic
