@@ -173,6 +173,34 @@ export default class ProfileGenerator {
     });
   }
 
+  transformContext(size) {
+    switch (this.profileOrientation) {
+      case 2:
+        this.ctx.transform(-1, 0, 0, 1, size, 0);
+        break;
+      case 3:
+        this.ctx.transform(-1, 0, 0, -1, size, size);
+        break;
+      case 4:
+        this.ctx.transform(1, 0, 0, -1, 0, size);
+        break;
+      case 5:
+        this.ctx.transform(0, 1, 1, 0, 0, 0);
+        break;
+      case 6:
+        this.ctx.transform(0, 1, -1, 0, size, 0);
+        break;
+      case 7:
+        this.ctx.transform(0, -1, -1, 0, size, size);
+        break;
+      case 8:
+        this.ctx.transform(0, -1, 1, 0, 0, size);
+        break;
+      default:
+        break;
+    }
+  }
+
   async mergeProfileImageWithOverlay() {
     let size;
     if (this.profileImageSrc !== '') {
@@ -181,7 +209,10 @@ export default class ProfileGenerator {
       const { x, y } = calcOffsetToCenter(profileImage.width, profileImage.height);
 
       this.clearAndFitCanvas(size);
+      this.ctx.save();
+      this.transformContext(size);
       this.ctx.drawImage(profileImage, x, y);
+      this.ctx.restore();
       this.ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
       this.ctx.fillRect(0, 0, size, size);
     } else {
