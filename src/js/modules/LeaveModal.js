@@ -10,7 +10,6 @@ export default class LeaveModal extends Modal {
     /*
     window.onbeforeunload = function (event) {
 
-      console.log(JSON.stringify(event));
       if (window.location.hostname) {
 
       }
