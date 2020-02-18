@@ -5,21 +5,23 @@
   "main": "index.js",
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack-dev-server --open --mode development --config webpack/webpack.dev.conf.js",
-    "build": "cross-env NODE_ENV=production webpack --mode production --config webpack/webpack.build.conf.js",
+    "build": "npm run build:markup && npm run build:critical",
+    "build:markup": "cross-env NODE_ENV=production webpack --mode production --config webpack/webpack.build.conf.js",
     "build:analyze": "cross-env NODE_ENV=production ANALYZE=true webpack --mode production --config webpack/webpack.build.conf.js",
+    "build:critical": "cross-env NODE_ENV=production CRITICAL_CSS=true webpack --mode production --config webpack/webpack.build.conf.js",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "precommit": "npm run lint"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/alexey-m-ysbm/teampulse.git"
+    "url": "git+https://github.com/GermanZero-de/websitev1.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/alexey-m-ysbm/teampulse/issues"
+    "url": "https://github.com/GermanZero-de/websitev1/issues"
   },
-  "homepage": "https://github.com/alexey-m-ysbm/teampulse#readme",
+  "homepage": "https://github.com/GermanZero-de/websitev1#readme",
   "browserslist": [
     "last 3 versions",
     "> 1%",
@@ -50,6 +52,7 @@
     "eslint-loader": "^3.0.2",
     "file-loader": "^5.0.2",
     "form-data-entries": "^1.0.4",
+    "html-critical-webpack-plugin": "^2.1.0",
     "html-webpack-plugin": "^3.2.0",
     "image-webpack-loader": "^6.0.0",
     "lodash.throttle": "^4.1.1",
@@ -78,7 +81,7 @@
     "svg-sprite-loader": "^4.1.6",
     "svg-transform-loader": "^2.0.8",
     "svgo-loader": "^2.2.1",
-    "swiper": "^5.2.1",
+    "swiper": "^5.3.1",
     "tailwindcss": "^1.1.4",
     "terser-webpack-plugin": "^2.3.1",
     "vanilla-lazyload": "^12.4.0",

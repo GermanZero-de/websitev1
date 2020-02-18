@@ -7,11 +7,14 @@ block variables
 html(lang="de")
     head
         include ../shared/head
-        include ../../static/validation/validation_messages_de.html
-        include ../../static/captcha.html
     body
         include ../shared/notifications
-        block content
         include ../shared/modals
-        include ../../static/google-analytics.html
         include ../shared/postcard-fixed-button
+        block content
+        include ../screens/menu-screen
+        include ../../static/captcha.html
+        include ../../static/validation/validation_messages_de.html
+        include ../../static/google-analytics.html
+        include ../../static/style-holder-continue.html
+

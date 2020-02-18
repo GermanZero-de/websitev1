@@ -1,11 +1,9 @@
 const path = require('path');
-const fs = require('fs');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 
 const dotenv = require('dotenv').config({
   path: path.resolve('.env'),
@@ -16,39 +14,6 @@ const PATHS = {
   dist: path.join(__dirname, '../dist'),
   assets: 'assets/',
 };
-
-const PAGE_DIR = path.resolve(__dirname, '../src/pages');
-
-function getFilesFromDir(dir, fileTypes) {
-  const filesToReturn = [];
-
-  function walkDir(currentPath) {
-    const files = fs.readdirSync(currentPath);
-    for (const i in files) {
-      const curFile = path.join(currentPath, files[i]);
-      if (fs.statSync(curFile).isFile() && fileTypes.indexOf(path.extname(curFile)) != -1) {
-        filesToReturn.push(curFile);
-      } else if (fs.statSync(curFile).isDirectory()) {
-        walkDir(curFile);
-      }
-    }
-  }
-
-  walkDir(dir);
-  return filesToReturn;
-}
-
-const htmlPlugins = getFilesFromDir(PAGE_DIR, ['.pug']).map((filePath) => {
-  const fileName = filePath.replace(PAGE_DIR, '');
-  const pageTitle = fileName.replace(/\.pug$/, '').replace(/^\\/, '');
-  return new HtmlWebpackPlugin({
-    // chunks: [fileName.replace(path.extname(fileName), ''), 'vendor'],
-    template: filePath,
-    inject: 'head',
-    title: pageTitle === 'index' ? 'German Zero' : pageTitle,
-    filename: `.${fileName.replace(/\.pug$/, '.html')}`,
-  });
-});
 
 module.exports = {
   // BASE config
@@ -148,10 +113,10 @@ module.exports = {
           },
           {
             loader: 'css-loader',
-            options: { sourceMap: true },
+            options: {sourceMap: true},
           }, {
             loader: 'postcss-loader',
-            options: { sourceMap: true, config: { path: './postcss.config.js' } },
+            options: {sourceMap: true, config: {path: './postcss.config.js'}},
           },
         ],
       }, {
@@ -161,7 +126,7 @@ module.exports = {
           MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
-            options: { sourceMap: true },
+            options: {sourceMap: true},
           }, {
             loader: 'postcss-loader',
             options: {
@@ -192,20 +157,17 @@ module.exports = {
     },
   },
   plugins: [
-
-    new CleanWebpackPlugin(),
+    ...(process.env.CRITICAL_CSS ? [] : [new CleanWebpackPlugin()]),
     new MiniCssExtractPlugin({
       filename: `${PATHS.assets}css/[name].[contenthash].css`,
     }),
     new CopyWebpackPlugin([
-      { from: `${PATHS.src}/${PATHS.assets}`, to: `${PATHS.assets}` },
-      { from: `${PATHS.src}/static`, to: '' },
+      {from: `${PATHS.src}/${PATHS.assets}`, to: `${PATHS.assets}`},
+      {from: `${PATHS.src}/static`, to: ''},
     ]),
     new webpack.DefinePlugin({
       'process.env': JSON.stringify(dotenv.parsed),
     }),
     new SpriteLoaderPlugin(),
-
-    ...htmlPlugins,
   ],
 };

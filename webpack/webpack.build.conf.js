@@ -1,7 +1,19 @@
 const merge = require('webpack-merge');
 const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+
 const baseWebpackConfig = require('./webpack.base.conf');
+const htmlPlugins = require('./htmlPlugins');
+const criticalCssPlugins = require('./criticalCssPlugins');
+
+
+let plugins = [];
+
+if (process.env.CRITICAL_CSS) {
+  plugins = plugins.concat(criticalCssPlugins);
+} else {
+  plugins = plugins.concat(htmlPlugins);
+}
 
 const buildWebpackConfig = merge(baseWebpackConfig, {
   // BUILD config
@@ -17,6 +29,9 @@ const buildWebpackConfig = merge(baseWebpackConfig, {
       new OptimizeCSSAssetsPlugin({}),
     ],
   },
+  plugins: [
+    ...plugins,
+  ],
 });
 
 
@@ -29,6 +44,6 @@ if (process.env.ANALYZE) {
   }));
 }
 
-module.exports = new Promise((resolve, reject) => {
+module.exports = new Promise((resolve) => {
   resolve(buildWebpackConfig);
 });
