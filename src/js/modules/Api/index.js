@@ -20,7 +20,7 @@ export const ApiHandler = (emitter) => (formEl) => formEl.addEventListener(DATA_
       data,
     });
   }
-  if (formEl.hasAttribute('with-captcha') && window.grecaptcha) {
+  if (formEl.hasAttribute('data-with-captcha') && window.grecaptcha) {
     try {
       data.token = await window.grecaptcha.execute('6LcqGcoUAAAAAOx-ynLFWhuftjUAAX_tzw2fcaiD', { action: 'submit' });
     } catch (error) {

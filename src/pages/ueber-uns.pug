@@ -3,7 +3,7 @@ extends ../partials/layouts/main.pug
 block content
     include ../partials/screens/menu-screen
     append variables
-        - locals.header_bg = 'background-image: url(/assets/img/article-bg.jpg);'
+        - locals.header_bg = 'url(/assets/img/article-bg.jpg)'
         - locals.quoteTitle = '"Wir von GermanZero helfen mit Klimaplan, 1,5-Grad-Gesetz und Mobilisierung der Politik bei dieser Menschheitsentscheidung."'
         - locals.quoteText = 'Heinrich Strößenreuther, Vorstand GermanZero'
     include ../partials/screens/quote-screen
@@ -20,13 +20,13 @@ block content
                     p Zugleich entsteht derzeit ein Team von Management- und Kommunikationsprofis sowie eine stark wachsende Gruppe von Unterstützern aus allen Teilen der Bevölkerung, die gemeinsam eine schlagkräftige Organisation aufbauen.
                     p GermanZero setzt dabei auf intensive Partnerschaften mit relevanten Akteuren – wichtige Kooperationspartner sind FOES e.V., CO2-Abgabe e.V., Mehr Demokratie e.V. und Klima-Allianz e.V.. Hinzu kommen Schlüsselpersonen bei Fridays for Future und Scientists for Future, mit denen GermanZero in engem Austausch steht.
     div(class="pt-6 md:pt-8 story-block-container")
-        .story-block-container__bg(style="background-image: url('/assets/img/arrows-sprite.png'), linear-gradient(180deg, rgba(244,211,0,1) 0%, rgba(244,211,0,1) 100%)")
+        .story-block-container__bg.js-lazy-image(data-bg="url('/assets/img/arrows-sprite.png'), linear-gradient(180deg, rgba(244,211,0,1) 0%, rgba(244,211,0,1) 100%)")
         .container
             div(class="story-block -mx-2 lg:-mx-3 flex flex-wrap justify-center mb-8 lg:mb-7")
                 div(class="px-2 lg:px-3 w-full order-1 sm:w-1/12 hidden lg:block")
                 div(class="px-2 lg:px-3 w-full order-1 mb-2 md:mb-0 sm:w-10/12 md:w-3/12")
                     div(class="story-block__image w-full responsive-image responsive-image--1/1")
-                        img(class="js-lazy-image" data-src="../../assets/img/person-example-1.jpg")
+                        img(class="js-lazy-image" alt="" src="" data-src="../../assets/img/person-example-1.jpg")
                 div(class="px-2 lg:px-3 w-full order-1 sm:w-10/12 md:w-7/12 flex flex-col flex-grow")
                     .story-block__content.flex.flex-col.flex-grow.js-toggle-list
                         div(class="title title--size-h3 mb-1 lg:mb-2") Heinrich Strößenreuther
@@ -37,7 +37,7 @@ block content
                                 p At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam.
                                 p At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam.
                         div(class="")
-                            div(class="js-toggle-list-button text-black cursor-pointer hover:text-primary transition")
+                            div(class="js-toggle-list-button text-black cursor-pointer hover:text-primary transition-color")
                                 span.js-toggle-list-more-text
                                     i.story-block__arrow.story-block__arrow--down.mr-2
                                     span Weiterlesen
@@ -50,7 +50,7 @@ block content
                 div(class="px-2 lg:px-3 w-full order-1 sm:w-1/12 hidden lg:block")
                 div(class="px-2 lg:px-3 w-full order-1 md:order-2 mb-2 md:mb-0 sm:w-10/12 md:w-3/12")
                     div(class="story-block__image w-full responsive-image responsive-image--1/1")
-                        img(class="js-lazy-image" data-src="../../assets/img/person-example-2.jpg")
+                        img(class="js-lazy-image" alt="" src="" data-src="../../assets/img/person-example-2.jpg")
                 div(class="px-2 lg:px-3 w-full order-1 sm:w-10/12 md:w-7/12 flex flex-col flex-grow")
                     .story-block__content.flex.flex-col.flex-grow.js-toggle-list
                         div(class="title title--size-h3 mb-1 lg:mb-2") Heinrich Strößenreuther
@@ -61,7 +61,7 @@ block content
                                 p At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam.
                                 p At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam.
                         div(class="")
-                            div(class="js-toggle-list-button text-black cursor-pointer hover:text-primary transition")
+                            div(class="js-toggle-list-button text-black cursor-pointer hover:text-primary transition-color")
                                 span.js-toggle-list-more-text
                                     i.story-block__arrow.story-block__arrow--down.mr-2
                                     span Weiterlesen
@@ -74,7 +74,7 @@ block content
                 div(class="px-2 lg:px-3 w-full order-1 sm:w-1/12 hidden lg:block")
                 div(class="px-2 lg:px-3 w-full order-1 mb-2 md:mb-0 sm:w-10/12 md:w-3/12")
                     div(class="story-block__image w-full responsive-image responsive-image--1/1")
-                        img(class="js-lazy-image" data-src="../../assets/img/person-example-3.jpg")
+                        img(class="js-lazy-image" alt="" src="" data-src="../../assets/img/person-example-3.jpg")
                 div(class="px-2 lg:px-3 w-full order-1 sm:w-10/12 md:w-7/12 flex flex-col flex-grow")
                     .story-block__content.flex.flex-col.flex-grow.js-toggle-list
                         div(class="title title--size-h3 mb-1 lg:mb-2") Heinrich Strößenreuther
@@ -85,7 +85,7 @@ block content
                                 p At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam.
                                 p At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam.
                         div(class="")
-                            div(class="js-toggle-list-button text-black cursor-pointer hover:text-primary transition")
+                            div(class="js-toggle-list-button text-black cursor-pointer hover:text-primary transition-color")
                                 span.js-toggle-list-more-text
                                     i.story-block__arrow.story-block__arrow--down.mr-2
                                     span Weiterlesen

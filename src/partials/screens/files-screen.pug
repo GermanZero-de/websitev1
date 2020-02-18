@@ -4,7 +4,7 @@
             .arrow-block__icon.text-white
                 include ../../assets/img/svg-sprite/text-arrow.svg
             span Veröffentlichungen, Downloads und Updates
-    div(class="pt-6 lg:pt-8 bg" style="background-image: url('/assets/img/events-bg.png')")
+    div(class="pt-6 lg:pt-8 bg js-lazy-image" data-bg="url('/assets/img/events-bg.png')")
         .container
             div(class="mx-2 lg:-mx-3 flex justify-center")
                 div(class="px-2 lg:px-3 w-full sm:w-10/12 lg:w-8/12 pb-1 toggle-list")
@@ -12,7 +12,7 @@
                     .files-card.bg-white.mb-6
                         .files-card__image-block
                             .responsive-image.files-card__image.mb-2
-                                img(class="js-lazy-image" data-src="/downloads/preview-1.jpg" alt="")
+                                img(class="js-lazy-image" alt="" src="" data-src="/downloads/preview-1.jpg" )
                         .files-card__content-block
                             //- .files-card__tag.font-tertiary.text-black.mb-2 #eckpunktepapier
                             .files-card__subtitle.content.content--size-2.mb-1 13.02.2020
@@ -25,7 +25,7 @@
                     .files-card.bg-white.mb-6
                         .files-card__image-block
                             .responsive-image.files-card__image.mb-2
-                                img(class="js-lazy-image" data-src="/downloads/preview-1.jpg" alt="")
+                                img(class="js-lazy-image" alt="" src="" data-src="/downloads/preview-1.jpg" )
                         .files-card__content-block
                             //- .files-card__tag.font-tertiary.text-black.mb-2 #eckpunktepapier
                             .files-card__subtitle.content.content--size-2.mb-1 07.01.2020
@@ -38,7 +38,7 @@
                     .files-card.bg-white.mb-6
                         .files-card__image-block
                             .responsive-image.files-card__image.mb-2
-                                img(class="js-lazy-image" data-src="/downloads/preview-2.jpg" alt="")
+                                img(class="js-lazy-image" alt="" src="" data-src="/downloads/preview-2.jpg" )
                         .files-card__content-block
                             //- .files-card__tag.font-tertiary.text-black.mb-2 #eckpunktepapier
                             .files-card__subtitle.content.content--size-2.mb-1 02.12.2019
@@ -51,7 +51,7 @@
                     .files-card.bg-white.mb-6
                         .files-card__image-block
                             .responsive-image.files-card__image.mb-2
-                                img(class="js-lazy-image" data-src="/downloads/preview-1.jpg" alt="")
+                                img(class="js-lazy-image" alt="" src="" data-src="/downloads/preview-1.jpg" )
                         .files-card__content-block
                             //- .files-card__tag.font-tertiary.text-black.mb-2 #eckpunktepapier
                             .files-card__subtitle.content.content--size-2.mb-1 17.12.2019
@@ -64,7 +64,7 @@
                     .files-card.bg-white.mb-6
                         .files-card__image-block
                             .responsive-image.files-card__image.mb-2
-                                img(class="js-lazy-image" data-src="/downloads/preview-2.jpg" alt="")
+                                img(class="js-lazy-image" alt="" src="" data-src="/downloads/preview-2.jpg" )
                         .files-card__content-block
                             //- .files-card__tag.font-tertiary.text-black.mb-2 #eckpunktepapier
                             .files-card__subtitle.content.content--size-2.mb-1 17.12.2019
@@ -74,7 +74,7 @@
                             .flex.justify-between
                                 .files-card__info PDF, 0.084 MB
                                 a.text-primary.link--invert.underline.uppercase(download target="_blank" href="/downloads/GermanZero_Klimaplan_Zusammenfassung.pdf") DOWNLOAD STARTEN
-                    
+
                     //- div(class="text-center pb-9 sm:pb-10 lg:pb-9")
                         label(class="cursor-pointer link link--invert inline-block title title--size-h4 text-primary title--underline-black transition hover:text-black" for="toggleAllFiles")
                             span(class="toggle-list__visibility-text toggle-list__visibility-text--more") Weitere Downloads anzeigen

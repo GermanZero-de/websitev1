@@ -30,13 +30,15 @@
     height: 100vh;
     background: rgba(0,0,0,0.9);
     opacity: 0;
-    transition: all 0.5s ease-in;
+    transition: opacity 0.5s ease-in, z-index .3s ease-in;
     display: flex;
     align-items: center;
+
     &.active {
         opacity: 1;
         z-index: 100;
     }
+
     .js-video-modal-btn-close{
         position: absolute;
         top: 30px;

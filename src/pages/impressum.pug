@@ -3,7 +3,7 @@ extends ../partials/layouts/main.pug
 block content
     include ../partials/screens/menu-screen
     append variables
-        - locals.header_bg = 'background-image: url(/assets/img/machmit-first-screen.jpg);'
+        - locals.header_bg = 'url(/assets/img/machmit-first-screen.jpg)'
         - locals.quoteTitle = '"Wir von GermanZero helfen mit Klimaplan, 1,5-Grad-Gesetz und Mobilisierung der Politik bei dieser Menschheitsentscheidung."'
         - locals.quoteText = 'Heinrich Strößenreuther, Vorstand GermanZero'
     include ../partials/screens/quote-screen
@@ -22,7 +22,7 @@ block content
 
 
     div(class="pt-6 md:pt-8 story-block-container")
-        .story-block-container__bg(style="background-image: url('/assets/img/arrows-sprite.png'), linear-gradient(180deg, rgba(244,211,0,1) 0%, rgba(244,211,0,1) 100%)")
+        .story-block-container__bg.js-lazy-image(data-bg="url('/assets/img/arrows-sprite.png'), linear-gradient(180deg, rgba(244,211,0,1) 0%, rgba(244,211,0,1) 100%)")
         .container
             div(class="-mx-2 lg:-mx-3 flex flex-wrap justify-center mb-8 lg:mb-7")
                 div(class="px-2 lg:px-3 md:w-1/12 hidden md:block")

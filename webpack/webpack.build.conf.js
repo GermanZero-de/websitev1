@@ -19,6 +19,16 @@ const buildWebpackConfig = merge(baseWebpackConfig, {
   },
 });
 
+
+if (process.env.ANALYZE) {
+  // eslint-disable-next-line global-require
+  const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer');
+  buildWebpackConfig.plugins.push(new BundleAnalyzerPlugin({
+    analyzerMode: 'server',
+    openAnalyzer: true,
+  }));
+}
+
 module.exports = new Promise((resolve, reject) => {
   resolve(buildWebpackConfig);
 });

@@ -3,7 +3,7 @@ extends ../partials/layouts/main.pug
 block content
     include ../partials/screens/menu-screen
     append variables
-        - locals.header_bg = 'background-image: url(/assets/img/machmit-first-screen.jpg);'
+        - locals.header_bg = 'url(/assets/img/machmit-first-screen.jpg)'
         - locals.quoteTitle = '"Wir von GermanZero helfen mit Klimaplan, 1,5-Grad-Gesetz und Mobilisierung der Politik bei dieser Menschheitsentscheidung."'
         - locals.quoteText = 'Heinrich Strößenreuther, Vorstand GermanZero'
     include ../partials/screens/quote-screen
@@ -16,11 +16,11 @@ block content
                     p Wie jede erfolgreiche Kampagne sind wir auf ehrenamtliche Unterstützung durch Menschen angewiesen, die auf breiter Ebene Druck aufbauen, Events, Aktionen und Demonstrationen organisieren oder ihr persönliches Fachwissen einbringen wollen - zum Beispiel in rechtlichen oder strategischen Fragen oder bei bei Erstellung von Texten, Fotos und Grafiken. 1,5 Grad ist die Menschheitsaufgabe, die wir nur zusammen bewältigen können. Um bei unserer deutschlandweiten Organisation mitzuhelfen, füllen Sie bitte das Formular aus. Wir werden darauf antworten und dann gemeinsam mit Ihnen erarbeiten, was am Besten zu Ihnen passt.
 
     div(class="pt-6 md:pt-8 story-block-container")
-        .story-block-container__bg(style="background-image: url('/assets/img/arrows-sprite.png'), linear-gradient(180deg, rgba(244,211,0,1) 0%, rgba(244,211,0,1) 100%)")
+        .story-block-container__bg.js-lazy-image(data-bg="url('/assets/img/arrows-sprite.png'), linear-gradient(180deg, rgba(244,211,0,1) 0%, rgba(244,211,0,1) 100%)")
         .container
             div(class="-mx-2 lg:-mx-3 flex flex-wrap justify-center mb-8 lg:mb-7")
                 //- div(class="hidden md:block story-block__form-image")
-                    img(class="js-lazy-image" data-src="/assets/img/mach-mit-image.png")
+                    img(class="js-lazy-image" alt="" src="" data-src="/assets/img/mach-mit-image.png")
                 // div(class="px-2 lg:px-3 lg:w-1/12 xl:w-2/12 hidden md:block")
 
                 div(class="px-2 lg:px-3 w-full md:w-11/12 xl:w-10/12")

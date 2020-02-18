@@ -3,7 +3,7 @@ extends ../../partials/layouts/main.pug
 block content
     include ../../partials/screens/menu-screen
     append variables
-        - locals.header_bg = 'background-image: url(/assets/img/machmit-first-screen.jpg);'
+        - locals.header_bg = 'url(/assets/img/machmit-first-screen.jpg)'
         - locals.quoteTitle = '"Wir von GermanZero helfen mit Klimaplan, 1,5-Grad-Gesetz und Mobilisierung der Politik bei dieser Menschheitsentscheidung."'
         - locals.quoteText = 'Heinrich Strößenreuther, Vorstand GermanZero'
         - locals.breadcrumbs = [{title: 'Zurück zum Klimaplan', href: '/klimaplan'},{title: 'Verkehr'}]
@@ -21,7 +21,7 @@ block content
                     p Elektrofahrzeuge sind fünf mal so effizient wie konventionelle Fahrzeuge, die mit synthetischen Kraftstoffen (E-Fuels) betrieben werden. Wasserstofffahrzeuge liegen bezogen auf ihre Effizienz zwischen diesen beiden Varianten in der Mitte. Daher müssen bis 2030 große Teile, bis 2035 der gesamte Bestand an Pkws und Nutzfahrzeugen elektrifiziert werden. Die nur mit sehr viel grüner Energie herstellbaren E-Fuels und Wasserstoff sollten ausschließlich im Flugverkehr und in der Seeschifffahrt eingesetzt werden. Hier gibt es Anwendungen, bei denen die Elektrifizierung aktuell ineffizient ist. Das anhaltende Wachstum in der Paketzustellung und Logistik verschärft die Situation zusätzlich. Pkw- und Güterverkehr müssen ebenso wie der Fahrzeugbestand nach Möglichkeit reduziert werden.
 
     div(class="pt-6 md:pt-8 story-block-container")
-        .story-block-container__bg(style="background-image: url('/assets/img/arrows-sprite.png'), linear-gradient(180deg, rgba(244,211,0,1) 0%, rgba(244,211,0,1) 100%)")
+        .story-block-container__bg.js-lazy-image(data-bg="url('/assets/img/arrows-sprite.png'), linear-gradient(180deg, rgba(244,211,0,1) 0%, rgba(244,211,0,1) 100%)")
         .container
             div(class="-mx-2 lg:-mx-3 flex flex-wrap justify-center mb-8 lg:mb-7")
                 div(class="px-2 lg:px-3 md:w-1/12 hidden md:block")
@@ -30,10 +30,10 @@ block content
                     div(class="flex justify-end mt-3 md:mt-6")
                         div(class="w-6/12 text-left pr-2")
                             if prevLink
-                                a(href=`${prevLink.href}` class="transition hover:text-primary")= '← ' + prevLink.title
+                                a(href=`${prevLink.href}` class="transition-color hover:text-primary")= '← ' + prevLink.title
                         div(class="w-6/12 text-right pl-2")
                             if nextLink
-                                a(href=`${nextLink.href}` class="transition hover:text-primary")= nextLink.title + ' →'
+                                a(href=`${nextLink.href}` class="transition-color hover:text-primary")= nextLink.title + ' →'
                     div(class="mt-6 md:mt-9")
                         include ../../partials/shared/breadcrumbs
                 div(class="px-2 lg:px-3 md:w-1/12 hidden md:block")

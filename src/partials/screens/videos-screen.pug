@@ -18,7 +18,7 @@ section.videos-screen(class=(videos_screen_upper ? "videos-screen--with-upper-bl
                 .video-block.text-black.js-video-element
                     div(class="video-block__tag md:mb-3 lg:mb-4") #dasindwir
                     div(class="video-block__title md:hidden mb-2") GermanZero Pressekonferenz 17.12.2019
-                    .video-block__video(style="background-image: url('https://img.youtube.com/vi/GfZ8gJzBZHE/0.jpg')" data-youtube-id="GfZ8gJzBZHE").js-video-modal-btn
+                    .video-block__video.js-video-modal-btn.js-lazy-image(data-bg="url('https://img.youtube.com/vi/GfZ8gJzBZHE/0.jpg')" data-youtube-id="GfZ8gJzBZHE")
                         .video-block__play.flex.items-center.justify-center
                             include ../../assets/img/svg-sprite/arrow-slider.svg
                         div(class="video-block__label text-body hidden md:block")
@@ -28,7 +28,7 @@ section.videos-screen(class=(videos_screen_upper ? "videos-screen--with-upper-bl
                 .video-block.text-black.js-video-element
                     div(class="video-block__tag md:mb-3 lg:mb-4") #dasindwir
                     div(class="video-block__title md:hidden mb-2") Die RBB Abendschau vom 24.09.2019 über GermanZero
-                    .video-block__video(style="background-image: url('https://img.youtube.com/vi/4-eAmEvjtyA/0.jpg')" data-youtube-id="4-eAmEvjtyA").js-video-modal-btn
+                    .video-block__video.js-video-modal-btn.js-lazy-image(data-bg="url('https://img.youtube.com/vi/4-eAmEvjtyA/0.jpg')" data-youtube-id="4-eAmEvjtyA")
                         .video-block__play.flex.items-center.justify-center
                             include ../../assets/img/svg-sprite/arrow-slider.svg
                         div(class="video-block__label text-body hidden md:block")
@@ -42,4 +42,4 @@ section.videos-screen(class=(videos_screen_upper ? "videos-screen--with-upper-bl
         button.js-video-modal-btn-close
             include ../../assets/img/svg-sprite/close.svg
         .video-modal-content
-            iframe(class="js-video-modal-frame" id="youtube" width="100%" height="100%" frameborder="0" allow="autoplay" allowfullscreen src="")
+            iframe(class="js-video-modal-frame" id="youtube" width="100" height="100" frameborder="0" allow="autoplay" allowfullscreen src="")

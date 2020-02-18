@@ -1,10 +1,10 @@
 .header-screen(
   id="header-screen"
-  style=locals.header_bg
-  class=`${locals.isHeaderHeightAuto ? 'header-screen--auto-h' : ''}`
+  data-bg= locals.header_bg
+  class=`js-lazy-image ${locals.isHeaderHeightAuto ? 'header-screen--auto-h' : ''}`
   )
   .header-nav.flex.justify-center.justify-between
-    div(class="js-menu-btn flex items-center cursor-pointer text-white hover:text-primary transition")
+    div(class="js-menu-btn flex items-center cursor-pointer text-white hover:text-primary transition-color")
       .svg-icon.header-nav__icon(style="stroke: currentColor")
         include ../../assets/img/svg-sprite/menu.svg
       div.header-nav__text Menü
@@ -13,7 +13,7 @@
         .svg-icon
           include ../../assets/img/svg-sprite/logo.svg
     else
-      a(class="header-nav__logo header-nav__logo--abs hidden md:block transition text-white hover:text-primary" href='/')
+      a(class="header-nav__logo header-nav__logo--abs hidden md:block text-white hover:text-primary transition" href='/')
         .svg-icon
           include ../../assets/img/svg-sprite/logo.svg
     div
@@ -25,7 +25,7 @@
             span(class="hidden lg:inline") Ihre Spende hilft
 
   #nav-fixed.header-nav-fixed.flex.justify-between.w-full.z-20(style="top: -50px")
-    div(class="js-menu-btn flex items-center cursor-pointer hover:text-primary transition")
+    div(class="js-menu-btn flex items-center cursor-pointer hover:text-primary transition-color")
       .svg-icon.header-nav__icon(style="stroke: currentColor")
         include ../../assets/img/svg-sprite/menu.svg
       div(class="header-nav__text hidden md:block lg:block") Menü

@@ -5,7 +5,7 @@ const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
-const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const dotenv = require('dotenv').config({
   path: path.resolve('.env'),
@@ -40,10 +40,12 @@ function getFilesFromDir(dir, fileTypes) {
 
 const htmlPlugins = getFilesFromDir(PAGE_DIR, ['.pug']).map((filePath) => {
   const fileName = filePath.replace(PAGE_DIR, '');
+  const pageTitle = fileName.replace(/\.pug$/, '').replace(/^\\/, '');
   return new HtmlWebpackPlugin({
     // chunks: [fileName.replace(path.extname(fileName), ''), 'vendor'],
     template: filePath,
     inject: 'head',
+    title: pageTitle === 'index' ? 'German Zero' : pageTitle,
     filename: `.${fileName.replace(/\.pug$/, '.html')}`,
   });
 });
@@ -141,14 +143,15 @@ module.exports = {
             options: {
               hmr: process.env.NODE_ENV === 'development',
               reloadAll: process.env.NODE_ENV === 'development',
+              esModule: true,
             },
           },
           {
             loader: 'css-loader',
-            options: {sourceMap: true},
+            options: { sourceMap: true },
           }, {
             loader: 'postcss-loader',
-            options: {sourceMap: true, config: {path: './postcss.config.js'}},
+            options: { sourceMap: true, config: { path: './postcss.config.js' } },
           },
         ],
       }, {
@@ -158,7 +161,7 @@ module.exports = {
           MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
-            options: {sourceMap: true},
+            options: { sourceMap: true },
           }, {
             loader: 'postcss-loader',
             options: {
@@ -195,8 +198,8 @@ module.exports = {
       filename: `${PATHS.assets}css/[name].[contenthash].css`,
     }),
     new CopyWebpackPlugin([
-      {from: `${PATHS.src}/${PATHS.assets}`, to: `${PATHS.assets}`},
-      {from: `${PATHS.src}/static`, to: ''},
+      { from: `${PATHS.src}/${PATHS.assets}`, to: `${PATHS.assets}` },
+      { from: `${PATHS.src}/static`, to: '' },
     ]),
     new webpack.DefinePlugin({
       'process.env': JSON.stringify(dotenv.parsed),

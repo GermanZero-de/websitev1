@@ -4,7 +4,10 @@ export default class Selects {
 
     if (selects.length) {
       try {
-        const [Module] = await Promise.all([import('choices.js'), import('choices.js/public/assets/styles/choices.min.css')]);
+        const [Module] = await Promise.all([
+          import(/* webpackChunkName: "choices-js" */ 'choices.js'),
+          import(/* webpackChunkName: "choices-css" */ 'choices.js/public/assets/styles/choices.min.css'),
+        ]);
         const Choices = Module.default;
         selects.forEach((select) => new Choices(select,
           {
