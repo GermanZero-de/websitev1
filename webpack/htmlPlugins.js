@@ -6,7 +6,7 @@ const PAGE_DIR = path.resolve(__dirname, '../src/pages');
 
 const htmlPlugins = getFilesFromDir(PAGE_DIR, ['.pug']).map((filePath) => {
   const fileName = filePath.replace(PAGE_DIR, '');
-  const pageTitle = fileName.replace(/\.pug$/, '').replace(/^\\/, '').replace(/^\//);
+  const pageTitle = fileName.replace(/\.pug$/, '').replace(/^\\/, '').replace(/^\//, '');
   return new HtmlWebpackPlugin({
     // chunks: [fileName.replace(path.extname(fileName), ''), 'vendor'],
     template: filePath,
