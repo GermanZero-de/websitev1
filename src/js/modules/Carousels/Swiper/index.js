@@ -1,3 +1,5 @@
+import debounce from 'lodash.debounce';
+
 const DEFAULT_OPTIONS = {
   loop: false,
   centeredSlides: false,
@@ -5,7 +7,7 @@ const DEFAULT_OPTIONS = {
   pagination: false,
   spaceBetween: 30,
   allowTouchMove: false,
-  autoHeight: true,
+  autoHeight: false,
   updateOnWindowResize: true,
   calculateHeight: true,
   slidesPerView: 1,
@@ -14,12 +16,12 @@ const DEFAULT_OPTIONS = {
     prevEl: '.swiper-prev',
   },
   breakpoints: {
-    768: {
+    800: {
       centeredSlides: false,
       allowTouchMove: true,
       slidesPerView: 2,
     },
-    1024: {
+    1280: {
       centeredSlides: false,
       allowTouchMove: true,
       slidesPerView: 3,
@@ -29,19 +31,33 @@ const DEFAULT_OPTIONS = {
 
 export default class Swiper {
   constructor(el, customOptions = {}, SwiperPlugin) {
+    this.update = debounce(this.update.bind(this), 500);
     this.el = el;
     this.options = {
       ...DEFAULT_OPTIONS,
       ...customOptions,
     };
+    this.SwiperPlugin = SwiperPlugin;
 
-    this.instance = new SwiperPlugin(this.el, this.options);
+    this.init();
+
     this.updateOnResize();
   }
 
+  init() {
+    this.instance = new this.SwiperPlugin(this.el, this.options);
+  }
+
+  destroy() {
+    this.instance = this.instance ? this.instance.destroy() : this;
+  }
+
   updateOnResize() {
-    window.addEventListener('resize', () => {
-      this.instance.updateAutoHeight(400);
-    });
+    window.addEventListener('resize', this.update);
+  }
+
+  update() {
+    this.destroy();
+    this.init();
   }
 }
