@@ -3,6 +3,7 @@ body .slider-card {
     width: 100%;
     padding: 12px 10px;
     position: relative;
+    box-sizing: border-box;
 
     @screen md {
         padding: 24px 30px 29px;
@@ -12,15 +13,14 @@ body .slider-card {
 
         padding: 24px 34px 29px;
 
-    }
+        &:hover {
 
-    &:hover {
-
-        &::before {
-            left: -8px;
-            right: -8px;
-            top: -10px;
-            bottom: -10px;
+            &::before {
+                left: -8px;
+                right: -8px;
+                top: -10px;
+                bottom: -10px;
+            }
         }
     }
 
