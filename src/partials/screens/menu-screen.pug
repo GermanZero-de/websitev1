@@ -1,44 +1,15 @@
+- var routes = require('~/routes/routes.js').default
 div.menu-screen.js-menu-screen(data-menu-screen-params='{"activeSubList":1}')
-    span(class="menu-btn-close js-menu-btn-close cursor-pointer transition hover:text-primary")
+    span(class="menu-btn-close js-menu-btn-close cursor-pointer transition-color hover:text-primary")
         include ../../assets/img/svg-sprite/close.svg
         span(class="hidden lg:inline md:hidden") Schließen
     ul.menu-screen__list.js-menu-screen__list
-        li.menu-screen__list-item.js-menu-list-item
-            a(href="/fahrplan") Unser Vorgehen
-
-        li.menu-screen__list-item.js-menu-list-item.menu-screen__list-item--sublist
-            a(class="hover:text-primary transition" href="/klimaplan") Der Klimaplan
-            span(class="js-menu-btn-open-sub menu-screen__open-sub cursor-pointer transition hover:text-primary") >
-            ul
-                li
-                    a(class="hover:text-primary transition" href="/klimaplan/energie") Energie
-                li
-                    a(class="hover:text-primary transition" href="/klimaplan/industrie") Industrie
-                li
-                    a(class="hover:text-primary transition" href="/klimaplan/verkehr") Verkehr
-                li
-                    a(class="hover:text-primary transition" href="/klimaplan/gebaeude_waerme") Gebäude & Wärme
-                li
-                    a(class="hover:text-primary transition" href="/klimaplan/landwirtschaft_nutzung") Landwirtschaft & Landnutzung
-                li
-                    a(class="hover:text-primary transition" href="/klimaplan/konsum") Konsum
-        li.menu-screen__list-item.js-menu-list-item
-            a(class="hover:text-primary transition" href="/presse") Presse
-        li.menu-screen__list-item.js-menu-list-item
-            a(class="hover:text-primary transition" href="/profilbild-erstellen") Profilbild erstellen
-        li.menu-screen__list-item.js-menu-list-item
-            a(class="hover:text-primary transition" href="/mach-mit") Machen Sie mit
-        li.menu-screen__list-item.js-menu-list-item
-            a(class="hover:text-primary transition" href="/datenschutz") Datenschutz
-        li.menu-screen__list-item.js-menu-list-item
-            a(class="hover:text-primary transition" href="/impressum") Impressum
-        li.menu-screen__list-item.js-menu-list-item
-            a(class="hover:text-primary transition" href="/partner") Partner
-        li.menu-screen__list-item.js-menu-list-item
-            a(class="hover:text-primary transition" href="/werwirsind") Wer wir sind
-        li.menu-screen__list-item.js-menu-list-item
-            a(class="hover:text-primary transition" href="/medienspiegel") GermanZero in den Medien
-        li.menu-screen__list-item.js-menu-list-item
-            a(class="hover:text-primary transition" target="_blank" href="http://germanzero.join.com") Jobs
-        li.menu-screen__list-item.js-menu-list-item
-            a(class="hover:text-primary transition" target="_blank" href="/english_summary") English Summary
+        each routeItem in routes
+            li(class=`menu-screen__list-item js-menu-list-item ${routeItem.children && routeItem.children.length ? 'menu-screen__list-item--sublist' : ''}`)
+                a(href=routeItem.href class=`hover:text-primary transition-color ${routeItem.classes || ''}` target=routeItem.target)= routeItem.title
+                if routeItem.children && routeItem.children.length
+                    span(class="js-menu-btn-open-sub menu-screen__open-sub cursor-pointer transition-color hover:text-primary") >
+                    ul
+                        each routeItemChildren in routeItem.children
+                            li
+                                a(class=`hover:text-primary transition-color ${routeItemChildren.classes || ''}` href=routeItemChildren.href target=routeItemChildren.target)= routeItemChildren.title

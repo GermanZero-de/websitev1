@@ -2,16 +2,16 @@ footer.footer
     .footer__forms
         .footer__inner
             .footer__image
-                img(class="js-lazy-image" data-src="../../assets/img/teamwork.png")
+                img(class="js-lazy-image" alt="" src="" data-src="../../assets/img/teamwork.png")
         .container.mx-auto
             div(class="flex flex-wrap -mx-2 lg:-mx-3 pb-5 lg:pb-3 items-stretch")
-                div(class="px-2 lg:px-3 flex items-stretch justify-stretch w-full md:w-6/12 lg:w-4/12 mb-6")
+                div(class="px-2 lg:px-3 flex items-stretch justify-stretch w-full md:w-6/12 lg:w-6/12 xl:w-4/12 mb-6")
                     append variables
                         - locals.newsletter_class = "flex-grow-1 w-full card--shadowed"
                         - locals.newsletter_link_class = "mb-4 mt-6"
                         - locals.newsletter_full_width = false
                     include ../widgets/newsletter-form
-                div(class="px-2 lg:px-3 flex items-stretch justify-stretch w-full md:w-6/12 lg:w-4/12 mb-6")
+                div(class="px-2 lg:px-3 flex items-stretch justify-stretch w-full md:w-6/12 lg:w-6/12 xl:w-4/12 mb-6")
                     .call-form.card.card--form.bg-primary.text-white.flex.flex-col.w-full
                         .card__info #spendenhilft
                         .call-form__header Spenden
@@ -19,7 +19,7 @@ footer.footer
                         div
                             a.button.button--black-o.w-full.text-center(href="/spenden")
                                 span Jetzt spenden
-                div(class="px-2 lg:px-3 flex items-stretch justify-stretch w-full md:w-6/12 lg:w-4/12 mb-6")
+                div(class="px-2 lg:px-3 flex items-stretch justify-stretch w-full md:w-6/12 lg:w-6/12 xl:w-4/12 mb-6")
                     .call-form.card.card--form.bg-primary.text-white.flex.flex-col.w-full
                         .card__info #profilbild
                         .call-form__header Profilbild
@@ -67,4 +67,4 @@ footer.footer
                 div(class="px-2 lg:px-3 hidden lg:block w-full lg:w-1/12")
                 div(class="px-2 lg:px-3 w-full lg:w-10/12 flex flex-wrap justify-center md:justify-between")
                     div(class="font-body title title--size-h5 font-normal text-white mb-6 mr-2 lg:mr-auto") ©  GermanZero e.V. 2020
-                    a(class="font-body title title--size-h5 font-normal text-white underline mb-6 link js-scroll-it" href="#header-screen") Nach oben!
+                    a(class="font-body title title--size-h5 font-normal text-white underline mb-7 link js-scroll-it" href="#header-screen") Nach oben!

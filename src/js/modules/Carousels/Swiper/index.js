@@ -6,6 +6,8 @@ const DEFAULT_OPTIONS = {
   spaceBetween: 30,
   allowTouchMove: false,
   autoHeight: true,
+  updateOnWindowResize: true,
+  calculateHeight: true,
   slidesPerView: 1,
   navigation: {
     nextEl: '.swiper-next',
@@ -34,5 +36,12 @@ export default class Swiper {
     };
 
     this.instance = new SwiperPlugin(this.el, this.options);
+    this.updateOnResize();
+  }
+
+  updateOnResize() {
+    window.addEventListener('resize', () => {
+      this.instance.updateAutoHeight(400);
+    });
   }
 }

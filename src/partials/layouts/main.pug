@@ -2,17 +2,22 @@ block variables
     - locals.newsletter_class = '';
     - locals.newsletter_link_class = '';
     - locals.newsletter_full_width = true;
-    - locals.header_bg = '/assets/img/placeholders/no-image-default.png';
+    - locals.header_bg = 'url(/assets/img/placeholders/no-image-default.png)';
     - locals.isIndexPage = false;
-doctype html
-head
-    include ../shared/head
-    include ../../static/validation/validation_messages_de.html
-    include ../../static/feature-detection/mobile.html
-    include ../../static/captcha.html
-body
-    include ../shared/notifications
-    block content
-    include ../shared/modals
-    include ../../static/google-analytics.html
-    include ../shared/postcard-fixed-button
+html(lang="de")
+    head
+        include ../shared/head
+    body
+        //- pre= JSON.stringify(htmlWebpackPlugin, undefined, 4)
+        include ../shared/notifications
+        include ../shared/modals
+        include ../shared/postcard-fixed-button
+        block content
+        include ../screens/menu-screen
+        include ../../static/captcha.html
+        include ../../static/validation/validation_messages_de.html
+        include ../../static/google-analytics.html
+        include ../../static/style-holder-continue.html
+        //- each jsFile in htmlWebpackPlugin.files.js
+            script(src=jsFile)
+

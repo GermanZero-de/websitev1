@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const baseWebpackConfig = require('./webpack.base.conf');
+const htmlPlugins = require('./htmlPlugins');
 
 const devWebpackConfig = merge(baseWebpackConfig, {
   // DEV config
@@ -9,6 +10,8 @@ const devWebpackConfig = merge(baseWebpackConfig, {
   devServer: {
     contentBase: baseWebpackConfig.externals.paths.dist,
     port: 3000,
+    /* enable gzip */
+    compress: true,
     // hot: true,
     overlay: {
       warnings: true,
@@ -19,9 +22,10 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     new webpack.SourceMapDevToolPlugin({
       filename: '[file].map',
     }),
+    ...htmlPlugins,
   ],
 });
 
-module.exports = new Promise((resolve, reject) => {
+module.exports = new Promise((resolve) => {
   resolve(devWebpackConfig);
 });

@@ -20,7 +20,7 @@
                         div(class="px-2 lg:px-3 w-full sm:w-6/12 md:w-4/12 mb-4 lg:mb-5 swiper-slide")
                             div(class=`slider-with-titles__slide js-text-crop-wrapper`)
                                 if item.href
-                                    a(href=`${item.href}` class="slider-with-titles__image w-full inline-block mb-3 transition hover:opacity-60 bg-secondary")
+                                    a(href=`${item.href}` class="slider-with-titles__image w-full inline-block mb-3 transition-hover hover:opacity-60 bg-secondary")
                                         div(class="responsive-image responsive-image--3/2 flex justify-center align-items-center")
                                             span.responsive-image__content.text-black.text-center.slider-with-titles__text-image ?
                                     a(href=`${item.href}` class="slider-with-titles__title title title--size-h4 mb-2 link transition")
@@ -28,7 +28,7 @@
                                 else
                                     div(class="slider-with-titles__image w-full inline-block mb-3")
                                         div(class="responsive-image responsive-image--3/2")
-                                            img(class="js-lazy-image" data-src=`${item.image}`)
+                                            img(class="js-lazy-image" alt="" src="" data-src=`${item.image}`)
                                     div(class="slider-with-titles__title title title--size-h4 mb-2")
                                         span= item.title
                                 div(class="slider-with-titles__description js-text-crop")

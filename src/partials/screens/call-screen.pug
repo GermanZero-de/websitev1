@@ -1,11 +1,11 @@
 section.call-screen(class=`${call_screen_classes || ''}`)
     div(
-        style=`background-image: url('${call_screen_image_big}')`
-        class=("call-screen__bg hidden md:block")
+        data-bg= `url(${call_screen_image_big})`
+        class=("call-screen__bg hidden md:block js-lazy-image")
     )
     div(
-        style=`background-image: url('${call_screen_image_small}')`
-        class=("call-screen__bg md:hidden")
+        data-bg= `url(${call_screen_image_small})`
+        class=("call-screen__bg md:hidden js-lazy-image")
     )
     .call-screen__card
         .container

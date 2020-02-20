@@ -3,9 +3,9 @@ import formDataEntries from 'form-data-entries';
 import {
   DATA_SENT_EVENT, SEND_ERROR, SEND_START, SEND_SUCCESS,
 } from '../constants';
-import CustomEventPoly from '../../CustomEventPoly';
-import scrollIt from '../ScrollIt/ScrollIt';
-import getCoords from '../../GetCoords';
+import CustomEventPoly from '../../polyfills/CustomEventPoly';
+import scrollIt from '../Scroll/ScrollIt';
+import getCoords from '../../helpers/GetCoords';
 
 export const validationRules = {
   required: /^.+$/,
@@ -68,18 +68,18 @@ export const formsHandler = (emitter) => (formEl) => {
   let formIsValid = true;
   const submitEl = formEl.querySelector('.js-form-submit');
   if (emitter) {
-    emitter.subscribe(SEND_START, (formName) => {
-      if (formEl.getAttribute('name') === formName) {
+    emitter.subscribe(SEND_START, ({ name }) => {
+      if (formEl.getAttribute('name') === name) {
         formEl.classList.add('isPending');
       }
     });
-    emitter.subscribe(SEND_ERROR, (formName) => {
-      if (formEl.getAttribute('name') === formName) {
+    emitter.subscribe(SEND_ERROR, ({ name }) => {
+      if (formEl.getAttribute('name') === name) {
         formEl.classList.remove('isPending');
       }
     });
-    emitter.subscribe(SEND_SUCCESS, (formName) => {
-      if (formEl.getAttribute('name') === formName) {
+    emitter.subscribe(SEND_SUCCESS, ({ name }) => {
+      if (formEl.getAttribute('name') === name) {
         formEl.classList.remove('isPending');
         formEl.reset();
         // eslint-disable-next-line no-param-reassign
@@ -128,7 +128,7 @@ export const formsHandler = (emitter) => (formEl) => {
             json[name] = value;
           }
         }
-        const cEvent = CustomEventPoly(DATA_SENT_EVENT, {data: json});
+        const cEvent = CustomEventPoly(DATA_SENT_EVENT, { data: json });
         formEl.dispatchEvent(cEvent);
       } else {
         const errorsElements = Array.from(formEl.querySelectorAll(`.${FORM_ERROR_SELECTOR}`));

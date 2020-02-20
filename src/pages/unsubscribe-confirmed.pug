@@ -3,10 +3,9 @@ extends ../partials/layouts/main.pug
 block content
     append variables
         - locals.isIndexPage = true
-    include ../partials/screens/menu-screen
     include ../partials/mixins/empty.pug
     append variables
-        - locals.header_bg = 'background-image: radial-gradient(64.3% 64.3% at 32.06% 59.21%, rgba(0, 0, 0, 0.740084) 0%, rgba(0, 0, 0, 0.0001) 100%), linear-gradient(0deg, rgba(255, 255, 255, 0.0001) 45.55%, rgba(0, 0, 0, 0.603065) 84.88%), url(/assets/img/first-screen.jpg); '
+        - locals.header_bg = 'radial-gradient(64.3% 64.3% at 32.06% 59.21%, rgba(0, 0, 0, 0.740084) 0%, rgba(0, 0, 0, 0.0001) 100%), linear-gradient(0deg, rgba(255, 255, 255, 0.0001) 45.55%, rgba(0, 0, 0, 0.603065) 84.88%), url(/assets/img/first-screen.jpg) '
         - locals.letter_response_text = 'Abmeldung bestätigt'
     include ../partials/screens/first-screen
     - locals.letter_response_text = false

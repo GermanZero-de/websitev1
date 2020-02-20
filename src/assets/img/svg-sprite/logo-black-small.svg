@@ -1,9 +1,9 @@
 <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path fill-rule="evenodd" clip-rule="evenodd" d="M4.18343 11.9632V15.7263H15.7074L15.7022 4.20507L11.9337 4.20692L11.9361 9.32015L6.30588 3.698L3.64111 6.35892L9.25351 11.9632H4.18343Z" fill="#121212"/>
-    <mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="33" height="32">
+    <mask id="mask-small" mask-type="alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="33" height="32">
         <path fill-rule="evenodd" clip-rule="evenodd" d="M0 0.307861H32.0113V31.3411H0V0.307861Z" fill="white"/>
     </mask>
-    <g mask="url(#mask0)">
+    <g mask="url(#mask-small)">
         <path fill-rule="evenodd" clip-rule="evenodd" d="M27.3009 4.83032C24.2805 1.91371 20.2692 0.307861 16.0058 0.307861V4.07063C22.7534 4.07063 28.2428 9.34355 28.2428 15.8245C28.2428 22.3054 22.7534 27.578 16.0058 27.578C9.25795 27.578 3.76851 22.3054 3.76851 15.8245H0C0 19.9811 1.67318 23.8854 4.71048 26.8186C7.73114 29.7349 11.7425 31.3411 16.0058 31.3411C20.2692 31.3411 24.2805 29.7349 27.3009 26.8186C30.3385 23.8854 32.0114 19.9811 32.0114 15.8245C32.0114 11.6679 30.3385 7.76325 27.3009 4.83032Z" fill="#121212"/>
     </g>
 </svg>
