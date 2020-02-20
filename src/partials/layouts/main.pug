@@ -8,6 +8,7 @@ html(lang="de")
     head
         include ../shared/head
     body
+        //- pre= JSON.stringify(htmlWebpackPlugin, undefined, 4)
         include ../shared/notifications
         include ../shared/modals
         include ../shared/postcard-fixed-button
@@ -17,4 +18,6 @@ html(lang="de")
         include ../../static/validation/validation_messages_de.html
         include ../../static/google-analytics.html
         include ../../static/style-holder-continue.html
+        //- each jsFile in htmlWebpackPlugin.files.js
+            script(src=jsFile)
 
