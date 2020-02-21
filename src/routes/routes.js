@@ -45,6 +45,10 @@ const routes = [
         title: 'Konsum',
         href: '/klimaplan/konsum',
       },
+      {
+        title: 'Internationaler Ausgleich',
+        href: '/klimaplan/internationaler_ausgleich',
+      },
     ],
   },
   {
