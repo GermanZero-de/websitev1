@@ -42,7 +42,7 @@ const routes = [
         href: '/klimaplan/landwirtschaft_nutzung',
       },
       {
-        title: 'Konsum',
+        title: 'Individueller Klimaplan',
         href: '/klimaplan/konsum',
       },
       {
