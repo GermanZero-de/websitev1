@@ -6,6 +6,14 @@ block content
         - locals.quoteTitle = '"Wir von GermanZero helfen mit Klimaplan, 1,5-Grad-Gesetz und Mobilisierung der Politik bei dieser Menschheitsentscheidung."'
         - locals.quoteText = 'Heinrich Strößenreuther, Vorstand GermanZero'
     include ../partials/screens/quote-screen
+    div(class="container pt-6 md:pt-9")
+        div(class="flex -mx-2 -lg:mx-3 justify-center")
+            div(class="px-2 lg:px-3 w-10/12 md:w-8/12")
+                .content.content--size-3.text-black.mb-4 #spenden
+                .title.title--size-h2.text-black.mb-2 Jede Hilfe ist willkommen!
+                div(class="content content--size-2 text-black mb-6 sm:mb-7 lg:mb-10 xl:mb-12 text-block")
+                    include spenden.html
+
     div(class="pt-6 md:pt-8")
         .container
             div(class="-mx-2 lg:-mx-3 flex flex-wrap justify-center mb-8 lg:mb-7")
