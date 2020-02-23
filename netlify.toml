@@ -1,0 +1,4 @@
+[[redirects]]  
+from = "/mitmachen/"   
+to = "https://germanzero.de/mach-mit"
+status = 301
