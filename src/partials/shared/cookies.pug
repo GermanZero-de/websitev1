@@ -1,0 +1,5 @@
+-locals.cookieTokenProd = '9a3cf4e0-cc66-4f5e-be95-8d84fd6ccade'
+-locals.cookieTokenDev = '275010d4-caf5-448b-94e9-17b0fe1d85d3'
+if !process.env.IS_DEVELOPMENT
+    script(id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid=process.env.IS_DEVELOPMENT ? cookieTokenDev : cookieTokenProd data-blockingmode="auto" type="text/javascript")
+

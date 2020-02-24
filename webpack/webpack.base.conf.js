@@ -167,6 +167,7 @@ module.exports = {
     ]),
     new webpack.DefinePlugin({
       'process.env': JSON.stringify(dotenv.parsed),
+      IS_PRODUCTION: JSON.stringify(false),
     }),
     new SpriteLoaderPlugin(),
   ],

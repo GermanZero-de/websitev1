@@ -9,15 +9,13 @@ html(lang="de")
         include ../shared/head
     body
         //- pre= JSON.stringify(htmlWebpackPlugin, undefined, 4)
+        //- pre= JSON.stringify(process.env, undefined, 4)
         include ../shared/notifications
         include ../shared/modals
         include ../shared/postcard-fixed-button
         block content
         include ../screens/menu-screen
-        include ../../static/captcha.html
-        include ../../static/validation/validation_messages_de.html
-        include ../../static/google-analytics.html
-        include ../../static/style-holder-continue.html
+        include ../shared/footer-scripts
         //- each jsFile in htmlWebpackPlugin.files.js
             script(src=jsFile)
 

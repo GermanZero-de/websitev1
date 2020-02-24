@@ -19,6 +19,9 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     },
   },
   plugins: [
+    new webpack.DefinePlugin({
+      IS_PRODUCTION: JSON.stringify(false),
+    }),
     new webpack.SourceMapDevToolPlugin({
       filename: '[file].map',
     }),

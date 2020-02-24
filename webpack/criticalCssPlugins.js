@@ -25,6 +25,15 @@ const htmlCriticalCssPlugins = getFilesFromDir(PAGE_DIR, ['.pug']).map((filePath
         /\.menu-screen/,
         /\.header-nav/,
       ],
+      forceExclude: [
+        /@font-face/,
+        /^@font-face/,
+        '@font-face',
+      ],
+      propertiesToRemove: ['(.*)transition(.*)', 'cursor', 'pointer-events', '(-webkit-)?tap-highlight-color', '(.*)user-select', 'src'],
+    },
+    ignore: {
+      atrule: ['@font-face'],
     },
   });
 });
