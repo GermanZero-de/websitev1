@@ -11,7 +11,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     contentBase: baseWebpackConfig.externals.paths.dist,
     port: 3000,
     /* enable gzip */
-    compress: true,
+    compress: false,
     // hot: true,
     overlay: {
       warnings: true,

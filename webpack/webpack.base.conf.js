@@ -15,6 +15,39 @@ const PATHS = {
   assets: 'assets/',
 };
 
+const imagesLoaders = [
+  {
+    loader: 'file-loader',
+    options: {
+      name: '[name].[ext]',
+    },
+  },
+  {
+    loader: 'image-webpack-loader',
+    options: {
+      mozjpeg: {
+        progressive: true,
+        quality: 65,
+      },
+      // optipng.enabled: false will disable optipng
+      optipng: {
+        enabled: false,
+      },
+      pngquant: {
+        quality: [0.65, 0.90],
+        speed: 4,
+      },
+      gifsicle: {
+        interlaced: false,
+      },
+      // the webp option will enable WEBP
+      webp: {
+        quality: 75,
+      },
+    },
+  },
+];
+
 module.exports = {
   // BASE config
   externals: {
@@ -65,40 +98,31 @@ module.exports = {
         options: {
           name: '[name].[ext]',
         },
-      }, {
-        test: /\.(png|jpe?g|gif|svg|webp)$/,
-        use: [
+      },
+      {
+        test: /\.(jpe?g|png)$/i,
+        oneOf: [
           {
-            loader: 'file-loader',
-            options: {
-              name: '[name].[ext]',
+            resourceQuery: /resize/,
+            use: {
+              loader: 'responsive-loader',
+              options: {
+                placeholder: true,
+                placeholderSize: 100,
+                sizes: [480, 640, 768, 1024, 1280, 1920],
+                quality: 80,
+              },
             },
           },
           {
-            loader: 'image-webpack-loader',
-            options: {
-              mozjpeg: {
-                progressive: true,
-                quality: 65,
-              },
-              // optipng.enabled: false will disable optipng
-              optipng: {
-                enabled: false,
-              },
-              pngquant: {
-                quality: [0.65, 0.90],
-                speed: 4,
-              },
-              gifsicle: {
-                interlaced: false,
-              },
-              // the webp option will enable WEBP
-              webp: {
-                quality: 75,
-              },
-            },
+            use: imagesLoaders,
           },
         ],
+
+      },
+      {
+        test: /\.(gif|svg|webp)$/,
+        use: imagesLoaders,
       }, {
         test: /\.pcss$/,
         use: [
@@ -168,6 +192,8 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env': JSON.stringify(dotenv.parsed),
       IS_PRODUCTION: JSON.stringify(false),
+      NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+      env: JSON.stringify(dotenv.parsed),
     }),
     new SpriteLoaderPlugin(),
   ],

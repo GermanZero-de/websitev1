@@ -1,9 +1,13 @@
 .header-screen(
   id="header-screen"
-  data-bg= locals.header_bg
-  class=`js-lazy-image ${locals.isHeaderHeightAuto ? 'header-screen--auto-h' : ''}`
+  class=`js-lazy-image relative ${locals.isHeaderHeightAuto ? 'header-screen--auto-h' : ''}`
   style="background: radial-gradient(64.3% 64.3% at 32.06% 59.21%, rgba(0, 0, 0, 0.740084) 0%, rgba(0, 0, 0, 0.0001) 100%), linear-gradient(0deg, rgba(255, 255, 255, 0.0001) 45.55%, rgba(0, 0, 0, 0.603065) 84.88%)"
   )
+  include ../mixins/imageAsset
+  +imageAsset({
+    sources: require('@/assets/img/first-screen.jpg?resize'),
+    pictureClass: 'absolute left-0 top-0 w-full h-full -z-10'
+  })
   .header-nav.flex.justify-center.justify-between
     div(class="js-menu-btn flex items-center cursor-pointer text-white hover:text-primary transition-color")
       .svg-icon.header-nav__icon(style="stroke: currentColor")

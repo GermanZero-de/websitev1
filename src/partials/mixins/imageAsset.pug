@@ -1,0 +1,9 @@
+mixin imageAsset({sources, alt, pictureClass, imgClass})
+    picture(class=`image-asset ${pictureClass || ''}`)
+        img(
+            srcset= sources.placeholder
+            data-srcset=sources.srcSet
+            src= sources.placeholder
+            alt=alt
+            class=`image-asset__image image-asset__image--not-loaded js-image-asset ${imgClass ? imgClass : ''}`
+        )

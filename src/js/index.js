@@ -15,6 +15,7 @@ import Selects from './modules/Selects';
 import ReadMore from './modules/ReadMore';
 import App from './app';
 import ProfileGenerator from './modules/ProfileGenerator';
+import ImageAsset from './modules/ImageAsset';
 
 document.addEventListener('DOMContentLoaded', async () => {
   /* eslint-disable no-new */
@@ -60,6 +61,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     // eslint-disable-next-line no-new
     new ProfileGenerator('gz-profilbild.jpg');
   }
+
+  document.querySelectorAll('.js-image-asset ').forEach((element) => new ImageAsset({ element }));
 
   /**
    * Custom app logic
