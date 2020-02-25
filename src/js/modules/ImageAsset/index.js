@@ -33,6 +33,7 @@ export default class ImageAsset {
       this.element.addEventListener('load', loadHandler);
 
       this.element.setAttribute('srcset', this.element.dataset.srcset);
+      this.element.setAttribute('src', this.element.dataset.src);
     }
 
     this._wasVisible = newValue;

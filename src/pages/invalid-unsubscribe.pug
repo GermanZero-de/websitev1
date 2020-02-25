@@ -5,12 +5,14 @@ block content
         - locals.isIndexPage = true
     include ../partials/mixins/empty.pug
     append variables
-        - locals.header_bg = `radial-gradient(64.3% 64.3% at 32.06% 59.21%, rgba(0, 0, 0, 0.740084) 0%, rgba(0, 0, 0, 0.0001) 100%), linear-gradient(0deg, rgba(255, 255, 255, 0.0001) 45.55%, rgba(0, 0, 0, 0.603065) 84.88%), url(${require('@/assets/img/first-screen.jpg').default})`
+        - locals.header_bg = require('@/assets/img/first-screen.jpg?resize')
+        - locals.letter_response_text = 'Beim Abbestellen des Newsletters ist ein Fehler aufgetreten. Bitte versuchen Sie es später noch einmal.'
     include ../partials/screens/first-screen
+    - locals.letter_response_text = false
     include ../partials/screens/goal-screen
     - locals.call_screen_bg_pos_r = true
-    - locals.call_screen_image_big = '/assets/img/call-lg.jpg'
-    - locals.call_screen_image_small = '/assets/img/call.jpg'
+    - locals.call_screen_image_big = require('@/assets/img/call-lg.jpg?resize')
+    - locals.call_screen_image_small = require('@/assets/img/call.jpg?resize')
     include ../partials/screens/call-screen
     .bg-secondary
         - locals.videos_screen_upper = true

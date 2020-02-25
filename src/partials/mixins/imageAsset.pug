@@ -4,6 +4,7 @@ mixin imageAsset({sources, alt, pictureClass, imgClass})
             srcset= sources.placeholder
             data-srcset=sources.srcSet
             src= sources.placeholder
+            data-src=sources.src
             alt=alt
             class=`image-asset__image image-asset__image--not-loaded js-image-asset ${imgClass ? imgClass : ''}`
         )

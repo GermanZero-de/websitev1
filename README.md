@@ -4,6 +4,8 @@ Simple webpack template
 #### Launch:
 
 Development (by default available on http://localhost:3000):
+1. copy .env.example to .env
+2. run:
 ```console
 npm i
 npm start

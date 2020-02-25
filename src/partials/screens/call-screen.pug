@@ -1,12 +1,19 @@
 section.call-screen(class=`${call_screen_classes || ''}`)
+    include ../mixins/imageAsset
     div(
-        data-bg= `url(${call_screen_image_big})`
-        class=("call-screen__bg hidden md:block js-lazy-image")
+        class=("call-screen__bg hidden md:block relative")
     )
+        +imageAsset({
+            sources: locals.call_screen_image_big,
+            pictureClass: 'absolute left-0 top-0 w-full h-full -z-10'
+        })
     div(
-        data-bg= `url(${call_screen_image_small})`
-        class=("call-screen__bg md:hidden js-lazy-image")
+        class=("call-screen__bg md:hidden relative")
     )
+        +imageAsset({
+            sources: locals.call_screen_image_small,
+            pictureClass: 'absolute left-0 top-0 w-full h-full -z-10'
+        })
     .call-screen__card
         .container
             div(class="-mx-2 lg:-mx-3.flex")

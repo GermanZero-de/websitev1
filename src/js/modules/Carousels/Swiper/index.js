@@ -49,7 +49,9 @@ export default class Swiper {
   }
 
   destroy() {
-    this.instance = this.instance ? this.instance.destroy() : this;
+    if (this.instance && this.instance.destroy) {
+      this.instance.destroy();
+    }
   }
 
   updateOnResize() {
