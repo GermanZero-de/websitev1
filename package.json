@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "npm start",
     "start": "cross-env NODE_ENV=development webpack-dev-server --open --mode development --config webpack/webpack.dev.conf.js",
     "build": "npm run build:markup && npm run build:critical",
     "build:markup": "cross-env NODE_ENV=production webpack --mode production --config webpack/webpack.build.conf.js",
@@ -50,6 +51,7 @@
     "cssnano": "^4.1.10",
     "dotenv": "^8.2.0",
     "dotenv-webpack": "^1.7.0",
+    "ejs-loader": "^0.3.5",
     "eslint-loader": "^3.0.2",
     "file-loader": "^5.0.2",
     "form-data-entries": "^1.0.4",
