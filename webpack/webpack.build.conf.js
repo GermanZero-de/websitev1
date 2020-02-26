@@ -1,11 +1,11 @@
+const webpack = require('webpack');
 const merge = require('webpack-merge');
 const TerserPlugin = require('terser-webpack-plugin');
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const baseWebpackConfig = require('./webpack.base.conf');
 const htmlPlugins = require('./htmlPlugins');
 const criticalCssPlugins = require('./criticalCssPlugins');
-
 
 let plugins = [];
 
@@ -30,6 +30,9 @@ const buildWebpackConfig = merge(baseWebpackConfig, {
     ],
   },
   plugins: [
+    new webpack.DefinePlugin({
+      IS_PRODUCTION: JSON.stringify(true),
+    }),
     ...plugins,
   ],
 });

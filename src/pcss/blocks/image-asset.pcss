@@ -1,0 +1,15 @@
+.image-asset {
+    width: 100%;
+    height: 100%;
+    display: flex;
+
+    &__image {
+        object-fit: cover;
+        height: auto;
+        width: 100%;
+
+        &--not-loaded {
+            filter: blur(2px);
+        }
+    }
+}

@@ -2,7 +2,7 @@ extends ../partials/layouts/main.pug
 
 block content
     append variables
-        - locals.header_bg = 'url(/assets/img/machmit-first-screen.jpg)'
+        - locals.header_bg = require('@/assets/img/machmit-first-screen.jpg?resize')
         - locals.quoteTitle = '2022 haben wir die erste und die letzte Chance, die 1,5 Grad einzuhalten. Wir sorgen für die notwendige Zweidrittelmehrheit in Politik und Gesellschaft für unser 1,5-Grad-Gesetz.'
         - locals.quoteText = 'Heinrich Strößenreuther, Vorstand GermanZero'
         - locals.quoteText2 = 'Für diese Menschheitsaufgabe brauchen wir die Besten der Besten: Mit Engagement, Reichweite, Haltung und Spenden. Denn wenn es Deutschland schafft, schaffen wir es auch global. Unsere Einladung steht, helfen Sie mit!'

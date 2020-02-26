@@ -1,55 +1,60 @@
 .header-screen(
-  id="header-screen"
-  data-bg= locals.header_bg
-  class=`js-lazy-image ${locals.isHeaderHeightAuto ? 'header-screen--auto-h' : ''}`
-  style="background: radial-gradient(64.3% 64.3% at 32.06% 59.21%, rgba(0, 0, 0, 0.740084) 0%, rgba(0, 0, 0, 0.0001) 100%), linear-gradient(0deg, rgba(255, 255, 255, 0.0001) 45.55%, rgba(0, 0, 0, 0.603065) 84.88%)"
-  )
-  .header-nav.flex.justify-center.justify-between
-    div(class="js-menu-btn flex items-center cursor-pointer text-white hover:text-primary transition-color")
-      .svg-icon.header-nav__icon(style="stroke: currentColor")
-        include ../../assets/img/svg-sprite/menu.svg
-      div.header-nav__text Menü
-    if locals.isIndexPage
-      span(class="header-nav__logo header-nav__logo--abs hidden md:block text-white")
-        .svg-icon
-          include ../../assets/img/svg-sprite/logo.svg
-    else
-      a(class="header-nav__logo header-nav__logo--abs hidden md:block text-white hover:text-primary transition" href='/')
-        .svg-icon
-          include ../../assets/img/svg-sprite/logo.svg
-    div
-      a.button.button--primary.button--alt.button--round-left(href="/spenden")
-        span
-          span
-            span(class="inline md:hidden") Spenden
-            span(class="hidden md:inline lg:hidden") Ihre Spende
-            span(class="hidden lg:inline") Ihre Spende hilft
+    id="header-screen"
+    class=`relative ${locals.isHeaderHeightAuto ? 'header-screen--auto-h' : ''}`
+    style= !locals.isIndexPage ? '' : "background: radial-gradient(64.3% 64.3% at 32.06% 59.21%, rgba(0, 0, 0, 0.740084) 0%, rgba(0, 0, 0, 0.0001) 100%), linear-gradient(0deg, rgba(255, 255, 255, 0.0001) 45.55%, rgba(0, 0, 0, 0.603065) 84.88%)"
+)
+    include ../mixins/imageAsset
+    +imageAsset({
+        sources: locals.header_bg,
+        pictureClass: 'absolute left-0 top-0 w-full h-full -z-10',
+        imgClass: ''
+    })
+    .header-nav.flex.justify-center.justify-between
+        div(class="js-menu-btn flex items-center cursor-pointer text-white hover:text-primary transition-color")
+            .svg-icon.header-nav__icon(style="stroke: currentColor")
+                include ../../assets/img/svg-sprite/menu.svg
+            div.header-nav__text Menü
+        if locals.isIndexPage
+            span(class="header-nav__logo header-nav__logo--abs hidden md:block text-white")
+                .svg-icon
+                    include ../../assets/img/svg-sprite/logo.svg
+        else
+            a(class="header-nav__logo header-nav__logo--abs hidden md:block text-white hover:text-primary transition" href='/')
+                .svg-icon
+                    include ../../assets/img/svg-sprite/logo.svg
+        div
+            a.button.button--primary.button--alt.button--round-left(href="/spenden")
+                span
+                    span
+                        span(class="inline md:hidden") Spenden
+                        span(class="hidden md:inline lg:hidden") Ihre Spende
+                        span(class="hidden lg:inline") Ihre Spende hilft
 
-  #nav-fixed.header-nav-fixed.flex.justify-between.w-full.z-20(style="top: -50px")
-    div(class="js-menu-btn flex items-center cursor-pointer hover:text-primary transition-color")
-      .svg-icon.header-nav__icon(style="stroke: currentColor")
-        include ../../assets/img/svg-sprite/menu.svg
-      div(class="header-nav__text hidden md:block lg:block") Menü
-    if locals.isIndexPage
-      span(class="items-center hidden md:flex text-white")
-        .svg-icon
-          include ../../assets/img/svg-sprite/logo-black.svg
-      span(class="items-center flex md:hidden lg:hidden  text-white")
-        .svg-icon
-          include ../../assets/img/svg-sprite/logo-black-small.svg
-    else
-      a(class="items-center hidden md:flex text-white" href='/')
-        .svg-icon
-          include ../../assets/img/svg-sprite/logo-black.svg
-      a(class="items-center flex md:hidden lg:hidden text-white" href='/')
-        .svg-icon
-          include ../../assets/img/svg-sprite/logo-black-small.svg
-    div
-      a.button.button--primary.button--alt(href="/spenden")
-        span
-          span
-            span(class="inline md:hidden") Spenden
-            span(class="hidden md:inline lg:hidden") Ihre Spende
-            span(class="hidden lg:inline") Ihre Spende hilft
-  block header-screen-content
+    #nav-fixed.header-nav-fixed.flex.justify-between.w-full.z-20(style="top: -50px")
+        div(class="js-menu-btn flex items-center cursor-pointer hover:text-primary transition-color")
+            .svg-icon.header-nav__icon(style="stroke: currentColor")
+                include ../../assets/img/svg-sprite/menu.svg
+            div(class="header-nav__text hidden md:block lg:block") Menü
+        if locals.isIndexPage
+            span(class="items-center hidden md:flex text-white")
+                .svg-icon
+                    include ../../assets/img/svg-sprite/logo-black.svg
+            span(class="items-center flex md:hidden lg:hidden  text-white")
+                .svg-icon
+                    include ../../assets/img/svg-sprite/logo-black-small.svg
+        else
+            a(class="items-center hidden md:flex text-white" href='/')
+                .svg-icon
+                    include ../../assets/img/svg-sprite/logo-black.svg
+            a(class="items-center flex md:hidden lg:hidden text-white" href='/')
+                .svg-icon
+                    include ../../assets/img/svg-sprite/logo-black-small.svg
+        div
+            a.button.button--primary.button--alt(href="/spenden")
+                span
+                    span
+                        span(class="inline md:hidden") Spenden
+                        span(class="hidden md:inline lg:hidden") Ihre Spende
+                        span(class="hidden lg:inline") Ihre Spende hilft
+    block header-screen-content
 

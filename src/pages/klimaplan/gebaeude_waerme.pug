@@ -3,7 +3,7 @@ extends ../../partials/layouts/main.pug
 block content
     include ../../partials/screens/menu-screen
     append variables
-        - locals.header_bg = 'url(/assets/img/machmit-first-screen.jpg)'
+        - locals.header_bg = require('@/assets/img/machmit-first-screen.jpg?resize')
         - locals.quoteTitle = '"Wir von GermanZero helfen mit Klimaplan, 1,5-Grad-Gesetz und Mobilisierung der Politik bei dieser Menschheitsentscheidung."'
         - locals.quoteText = 'Heinrich Strößenreuther, Vorstand GermanZero'
         - locals.breadcrumbs = [{title: 'Zurück zum Klimaplan', href: '/klimaplan'},{title: 'Gebäude & Wärme'}]

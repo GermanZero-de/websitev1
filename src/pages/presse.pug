@@ -2,7 +2,7 @@ extends ../partials/layouts/main.pug
 
 block content
     append variables
-        - locals.header_bg = 'url(/assets/img/presse-bg.jpg)'
+        - locals.header_bg = require('@/assets/img/presse-bg.jpg?resize')
         - locals.quoteTitle = ''
         - locals.quoteText = ''
         - locals.isHeaderHeightAuto = true

@@ -1,8 +1,11 @@
 .modal.js-modal
-    .modal__bg
-    .modal__content.js-modal-content
-    .modal__close-btn
+    .modal__bg.js-modal-close
+    div.modal__content-container
+        .modal__content
+            .js-modal-content
+    .modal__close-btn.js-modal-close
         include ../../assets/img/svg-sprite/close.svg
 
 div(style="display:none")
     include ../modals/leave-modal
+    include ../modals/zoom-modal

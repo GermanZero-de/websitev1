@@ -11,7 +11,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     contentBase: baseWebpackConfig.externals.paths.dist,
     port: 3000,
     /* enable gzip */
-    compress: true,
+    compress: false,
     // hot: true,
     overlay: {
       warnings: true,
@@ -19,6 +19,9 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     },
   },
   plugins: [
+    new webpack.DefinePlugin({
+      IS_PRODUCTION: JSON.stringify(false),
+    }),
     new webpack.SourceMapDevToolPlugin({
       filename: '[file].map',
     }),

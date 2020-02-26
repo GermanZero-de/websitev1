@@ -59,6 +59,9 @@ module.exports = {
         screens: {},
         padding: '0.625rem',
       },
+      zIndex: {
+        '-10': '-10',
+      },
       spacing: {
         px: '1px',
         1: '0.3125rem', // 5px
@@ -76,7 +79,7 @@ module.exports = {
     },
   },
   plugins: [
-    function ({addBase, config}) {
+    function ({ addBase, config }) {
       addBase({});
     },
   ],
