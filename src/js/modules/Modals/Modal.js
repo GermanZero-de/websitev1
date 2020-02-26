@@ -76,7 +76,7 @@ export default class Modal {
       if (this.open) {
         this.container.querySelector('.js-modal-content').innerHTML = this.template;
       }
-      document.body.style.overflow = this.open ? 'hidden' : 'auto';
+      document.body.classList.toggle('overflow-hidden', this.open);
       this.container.classList.toggle('active', this.open);
     }
   }

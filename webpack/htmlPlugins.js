@@ -16,7 +16,10 @@ const PAGE_DIR = path.resolve(__dirname, '../src/pages');
 
 const htmlPlugins = getFilesFromDir(PAGE_DIR, ['.pug']).map((filePath) => {
   const fileName = filePath.replace(PAGE_DIR, '');
-  const routePath = fileName.replace(/\.pug$/, '').replace(/\//, '\\');
+  const routePath = fileName
+    .replace(/\.pug$/, '')
+    .replace(/\\/, '/')
+    .replace(/^\/index$/, '/');
   const routeMatch = allRoutes.find((r) => r.href === routePath);
   let title = 'German Zero';
   let description = '';

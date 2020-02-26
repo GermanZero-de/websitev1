@@ -2,7 +2,7 @@ meta(charset='utf-8')
 meta(http-equiv="Content-Type" content="text/html; charset=UTF-8")
 meta(http-equiv='x-ua-compatible' content='ie=edge')
 title= htmlWebpackPlugin.options.title
-include ../../static/meta.html
+include ./meta
 //- meta(name='robots' content='noindex, nofollow')
 //- Touch
 meta(name='format-detection' content='telephone=no')
@@ -26,7 +26,5 @@ meta(name='theme-color' content='#ffffff')
 //- Google analytics / gcpatcha preconnect
 link(rel="preconnect" href="https://www.google-analytics.com")
 link(rel="preconnect" href="https://www.gstatic.com")
-include ../../static/style-holder-stop.html
-script(id="dontRemoveMe")
 //- each cssFile in htmlWebpackPlugin.files.css
     link(rel="stylesheet" href=cssFile)

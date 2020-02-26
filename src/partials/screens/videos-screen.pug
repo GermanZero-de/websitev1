@@ -38,8 +38,3 @@ section.videos-screen(class=(videos_screen_upper ? "videos-screen--with-upper-bl
             span(class="cursor-pointer link link--invert inline-block title title--size-h4 text-primary title--underline-black js-toggle-list-button transition hover:text-black")
                 span.js-toggle-list-more-text Alle Videos
                 span.js-toggle-list-less-text.hidden  Weniger
-    .video-modal.js-video-modal
-        button.js-video-modal-btn-close
-            include ../../assets/img/svg-sprite/close.svg
-        .video-modal-content
-            iframe(class="js-video-modal-frame" id="youtube" width="100%" height="100%" frameborder="0" allow="autoplay" allowfullscreen src="" loading="lazy")

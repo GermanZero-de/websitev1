@@ -3,7 +3,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 
 const dotenv = require('dotenv').config({
   path: path.resolve('.env'),
@@ -63,6 +63,10 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /\.ejs$/,
+        loader: 'ejs-loader',
+      },
       {
         test: /\.pug$/,
         loader: 'pug-loader',
@@ -137,10 +141,10 @@ module.exports = {
           },
           {
             loader: 'css-loader',
-            options: { sourceMap: true },
+            options: {sourceMap: true},
           }, {
             loader: 'postcss-loader',
-            options: { sourceMap: true, config: { path: './postcss.config.js' } },
+            options: {sourceMap: true, config: {path: './postcss.config.js'}},
           },
         ],
       }, {
@@ -150,7 +154,7 @@ module.exports = {
           MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
-            options: { sourceMap: true },
+            options: {sourceMap: true},
           }, {
             loader: 'postcss-loader',
             options: {
@@ -186,8 +190,8 @@ module.exports = {
       filename: `${PATHS.assets}css/[name].[contenthash].css`,
     }),
     new CopyWebpackPlugin([
-      { from: `${PATHS.src}/${PATHS.assets}`, to: `${PATHS.assets}` },
-      { from: `${PATHS.src}/static`, to: '' },
+      {from: `${PATHS.src}/${PATHS.assets}`, to: `${PATHS.assets}`},
+      {from: `${PATHS.src}/static`, to: ''},
     ]),
     new webpack.DefinePlugin({
       'process.env': JSON.stringify(dotenv.parsed),
@@ -196,5 +200,6 @@ module.exports = {
       env: JSON.stringify(dotenv.parsed),
     }),
     new SpriteLoaderPlugin(),
+    new webpack.ProgressPlugin(),
   ],
 };

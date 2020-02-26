@@ -1,14 +1,21 @@
 export default class VideoModal {
   constructor(videoElement) {
     this.isOpen = false;
-    this.videoElement = videoElement;
-    this.containerElement = document.querySelector('.js-video-modal');
-    this.containerElementFrame = document.querySelector('.js-video-modal-frame');
-    this.openBtnElements = videoElement.querySelectorAll('.js-video-modal-btn');
-    this.closeBtnElements = document.querySelectorAll('.js-video-modal-btn-close');
-    this.openModalHandler = this.openModalHandler.bind(this);
-    this.closeModalHandler = this.closeModalHandler.bind(this);
-    this.addListeners();
+
+    const holder = document.querySelector('.js-video-modal-iframe-holder');
+    if (holder) {
+      this.videoElement = videoElement;
+      holder.innerHTML = '<iframe class="js-video-modal-frame" id="youtube" width="100%" height="100%" frameborder="0" allow="autoplay" allowfullscreen src="" loading="lazy")></iframe>';
+      this.containerElement = document.querySelector('.js-video-modal');
+      this.containerElementFrame = document.querySelector('.js-video-modal-frame');
+      this.openBtnElements = videoElement.querySelectorAll('.js-video-modal-btn');
+      this.closeBtnElements = document.querySelectorAll('.js-video-modal-btn-close');
+      this.openModalHandler = this.openModalHandler.bind(this);
+      this.closeModalHandler = this.closeModalHandler.bind(this);
+      this.addListeners();
+    } else {
+      console.warn('no video modal holder');
+    }
   }
 
   addListeners() {
@@ -41,7 +48,6 @@ export default class VideoModal {
     } else {
       this.containerElementFrame.setAttribute('src', '');
     }
-
     document.body.style.overflow = this.isOpen ? 'hidden' : 'auto';
     this.containerElement.classList.toggle('active', this.isOpen);
     // this.containerElement.childNodes this.openBtnElements.attr('data-youtube-id')
