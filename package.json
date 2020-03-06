@@ -63,7 +63,7 @@
     "lodash.throttle": "^4.1.1",
     "magnific-popup": "^1.1.0",
     "mini-css-extract-plugin": "^0.8.0",
-    "node-sass": "^4.13.0",
+    "node-sass": "^4.13.1",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "postcss-custom-properties": "^9.0.2",
     "postcss-each-variables": "^0.3.0",
