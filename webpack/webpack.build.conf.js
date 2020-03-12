@@ -1,11 +1,13 @@
+
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const TerserPlugin = require('terser-webpack-plugin');
-
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+
 const baseWebpackConfig = require('./webpack.base.conf');
 const htmlPlugins = require('./htmlPlugins');
 const criticalCssPlugins = require('./criticalCssPlugins');
+const sitemap = require('./sitemap');
 
 let plugins = [];
 
@@ -34,13 +36,14 @@ const buildWebpackConfig = merge(baseWebpackConfig, {
       IS_PRODUCTION: JSON.stringify(true),
     }),
     ...plugins,
+    sitemap,
   ],
 });
 
 
 if (process.env.ANALYZE) {
   // eslint-disable-next-line global-require
-  const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer');
+  const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
   buildWebpackConfig.plugins.push(new BundleAnalyzerPlugin({
     analyzerMode: 'server',
     openAnalyzer: true,
