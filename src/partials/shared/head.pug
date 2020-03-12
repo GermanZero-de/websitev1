@@ -27,5 +27,5 @@ link(rel="preconnect" href="https://www.google-analytics.com")
 link(rel="preconnect" href="https://www.gstatic.com")
 each cssFile in htmlWebpackPlugin.files.css
     link(rel="stylesheet" href=cssFile)
-script(id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid=env.COOKIEBOT_ID || "9a3cf4e0-cc66-4f5e-be95-8d84fd6ccade" type="text/javascript" async)
+script(id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid=env && env.COOKIEBOT_ID || "9a3cf4e0-cc66-4f5e-be95-8d84fd6ccade" type="text/javascript" async)
 script(id="dontRemoveMe" src="/empty-script.js")
