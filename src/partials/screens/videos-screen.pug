@@ -17,6 +17,14 @@ section.videos-screen(class=(videos_screen_upper ? "videos-screen--with-upper-bl
             div(class="w-full lg:w-6/12 px-3 md:px-7 lg:px-3 xl:pr-3 mb-5 md:mb-6 lg:mb-7")
                 .video-block.text-black.js-video-element
                     div(class="video-block__tag md:mb-3 lg:mb-4") #dasindwir
+                    div(class="video-block__title md:hidden mb-2")
+                    .video-block__video.js-video-modal-btn.js-lazy-image(data-bg="url('https://img.youtube.com/vi/q9cn1KBakpw/0.jpg')" data-youtube-id="q9cn1KBakpw")
+                        .video-block__play.flex.items-center.justify-center
+                            include ../../assets/img/svg-sprite/arrow-slider.svg
+                        div(class="video-block__label text-body hidden md:block")
+            div(class="w-full lg:w-6/12 px-3 md:px-7 lg:px-3 xl:pr-3 mb-5 md:mb-6 lg:mb-7")
+                .video-block.text-black.js-video-element
+                    div(class="video-block__tag md:mb-3 lg:mb-4") #dasindwir
                     div(class="video-block__title md:hidden mb-2") GermanZero Pressekonferenz 17.12.2019
                     .video-block__video.js-video-modal-btn.js-lazy-image(data-bg="url('https://img.youtube.com/vi/GfZ8gJzBZHE/0.jpg')" data-youtube-id="GfZ8gJzBZHE")
                         .video-block__play.flex.items-center.justify-center
@@ -24,7 +32,7 @@ section.videos-screen(class=(videos_screen_upper ? "videos-screen--with-upper-bl
                         div(class="video-block__label text-body hidden md:block")
                             span.bg-secondary.px-2
                                 | GermanZero Pressekonferenz 17.12.2019
-            div(class="w-full lg:w-6/12 px-3 md:px-7 lg:px-3 xl:pr-3 mb-5 md:mb-6 lg:mb-7")
+            div(class="w-full lg:w-6/12 px-3 md:px-7 lg:px-3 xl:pr-3 mb-5 md:mb-6 lg:mb-7 js-toggle-list-item hidden")
                 .video-block.text-black.js-video-element
                     div(class="video-block__tag md:mb-3 lg:mb-4") #dasindwir
                     div(class="video-block__title md:hidden mb-2") Zusammenfassung der Pressekonferenz vom 17.12.2019
@@ -34,7 +42,7 @@ section.videos-screen(class=(videos_screen_upper ? "videos-screen--with-upper-bl
                         div(class="video-block__label text-body hidden md:block")
                             span.bg-secondary.px-2
                                 | Zusammenfassung der Pressekonferenz vom 17.12.2019
-        //- div(class="text-center pb-9 sm:pb-10 lg:pb-9")
+        div(class="text-center pb-9 sm:pb-10 lg:pb-9")
             span(class="cursor-pointer link link--invert inline-block title title--size-h4 text-primary title--underline-black js-toggle-list-button transition hover:text-black")
                 span.js-toggle-list-more-text Alle Videos
-                span.js-toggle-list-less-text.hidden  Weniger
+                span.js-toggle-list-less-text.hidden Weniger
