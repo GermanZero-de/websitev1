@@ -21,7 +21,7 @@ const htmlPlugins = getFilesFromDir(PAGE_DIR, ['.pug']).map((filePath) => {
     .replace(/\\/, '/')
     .replace(/^\/index$/, '/');
   const routeMatch = allRoutes.find((r) => r.href === routePath);
-  let title = 'German Zero';
+  let title = '';
   let description = '';
   if (routeMatch && routeMatch.meta) {
     title = routeMatch.meta.title;
@@ -30,7 +30,7 @@ const htmlPlugins = getFilesFromDir(PAGE_DIR, ['.pug']).map((filePath) => {
   return new HtmlWebpackPlugin({
     // chunks: [fileName.replace(path.extname(fileName), ''), 'vendor'],
     template: filePath,
-    inject: 'body',
+    inject: false,
     title,
     meta: {
       description,

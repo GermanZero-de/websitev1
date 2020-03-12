@@ -1,3 +1,23 @@
 <!-- Global site tag (gtag.js) - Google Analytics -->
+<!--
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-153761632-1"></script>
-<script>window.dataLayer = window.dataLayer || [];function gtag() {dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-153761632-1');</script>
+<script >window.dataLayer = window.dataLayer || [];function gtag() {dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-153761632-1');</script>
+-->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-153761632-1" type="text/plain" data-cookieconsent="statistics"></script>
+<script type="text/plain" data-cookieconsent="statistics">
+   window.dataLayer = window.dataLayer || [];
+   function gtag(){dataLayer.push(arguments);}
+   gtag('js', new Date());
+
+   if (!Cookiebot.consent.marketing)
+   {
+      gtag('config', 'UA-153761632-1', { 'displayFeaturesTask': 'null'});
+      gtag('config', 'UA-153761632-1', { 'anonymize_ip': true });
+ }
+   else
+   {
+    gtag('config', 'UA-153761632-1', { 'displayFeaturesTask': 'true' });
+ }
+
+</script>

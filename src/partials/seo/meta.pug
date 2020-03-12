@@ -1,16 +1,28 @@
+- var {meta, title} = htmlWebpackPlugin.options
+- var DEFAULT_DESCRIPTION = 'Unsere Mission ist ein klimaneutrales Deutschland bis spätestens 2035. Dafür werden wir ein 1,5-Grad-Gesetzespaket inklusive einer CO2-Steuerreform liefern.';
+- var DEFAULT_IMAGE = 'https://germanzero.de/assets/img/German Zero Home Header - 480x225px.jpg'
+- var DEFAULT_IMAGE_WIDTH = '480'
+- var DEFAULT_IMAGE_HEIGHT = '225'
+- var SITE_URL = 'https://germanzero.de/'
+title= title
+if(meta)
+    if(meta.description)
+        meta(name='description' content=meta.description)
+    if(meta.keywords)
+        meta(name='keywords' content=meta.keywords)
 meta(name='robots' content='max-snippet:-1, max-image-preview:large, max-video-preview:-1')
-link(rel='canonical' href='https://germanzero.de/')
+link(rel='canonical' href=SITE_URL)
 meta(property='og:locale' content='de_DE')
 meta(property='og:type' content='website')
-meta(property='og:title' content= htmlWebpackPlugin.options.title)
-meta(property='og:description' content= htmlWebpackPlugin.options.meta ? htmlWebpackPlugin.options.meta.description: 'Unsere Mission ist ein klimaneutrales Deutschland bis spätestens 2035. Dafür werden wir ein 1,5-Grad-Gesetzespaket inklusive einer CO2-Steuerreform liefern.')
-meta(property='og:url' content='https://germanzero.de/')
+meta(property='og:title' content= title)
+meta(property='og:description' content=(meta ? meta.description : DEFAULT_DESCRIPTION))
+meta(property='og:url' content=SITE_URL)
 meta(property='og:site_name' content='GermanZero')
-meta(property='og:image' content='https://germanzero.de/wp-content/uploads/2019/09/Stiftung-Lesen-Animation-_1-1024x606.png')
-meta(property='og:image:secure_url' content='https://germanzero.de/wp-content/uploads/2019/09/Stiftung-Lesen-Animation-_1-1024x606.png')
-meta(property='og:image:width' content='1024')
-meta(property='og:image:height' content='606')
+meta(property='og:image' content=meta && meta.image ? meta.image : DEFAULT_IMAGE)
+meta(property='og:image:secure_url' content=meta && meta.image ? meta.image : DEFAULT_IMAGE)
+meta(property='og:image:width' content=(meta && meta.imageWidth ? meta.imageWidth : DEFAULT_IMAGE_WIDTH))
+meta(property='og:image:height' content=(meta && meta.imageHeight ? meta.imageHeight : DEFAULT_IMAGE_HEIGHT))
 meta(name='twitter:card' content='summary_large_image')
-meta(name='twitter:description' content= htmlWebpackPlugin.options.meta ? htmlWebpackPlugin.options.meta.description: 'Unsere Mission ist ein klimaneutrales Deutschland bis spätestens 2035. Dafür werden wir ein 1,5-Grad-Gesetzespaket inklusive einer CO2-Steuerreform liefern.')
-meta(name='twitter:title' content= htmlWebpackPlugin.options.title)
-meta(name='twitter:image' content='https://germanzero.de/wp-content/uploads/2019/09/Stiftung-Lesen-Animation-_1.png')
+meta(name='twitter:description' content=(meta ? meta.description : DEFAULT_DESCRIPTION))
+meta(name='twitter:title' content= title)
+meta(name='twitter:image' content=meta && meta.image ? meta.image : DEFAULT_IMAGE)

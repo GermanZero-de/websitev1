@@ -1,2 +1,4 @@
+//- if !env || !env.IS_LOCAL
+    script(id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid=env.COOKIEBOT_ID || "9a3cf4e0-cc66-4f5e-be95-8d84fd6ccade" data-blockingmode="auto" type="text/javascript")
 if !env || !env.IS_LOCAL
-    script(id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="9a3cf4e0-cc66-4f5e-be95-8d84fd6ccade" data-blockingmode="auto" type="text/javascript")
+    script(id="CookieDeclaration" src=`https://consent.cookiebot.com/${env.COOKIEBOT_ID || "9a3cf4e0-cc66-4f5e-be95-8d84fd6ccade"}/cd.js` type="text/javascript" async)

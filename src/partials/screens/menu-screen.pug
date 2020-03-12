@@ -5,11 +5,13 @@ div.menu-screen.js-menu-screen(data-menu-screen-params='{"activeSubList":1}')
         span(class="hidden lg:inline md:hidden") Schließen
     ul.menu-screen__list.js-menu-screen__list
         each routeItem in routes
-            li(class=`menu-screen__list-item js-menu-list-item ${routeItem.children && routeItem.children.length ? 'menu-screen__list-item--sublist' : ''}`)
-                a(href=routeItem.href class=`hover:text-primary transition-color ${routeItem.classes || ''}` target=routeItem.target)= routeItem.title
-                if routeItem.children && routeItem.children.length
-                    span(class="js-menu-btn-open-sub menu-screen__open-sub cursor-pointer transition-color hover:text-primary") >
-                    ul
-                        each routeItemChildren in routeItem.children
-                            li
-                                a(class=`hover:text-primary transition-color ${routeItemChildren.classes || ''}` href=routeItemChildren.href target=routeItemChildren.target)= routeItemChildren.title
+            if routeItem.visible !== false
+                li(class=`menu-screen__list-item js-menu-list-item ${routeItem.children && routeItem.children.length ? 'menu-screen__list-item--sublist' : ''}`)
+                    a(href=routeItem.href class=`hover:text-primary transition-color ${routeItem.classes || ''}` target=routeItem.target)= routeItem.title
+                    if routeItem.children && routeItem.children.length && routeItem.children.find(item => item.visible !== false)
+                        span(class="js-menu-btn-open-sub menu-screen__open-sub cursor-pointer transition-color hover:text-primary") >
+                        ul
+                            each routeItemChildren in routeItem.children
+                                if routeItemChildren.visible !== false
+                                    li
+                                        a(class=`hover:text-primary transition-color ${routeItemChildren.classes || ''}` href=routeItemChildren.href target=routeItemChildren.target)= routeItemChildren.title

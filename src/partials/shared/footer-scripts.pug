@@ -1,4 +1,7 @@
 include ./cookies
-include ../../static/captcha.html
 include ../../static/validation/validation_messages_de.html
+each jsFile in htmlWebpackPlugin.files.js
+    script(src=jsFile)
+include ../../static/captcha.html
 include ../../static/google-analytics.html
+

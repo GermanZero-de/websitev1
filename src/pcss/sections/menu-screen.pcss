@@ -4,12 +4,13 @@
     top: 0;
     z-index: -9;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     background-color: theme('colors.secondary');
-    display: block;
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.5s ease-in, z-index 0.5s ease-in, visibility .5s ease-in;
+    display: flex;
+    flex-direction: column;
 
     &.active {
         opacity: 1;
@@ -33,6 +34,8 @@
     }
 
     .menu-btn-close {
+        left: 0;
+        top: 0;
         padding: 20px;
         font-weight: bold;
         font-size: 20px;
@@ -40,11 +43,11 @@
         display: inline-flex;
         align-items: center;
         justify-content: space-between;
-        margin: 20px 20px;
-        position: relative;
+        margin: 0;
         z-index: 22;
 
         @screen md {
+            position: fixed;
             margin: 50px 20px;
         }
 
@@ -59,7 +62,6 @@
         flex-direction: column;
         justify-content: center;
         right: 50%;
-        margin: auto;
         padding: 20px 0;
         border-right: 3px solid theme('colors.body');
         font-style: normal;
@@ -86,6 +88,11 @@
             .active + ul {
                 z-index: 9;
                 opacity: 1;
+                max-width: calc(100% - 90px);
+
+                @screen md {
+                    max-width: none;
+                }
             }
         }
 
@@ -105,6 +112,7 @@
         }
 
         ul {
+            top: 0;
             position: absolute;
             width: 100%;
             left: 100%;
@@ -121,7 +129,7 @@
                 padding-left: 60px;
                 position: relative;
                 line-height: 41px;
-                white-space: nowrap;
+            //white-space: nowrap;
 
                 &:hover::after {
                     content: ' ';
@@ -147,6 +155,9 @@
         &__list {
             right: 0;
             position: relative;
+            overflow-y: auto;
+            overflow-x: hidden;
+            justify-content: flex-start;
 
             &:after {
                 content: '';
@@ -161,6 +172,7 @@
             }
 
             &.active {
+                overflow: visible;
                 transform: translate(-70%);
 
                 &:after {
@@ -169,8 +181,4 @@
             }
         }
     }
-}
-
-.sublist {
-    cursor: pointer;
 }
