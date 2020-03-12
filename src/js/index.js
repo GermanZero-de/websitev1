@@ -16,17 +16,18 @@ import App from './app';
 import ProfileGenerator from './modules/ProfileGenerator';
 import ImageAsset from './modules/ImageAsset';
 import ZoomModal from './modules/Modals/ZoomModal';
+import ToggleList from './modules/ToggleList';
 
 document.addEventListener('DOMContentLoaded', async () => {
   /* eslint-disable no-new */
 
   new FeatureDetection();
 
-  const {emitter} = new Emitter();
+  const { emitter } = new Emitter();
 
-  new Notifications({emitter});
+  new Notifications({ emitter });
 
-  new Forms({emitter});
+  new Forms({ emitter });
 
   new Scroll();
 
@@ -55,6 +56,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   new TextCrop();
 
+  new ToggleList();
+
   /**
    * Profil Generator logik
    */
@@ -63,7 +66,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     new ProfileGenerator('gz-profilbild.jpg');
   }
 
-  document.querySelectorAll('.js-image-asset ').forEach((element) => new ImageAsset({element}));
+  document.querySelectorAll('.js-image-asset ').forEach((element) => new ImageAsset({ element }));
 
   /**
    * Custom app logic
